@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Performance: preconnect instead of @import -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap"></noscript>
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://qaginglab.com">
+  <meta property="og:title" content="Q Aging Lab — Not a guru. Just a guinea pig with a notebook.">
+  <meta property="og:description" content="A data-driven longevity and skincare protocol built for the tropics. UV index 11+, fragrance-free, Engineering First. Join the waitlist for early access to the app and The 50+ Tropical Longevity Blueprint.">
+  <meta property="og:image" content="https://qaginglab.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Q Aging Lab">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://qaginglab.com">
+  <meta name="twitter:title" content="Q Aging Lab — Not a guru. Just a guinea pig with a notebook.">
+  <meta name="twitter:description" content="A data-driven longevity and skincare protocol built for the tropics. UV index 11+, fragrance-free, Engineering First.">
+  <meta name="twitter:image" content="https://qaginglab.com/og-image.jpg">
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Q Aging Lab — data-driven longevity and skincare protocols for the tropics. Built for UV index 11+, high humidity, and air conditioning conditions. Engineering First approach.">
+  <meta name="keywords" content="tropical skincare, longevity tropics, skincare over 50, tretinoin tropics, azelaic acid, fragrance-free protocol, aging tropics">
+  <meta name="author" content="Ray — Q Aging Lab">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://qaginglab.com">
+  <title>Q Aging Lab — Not a guru. Just a guinea pig with a notebook.</title>
+<style>
+
+
+:root {
+  --black: #0A0A0A;
+  --white: #F5F0E8;
+  --cream: #EDE8DC;
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --teal: #2A7A74;
+  --teal-light: #3DA89F;
+  --red: #C0392B;
+  --border: rgba(201,168,76,0.2);
+  --text-muted: rgba(245,240,232,0.45);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* NOISE OVERLAY */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.6;
+}
+
+/* LANGUAGE SWITCHER */
+.lang-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px 40px;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.lang-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.lang-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 3px;
+}
+
+.lang-btn:hover, .lang-btn.active {
+  color: var(--gold);
+  border-color: var(--border);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(ellipse, rgba(42,122,116,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: rise 0.8s ease 0.1s forwards;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-label::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 12vw, 160px);
+  line-height: 0.92;
+  letter-spacing: 2px;
+  color: var(--white);
+  opacity: 0;
+  animation: rise 0.8s ease 0.2s forwards;
+  margin-bottom: 8px;
+}
+
+.hero-headline .accent { color: var(--gold); }
+
+.hero-tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: rise 0.8s ease 0.35s forwards;
+  padding-left: 4px;
+}
+
+.hero-tagline em {
+  color: var(--white);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  margin-bottom: 64px;
+  opacity: 0;
+  animation: rise 0.8s ease 0.5s forwards;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--teal-light);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.hero-cta {
+  opacity: 0;
+  animation: rise 0.8s ease 0.65s forwards;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* FORM */
+.waitlist-form {
+  display: flex;
+  gap: 0;
+  max-width: 480px;
+  width: 100%;
+}
+
+.waitlist-input {
+  flex: 1;
+  background: rgba(245,240,232,0.06);
+  border: 1px solid var(--border);
+  border-right: none;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  padding: 14px 20px;
+  outline: none;
+  border-radius: 3px 0 0 3px;
+  transition: border-color 0.2s;
+}
+
+.waitlist-input::placeholder { color: var(--text-muted); }
+.waitlist-input:focus { border-color: rgba(201,168,76,0.5); }
+
+.waitlist-btn {
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  cursor: pointer;
+  border-radius: 0 3px 3px 0;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.waitlist-btn:hover { background: var(--gold-light); }
+
+.form-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+.success-msg {
+  display: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--teal-light);
+  letter-spacing: 1px;
+  padding: 14px 0;
+}
+
+/* DIVIDER */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 120px;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-photo {
+  aspect-ratio: 3/4;
+  background: rgba(42,122,116,0.08);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-photo-placeholder {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 20px;
+}
+
+.about-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(42,122,116,0.1) 0%, transparent 50%, rgba(201,168,76,0.05) 100%);
+}
+
+.about-text h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+  margin-bottom: 28px;
+  color: var(--white);
+}
+
+.about-text h2 span { color: var(--teal-light); }
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(245,240,232,0.7);
+  margin-bottom: 20px;
+}
+
+.about-text p strong {
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* DATA POINTS */
+.data-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 48px;
+}
+
+.data-point {
+  background: var(--black);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.data-point .val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.data-point .key {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* WHAT IS QAL */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.pillar {
+  background: rgba(245,240,232,0.03);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 32px 24px;
+  transition: border-color 0.3s;
+}
+
+.pillar:hover { border-color: rgba(201,168,76,0.4); }
+
+.pillar-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.pillar h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.pillar p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* PROTOCOL */
+.protocol-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.protocol-card {
+  background: rgba(245,240,232,0.02);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 28px;
+}
+
+.protocol-card h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.protocol-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.protocol-item::before {
+  content: '→';
+  color: var(--teal-light);
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.protocol-item span {
+  font-size: 13px;
+  color: rgba(245,240,232,0.65);
+  line-height: 1.5;
+}
+
+/* WAITLIST SECTION */
+.waitlist-section {
+  text-align: center;
+  padding: 120px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.waitlist-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vw;
+  background: radial-gradient(ellipse, rgba(42,122,116,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.waitlist-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.95;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.waitlist-section h2 .line2 { color: var(--gold); }
+
+.waitlist-section p {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  position: relative;
+}
+
+.waitlist-form-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.footer-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ANIMATIONS */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* SCROLL INDICATOR */
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: rise 1s ease 1.2s forwards;
+}
+
+.scroll-hint span {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { padding: 100px 24px 80px; }
+  .hero-stats { gap: 28px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-photo { aspect-ratio: 1/1; max-height: 280px; }
+  .pillars { grid-template-columns: 1fr; }
+  .protocol-grid { grid-template-columns: 1fr; }
+  .data-strip { grid-template-columns: 1fr; }
+  section { padding: 60px 24px; }
+  .lang-bar { padding: 14px 24px; }
+  .waitlist-form { flex-direction: column; max-width: 100%; }
+  .waitlist-input { border-right: 1px solid var(--border); border-bottom: none; border-radius: 3px 3px 0 0; }
+  .waitlist-btn { border-radius: 0 0 3px 3px; text-align: center; }
+  footer { padding: 32px 24px; }
+}
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-logo svg {
+    width: 44px;
+    height: 44px;
+  }
+  .nav-logo-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #C9A84C;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE BAR -->
+<nav class="lang-bar">
+  <div class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520">
+      <defs>
+        <radialGradient id="bgN" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#111"/>
+          <stop offset="100%" stop-color="#0A0A0A"/>
+        </radialGradient>
+        <filter id="gg"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="gt"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <circle cx="300" cy="260" r="255" fill="url(#bgN)"/>
+      <circle cx="300" cy="260" r="254" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="2"/>
+      <circle cx="300" cy="235" r="182" stroke="#2A7A74" stroke-width="1.5" stroke-opacity="0.3" fill="none" stroke-dasharray="4 7"/>
+      <circle cx="300" cy="235" r="108" stroke="#3DA89F" stroke-width="3" stroke-opacity="0.7" fill="none" filter="url(#gt)"/>
+      <circle cx="300" cy="115" r="7" fill="#3DA89F" filter="url(#gt)"/>
+      <circle cx="300" cy="355" r="7" fill="#3DA89F" filter="url(#gt)"/>
+      <circle cx="168" cy="235" r="7" fill="#C9A84C" filter="url(#gg)"/>
+      <circle cx="432" cy="235" r="7" fill="#C9A84C" filter="url(#gg)"/>
+      <text x="300" y="272" font-family="Georgia,serif" font-size="124" font-weight="bold" text-anchor="middle" fill="none" stroke="#E8C97A" stroke-width="6" filter="url(#gg)">Q</text>
+      <line x1="324" y1="276" x2="348" y2="300" stroke="#E8C97A" stroke-width="6.5" stroke-linecap="round" filter="url(#gg)"/>
+      <text x="300" y="396" font-family="'Courier New',monospace" font-size="19" text-anchor="middle" fill="#F5F0E8">Q · A · L</text>
+      <text x="300" y="416" font-family="'Courier New',monospace" font-size="9" letter-spacing="5" text-anchor="middle" fill="#3DA89F" fill-opacity="0.8">Q AGING LAB</text>
+    </svg>
+    <span class="nav-logo-text">Q AGING LAB</span>
+  </div>
+  <div class="lang-buttons">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('nl')">NL</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('pt')">PT</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:none; padding-top:120px;">
+  <div class="hero-inner">
+    <div class="hero-label" data-i18n="hero_label">Q AGING LAB — BUILT FOR THE TROPICS</div>
+    <h1 class="hero-headline">
+      <span data-i18n="hero_h1_line1">AGING</span><br>
+      <span class="accent" data-i18n="hero_h1_line2">DIFFERENT.</span>
+    </h1>
+    <p class="hero-tagline" data-i18n="hero_tagline">
+      <em>"Not a guru. Just a guinea pig with a notebook."</em>
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">61</div>
+        <div class="stat-label" data-i18n="stat_age">Years old</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">UV11+</div>
+        <div class="stat-label" data-i18n="stat_uv">Daily UV Index</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2Y+</div>
+        <div class="stat-label" data-i18n="stat_retinoid">Retinoid conditioned</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">HRR↓</div>
+        <div class="stat-label" data-i18n="stat_hrr">156→119 in &lt;2min</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <div>
+        <form class="waitlist-form" onsubmit="handleSubmit(event, 'hero')">
+          <input class="waitlist-input" type="email" id="email-hero" placeholder="your@email.com" required>
+          <input type="text" id="honeypot-hero" tabindex="-1" value="" style="display:none;" autocomplete="off">
+          <button class="waitlist-btn" type="submit" data-i18n="cta_btn">EARLY ACCESS</button>
+        </form>
+        <p class="form-note" data-i18n="form_note">Free. No spam. Just data.</p>
+        <p class="success-msg" id="success-hero" data-i18n="success_msg">✓ You're on the list. We'll be in touch.</p>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span data-i18n="scroll_hint">scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section>
+  <div class="section-label" data-i18n="about_label">// The experiment</div>
+  <div class="about-grid">
+    <div class="about-photo">
+      <div class="about-photo-placeholder" data-i18n="photo_placeholder">[ Ray ]<br>Photo coming soon</div>
+    </div>
+    <div class="about-text fade-in">
+      <h2><span data-i18n="about_h2_line1">I AM</span><br><span data-i18n="about_h2_line2">THE DATA.</span></h2>
+      <p data-i18n="about_p1">
+        I'm Ray — the Q behind Q Aging Lab. 61 years old. Living in the tropics — <strong>UV index 11+, year-round heat, high humidity.</strong> Not exactly the conditions most longevity protocols are designed for.
+      </p>
+      <p data-i18n="about_p2">
+        For years I've been optimizing my own aging — skincare, fitness, nutrition, supplementation — using an <strong>Engineering First</strong> approach. No influencer noise. No marketing claims. Only mechanisms, data, and what actually works on a 61-year-old body in the tropics.
+      </p>
+      <p data-i18n="about_p3">
+        Q Aging Lab is where I document everything. Not as a guru. As a <strong>guinea pig with a notebook.</strong>
+      </p>
+      <div class="data-strip">
+        <div class="data-point">
+          <div class="val">0.05%</div>
+          <div class="key" data-i18n="data_tret">Tretinoin — 2yr+</div>
+        </div>
+        <div class="data-point">
+          <div class="val">18:6</div>
+          <div class="key" data-i18n="data_if">Intermittent Fasting</div>
+        </div>
+        <div class="data-point">
+          <div class="val">3×</div>
+          <div class="key" data-i18n="data_hiit">HIIT / week</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT IS QAL -->
+<section>
+  <div class="section-label fade-in" data-i18n="pillars_label">// What is Q Aging Lab</div>
+  <div class="pillars">
+    <div class="pillar fade-in">
+      <span class="pillar-icon">🔬</span>
+      <h3 data-i18n="pillar1_h">The App</h3>
+      <p data-i18n="pillar1_p">A protocol engine for everyone in the tropics who uses multiple actives. Ingredient conflict checker, routine matrix. Built for your conditions — not for a lab in California.</p>
+    </div>
+    <div class="pillar fade-in">
+      <span class="pillar-icon">📹</span>
+      <h3 data-i18n="pillar2_h">The Channel</h3>
+      <p data-i18n="pillar2_p">Weekly videos documenting real results. No filters. No before/after fraud. Just data, mechanisms, and honest failure when something doesn't work.</p>
+    </div>
+    <div class="pillar fade-in">
+      <span class="pillar-icon">📓</span>
+      <h3 data-i18n="pillar3_h">The Blueprint</h3>
+      <p data-i18n="pillar3_p">The 50+ Tropical Longevity Blueprint — a protocol guide built from years of self-experimentation. Skincare, fitness, nutrition, supplementation. Designed for the tropics.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROTOCOL SNAPSHOT -->
+<section>
+  <div class="section-label fade-in" data-i18n="protocol_label">// Current protocol snapshot</div>
+  <div class="protocol-grid">
+    <div class="protocol-card fade-in">
+      <h3 data-i18n="protocol_skin">Skincare Stack</h3>
+      <div class="protocol-item"><span data-i18n="ps1">Tretinoin 0.05% — PM nights</span></div>
+      <div class="protocol-item"><span data-i18n="ps2">Azelaic Acid 20% FNA — Tyrosinase inhibitor</span></div>
+      <div class="protocol-item"><span data-i18n="ps3">Vit C ATIP 20% — AM antioxidant</span></div>
+      <div class="protocol-item"><span data-i18n="ps4">LRP UVMune 400 Tinted — UV shield</span></div>
+      <div class="protocol-item"><span data-i18n="ps5">Copper Peptides — Peptide nights only</span></div>
+      <div class="protocol-item"><span data-i18n="ps6">100% fragrance-free protocol</span></div>
+      <div class="protocol-item" style="margin-top:8px; opacity:0.6; border-top:1px solid rgba(201,168,76,0.1); padding-top:8px;">
+        <span data-i18n="ps7">Situational: CeraVe HA Gel — high heat / midday reset</span>
+      </div>
+    </div>
+    <div class="protocol-card fade-in">
+      <h3 data-i18n="protocol_fitness">Fitness & Longevity</h3>
+      <div class="protocol-item"><span data-i18n="pf1">Bodyweight HIIT — 3×/week</span></div>
+      <div class="protocol-item"><span data-i18n="pf2">HRR metric: 156→119 bpm &lt;2min</span></div>
+      <div class="protocol-item"><span data-i18n="pf3">18:6 Intermittent Fasting</span></div>
+      <div class="protocol-item"><span data-i18n="pf4">Creatine 10g — muscle retention, cellular hydration &amp; cognitive resilience</span></div>
+      <div class="protocol-item"><span data-i18n="pf5">Omega-3 — anti-inflammatory, cardiovascular support</span></div>
+      <div class="protocol-item"><span data-i18n="pf6">Magnesium Glycinate — recovery & sleep quality</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FINAL CTA -->
+<div class="waitlist-section">
+  <h2 class="fade-in">
+    <span data-i18n="cta_h2_line1">JOIN THE</span><br>
+    <span class="line2" data-i18n="cta_h2_line2">EXPERIMENT.</span>
+  </h2>
+  <p class="fade-in" data-i18n="cta_sub">Early access to the app. First to receive The 50+ Tropical Longevity Blueprint. No spam. Just data from a guinea pig with a notebook.</p>
+  <div class="waitlist-form-center fade-in">
+    <form class="waitlist-form" onsubmit="handleSubmit(event, 'footer')" style="max-width:480px; width:100%;">
+      <input class="waitlist-input" type="email" id="email-footer" placeholder="your@email.com" required>
+      <input type="text" id="honeypot-footer" tabindex="-1" value="" style="display:none;" autocomplete="off">
+      <button class="waitlist-btn" type="submit" data-i18n="cta_btn">EARLY ACCESS</button>
+    </form>
+    <p class="form-note" data-i18n="form_note">Free. No spam. Just data.</p>
+    <p class="success-msg" id="success-footer" data-i18n="success_msg">✓ You're on the list. We'll be in touch.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Q AGING LAB</div>
+  <div class="footer-note" data-i18n="footer_note">The Tropics · qaginglab.com</div>
+  <div class="footer-note" data-i18n="footer_copy">© 2026 Q Aging Lab. All rights reserved.</div>
+</footer>
+
+<script>
+// TRANSLATIONS
+const i18n = {
+  en: {
+    hero_label: "Q AGING LAB — BUILT FOR THE TROPICS",
+    hero_h1_line1: "AGING",
+    hero_h1_line2: "DIFFERENT.",
+    hero_tagline: '"Not a guru. Just a guinea pig with a notebook."',
+    stat_age: "Years old",
+    stat_uv: "Daily UV Index",
+    stat_retinoid: "Retinoid conditioned",
+    stat_hrr: "156→119 in <2min",
+    cta_btn: "EARLY ACCESS",
+    form_note: "Free. No spam. Just data.",
+    success_msg: "✓ You're on the list. We'll be in touch.",
+    scroll_hint: "scroll",
+    about_label: "// The experiment",
+    photo_placeholder: "[ Ray ]\nPhoto coming soon",
+    about_h2_line1: "I AM",
+    about_h2_line2: "THE DATA.",
+    about_p1: "I'm Ray — the Q behind Q Aging Lab. 61 years old. Living in the tropics — <strong>UV index 11+, year-round heat, high humidity.</strong> Not exactly the conditions most longevity protocols are designed for.",
+    about_p2: "For years I've been optimizing my own aging — skincare, fitness, nutrition, supplementation — using an <strong>Engineering First</strong> approach. No influencer noise. No marketing claims. Only mechanisms, data, and what actually works on a 61-year-old body in the tropics.",
+    about_p3: "Q Aging Lab is where I document everything. Not as a guru. As a <strong>guinea pig with a notebook.</strong>",
+    data_tret: "Tretinoin — 2yr+",
+    data_if: "Intermittent Fasting",
+    data_hiit: "HIIT / week (3×)",
+    pillars_label: "// What is Q Aging Lab",
+    pillar1_h: "The App",
+    pillar1_p: "A protocol engine for everyone in the tropics who uses multiple actives. Ingredient conflict checker, routine matrix. Built for your conditions — not for a lab in California.",
+    pillar2_h: "The Channel",
+    pillar2_p: "Weekly videos documenting real results. No filters. No before/after fraud. Just data, mechanisms, and honest failure when something doesn't work.",
+    pillar3_h: "The Blueprint",
+    pillar3_p: "The 50+ Tropical Longevity Blueprint — a protocol guide built from years of self-experimentation. Skincare, fitness, nutrition, supplementation. Designed for the tropics.",
+    protocol_label: "// Current protocol snapshot",
+    protocol_skin: "Skincare Stack",
+    protocol_fitness: "Fitness & Longevity",
+    ps1: "Tretinoin 0.05% — PM nights",
+    ps2: "Azelaic Acid 20% FNA — Tyrosinase inhibitor",
+    ps3: "Vit C ATIP 20% — AM antioxidant",
+    ps4: "LRP UVMune 400 Tinted — UV shield",
+    ps5: "Copper Peptides — Peptide nights only",
+    ps6: "100% fragrance-free protocol",
+    ps7: "Situational: CeraVe HA Gel — high heat / midday reset",
+    pf1: "Bodyweight HIIT — 3×/week",
+    pf2: "HRR metric: 156→119 bpm <2min",
+    pf3: "18:6 Intermittent Fasting",
+    pf4: "Creatine 10g — muscle retention, cellular hydration & cognitive resilience",
+    pf5: "Omega-3 — anti-inflammatory, cardiovascular support",
+    pf6: "Magnesium Glycinate — recovery & sleep quality",
+    cta_h2_line1: "JOIN THE",
+    cta_h2_line2: "EXPERIMENT.",
+    cta_sub: "Early access to the app. First to receive The 50+ Tropical Longevity Blueprint. No spam. Just data from a guinea pig with a notebook.",
+    footer_note: "The Tropics · qaginglab.com",
+    footer_copy: "© 2026 Q Aging Lab. All rights reserved."
+  },
+  nl: {
+    hero_label: "Q AGING LAB — BUILT FOR THE TROPICS",
+    hero_h1_line1: "OUDER WORDEN",
+    hero_h1_line2: "ANDERS.",
+    hero_tagline: '"Geen guru. Gewoon een proefkonijn met een notitieboek."',
+    stat_age: "Jaar oud",
+    stat_uv: "Dagelijkse UV-index",
+    stat_retinoid: "Retinoïde geconditioneerd",
+    stat_hrr: "156→119 in <2min",
+    cta_btn: "VROEGE TOEGANG",
+    form_note: "Gratis. Geen spam. Alleen data.",
+    success_msg: "✓ Je staat op de lijst. We nemen contact op.",
+    scroll_hint: "scroll",
+    about_label: "// Het experiment",
+    photo_placeholder: "[ Ray ]\nFoto binnenkort",
+    about_h2_line1: "IK BEN",
+    about_h2_line2: "DE DATA.",
+    about_p1: "Ik ben Ray — de Q achter Q Aging Lab. 61 jaar oud. Woonachtig in de tropen — <strong>UV-index 11+, tropische hitte, hoge luchtvochtigheid.</strong> Niet de omstandigheden waarvoor de meeste longevity protocollen zijn ontworpen.",
+    about_p2: "Jarenlang optimaliseer ik mijn eigen veroudering — huidverzorging, fitness, voeding, supplementen — met een <strong>Engineering First</strong> aanpak. Geen influencer ruis. Geen marketingclaims. Alleen mechanismen, data en wat echt werkt op een 61-jarig lichaam in de tropen.",
+    about_p3: "Q Aging Lab is waar ik alles documenteer. Niet als guru. Als <strong>proefkonijn met een notitieboek.</strong>",
+    data_tret: "Tretinoïne — 2jr+",
+    data_if: "Intermittent Fasting",
+    data_hiit: "HIIT / week (3×)",
+    pillars_label: "// Wat is Q Aging Lab",
+    pillar1_h: "De App",
+    pillar1_p: "Een protocol engine voor iedereen in de tropen die meerdere actives gebruikt. Ingrediënten conflictchecker, routine matrix. Gebouwd voor jouw omstandigheden — niet voor een lab in Californië.",
+    pillar2_h: "Het Kanaal",
+    pillar2_p: "Wekelijkse video's die echte resultaten documenteren. Geen filters. Geen voor/na fraude. Alleen data, mechanismen en eerlijk falen als iets niet werkt.",
+    pillar3_h: "De Blauwdruk",
+    pillar3_p: "The 50+ Tropical Longevity Blueprint — een protocolhandleiding gebouwd uit jaren zelfexperimentatie. Huidverzorging, fitness, voeding, supplementen. Ontworpen voor de tropen.",
+    protocol_label: "// Huidig protocol snapshot",
+    protocol_skin: "Huidverzorging Stack",
+    protocol_fitness: "Fitness & Longevity",
+    ps1: "Tretinoïne 0.05% — PM avonden",
+    ps2: "Azelaïnezuur 20% FNA — Tyrosinaseremmer",
+    ps3: "Vit C ATIP 20% — AM antioxidant",
+    ps4: "LRP UVMune 400 Tinted — UV bescherming",
+    ps5: "Koperpeptiden — alleen op peptide avonden",
+    ps6: "100% parfumvrij protocol",
+    ps7: "Situationeel: CeraVe HA Gel — tropische hitte / middag reset",
+    pf1: "Lichaamsgewicht HIIT — 3×/week",
+    pf2: "HRR meting: 156→119 bpm <2min",
+    pf3: "18:6 Intermittent Fasting",
+    pf4: "Creatine 10g — spierbehoud, cellulaire hydratatie & cognitieve veerkracht",
+    pf5: "Omega-3 — ontstekingsremmend, cardiovasculaire ondersteuning",
+    pf6: "Magnesiumglycinaat — herstel & slaapkwaliteit",
+    cta_h2_line1: "DOE MEE AAN",
+    cta_h2_line2: "HET EXPERIMENT.",
+    cta_sub: "Vroege toegang tot de app. Als eerste The 50+ Tropical Longevity Blueprint ontvangen. Geen spam. Alleen data van een proefkonijn met een notitieboek.",
+    footer_note: "The Tropics · qaginglab.com",
+    footer_copy: "© 2026 Q Aging Lab. Alle rechten voorbehouden."
+  },
+  es: {
+    hero_label: "Q AGING LAB — BUILT FOR THE TROPICS",
+    hero_h1_line1: "ENVEJECER",
+    hero_h1_line2: "DIFERENTE.",
+    hero_tagline: '"No soy gurú. Solo soy un conejillo de indias con un cuaderno."',
+    stat_age: "Años de edad",
+    stat_uv: "Índice UV diario",
+    stat_retinoid: "Condicionado con retinoide",
+    stat_hrr: "156→119 en <2min",
+    cta_btn: "ACCESO ANTICIPADO",
+    form_note: "Gratis. Sin spam. Solo datos.",
+    success_msg: "✓ Estás en la lista. Te contactaremos.",
+    scroll_hint: "scroll",
+    about_label: "// El experimento",
+    photo_placeholder: "[ Ray ]\nFoto próximamente",
+    about_h2_line1: "YO SOY",
+    about_h2_line2: "LOS DATOS.",
+    about_p1: "Soy Ray — la Q detrás de Q Aging Lab. 61 años. Viviendo en los trópicos — <strong>índice UV 11+, calor tropical, alta humedad.</strong> No exactamente las condiciones para las que están diseñados la mayoría de los protocolos de longevidad.",
+    about_p2: "Durante años he optimizado mi propio envejecimiento — cuidado de la piel, fitness, nutrición, suplementación — usando un enfoque de <strong>Ingeniería Primero</strong>. Sin ruido de influencers. Sin afirmaciones de marketing. Solo mecanismos, datos y lo que realmente funciona en un cuerpo de 61 años en los trópicos.",
+    about_p3: "Q Aging Lab es donde documento todo. No como gurú. Como <strong>conejillo de indias con un cuaderno.</strong>",
+    data_tret: "Tretinoína — 2a+",
+    data_if: "Ayuno Intermitente",
+    data_hiit: "HIIT / semana (3×)",
+    pillars_label: "// Qué es Q Aging Lab",
+    pillar1_h: "La App",
+    pillar1_p: "Un motor de protocolos para todos en los trópicos que usan múltiples activos. Verificador de conflictos de ingredientes, matriz de rutinas. Diseñado para tus condiciones — no para un laboratorio en California.",
+    pillar2_h: "El Canal",
+    pillar2_p: "Videos semanales documentando resultados reales. Sin filtros. Sin fraude antes/después. Solo datos, mecanismos y fracasos honestos.",
+    pillar3_h: "El Blueprint",
+    pillar3_p: "The 50+ Tropical Longevity Blueprint — una guía de protocolo construida a partir de años de autoexperimentación. Diseñada para los trópicos.",
+    protocol_label: "// Snapshot del protocolo actual",
+    protocol_skin: "Stack de Skincare",
+    protocol_fitness: "Fitness y Longevidad",
+    ps1: "Tretinoína 0.05% — Noches PM",
+    ps2: "Ácido Azelaico 20% FNA — Inhibidor de tirosinasa",
+    ps3: "Vit C ATIP 20% — Antioxidante AM",
+    ps4: "LRP UVMune 400 Tinted — Protección UV",
+    ps5: "Péptidos de Cobre — Solo en noches de péptidos",
+    ps6: "Protocolo 100% libre de fragancias",
+    ps7: "Situacional: CeraVe HA Gel — calor extremo / reset de mediodía",
+    pf1: "HIIT de peso corporal — 3×/semana",
+    pf2: "Métrica HRR: 156→119 bpm <2min",
+    pf3: "Ayuno Intermitente 18:6",
+    pf4: "Creatina 10g — retención muscular, hidratación celular & resiliencia cognitiva",
+    pf5: "Omega-3 — antiinflamatorio, apoyo cardiovascular",
+    pf6: "Glicinato de Magnesio — recuperación & calidad del sueño",
+    cta_h2_line1: "ÚNETE AL",
+    cta_h2_line2: "EXPERIMENTO.",
+    cta_sub: "Acceso anticipado a la app. El primero en recibir The 50+ Tropical Longevity Blueprint. Sin spam. Solo datos de un conejillo de indias con un cuaderno.",
+    footer_note: "The Tropics · qaginglab.com",
+    footer_copy: "© 2026 Q Aging Lab. Todos los derechos reservados."
+  },
+  pt: {
+    hero_label: "Q AGING LAB — BUILT FOR THE TROPICS",
+    hero_h1_line1: "ENVELHECER",
+    hero_h1_line2: "DIFERENTE.",
+    hero_tagline: '"Não sou guru. Apenas um cobaia com um caderno."',
+    stat_age: "Anos de idade",
+    stat_uv: "Índice UV diário",
+    stat_retinoid: "Condicionado com retinoide",
+    stat_hrr: "156→119 em <2min",
+    cta_btn: "ACESSO ANTECIPADO",
+    form_note: "Grátis. Sem spam. Só dados.",
+    success_msg: "✓ Você está na lista. Entraremos em contato.",
+    scroll_hint: "rolar",
+    about_label: "// O experimento",
+    photo_placeholder: "[ Ray ]\nFoto em breve",
+    about_h2_line1: "EU SOU",
+    about_h2_line2: "OS DADOS.",
+    about_p1: "Sou Ray — o Q por trás do Q Aging Lab. 61 anos. Vivendo nos trópicos — <strong>índice UV 11+, calor tropical, alta umidade.</strong> Não exatamente as condições para as quais a maioria dos protocolos de longevidade é projetada.",
+    about_p2: "Por anos tenho otimizado meu próprio envelhecimento — skincare, fitness, nutrição, suplementação — usando uma abordagem de <strong>Engenharia Primeiro</strong>. Sem ruído de influenciadores. Sem alegações de marketing. Apenas mecanismos, dados e o que realmente funciona num corpo de 61 anos nos trópicos.",
+    about_p3: "Q Aging Lab é onde documento tudo. Não como guru. Como <strong>cobaia com um caderno.</strong>",
+    data_tret: "Tretinoína — 2a+",
+    data_if: "Jejum Intermitente",
+    data_hiit: "HIIT / semana (3×)",
+    pillars_label: "// O que é Q Aging Lab",
+    pillar1_h: "O App",
+    pillar1_p: "Um motor de protocolos para todos nos trópicos que usam múltiplos ativos. Verificador de conflitos de ingredientes, matriz de rotinas. Construído para as suas condições — não para um laboratório na Califórnia.",
+    pillar2_h: "O Canal",
+    pillar2_p: "Vídeos semanais documentando resultados reais. Sem filtros. Sem fraude antes/depois. Só dados, mecanismos e falhas honestas.",
+    pillar3_h: "O Blueprint",
+    pillar3_p: "The 50+ Tropical Longevity Blueprint — um guia de protocolo construído a partir de anos de autoexperimentação. Projetado para os trópicos.",
+    protocol_label: "// Snapshot do protocolo atual",
+    protocol_skin: "Stack de Skincare",
+    protocol_fitness: "Fitness e Longevidade",
+    ps1: "Tretinoína 0.05% — Noites PM",
+    ps2: "Ácido Azelaico 20% FNA — Inibidor de tirosinase",
+    ps3: "Vit C ATIP 20% — Antioxidante AM",
+    ps4: "LRP UVMune 400 Tinted — Proteção UV",
+    ps5: "Peptídeos de Cobre — Apenas nas noites de peptídeos",
+    ps6: "Protocolo 100% sem fragrância",
+    ps7: "Situacional: CeraVe HA Gel — calor extremo / reset do meio-dia",
+    pf1: "HIIT com peso corporal — 3×/semana",
+    pf2: "Métrica HRR: 156→119 bpm <2min",
+    pf3: "Jejum Intermitente 18:6",
+    pf4: "Creatina 10g — retenção muscular, hidratação celular & resiliência cognitiva",
+    pf5: "Ômega-3 — anti-inflamatório, suporte cardiovascular",
+    pf6: "Glicinato de Magnésio — recuperação & qualidade do sono",
+    cta_h2_line1: "JUNTE-SE AO",
+    cta_h2_line2: "EXPERIMENTO.",
+    cta_sub: "Acesso antecipado ao app. Primeiro a receber The 50+ Tropical Longevity Blueprint. Sem spam. Só dados de uma cobaia com um caderno.",
+    footer_note: "The Tropics · qaginglab.com",
+    footer_copy: "© 2026 Q Aging Lab. Todos os direitos reservados."
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key]) {
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+}
+
+// ============================================================
+  // SUPABASE CONFIG
+  // Stap 1: Vervang deze twee waarden met je eigen Supabase gegevens
+  // Vind je in: Supabase Dashboard → Project Settings → API
+  // ============================================================
+  const SUPABASE_URL = 'https://xyikfhdgxcrzkkpkhyfp.supabase.co'; // bijv. https://xxxx.supabase.co
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5aWtmaGRneGNyemtrcGtoeWZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MDM3MzcsImV4cCI6MjA5NjE3OTczN30.OQ9bNhLqU9rokTrS0Dmoan8jhNROxVbos4F58sNdxPg';
+  // ============================================================
+
+  async function handleSubmit(e, id) {
+    e.preventDefault();
+
+    // 1. Honeypot check — bot detectie
+    const honeypot = document.getElementById(`honeypot-${id}`);
+    if (honeypot && honeypot.value !== "") {
+      console.warn("Systeem: Spam gedetecteerd en geblokkeerd.");
+      return;
+    }
+
+    const emailInput = document.getElementById(`email-${id}`);
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    // 2. Dubbele submit preventie
+    const btn = e.target.querySelector('.waitlist-btn');
+    const originalBtnText = btn.innerText;
+    btn.innerText = "PROCESSING...";
+    btn.disabled = true;
+
+    try {
+      // 3. Supabase INSERT via REST API
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          email: email,
+          source: 'qaginglab_waitlist',
+          language: currentLang
+        })
+      });
+
+      if (!response.ok) {
+        const err = await response.json();
+        // Duplicate email — toon succes toch (geen info lekken)
+        if (err.code === '23505') {
+          document.getElementById(`success-${id}`).style.display = 'block';
+          emailInput.value = '';
+          return;
+        }
+        throw new Error('Transmissie gefaald: ' + response.status);
+      }
+
+      // 4. Succes
+      document.getElementById(`success-${id}`).style.display = 'block';
+      emailInput.value = '';
+
+    } catch (error) {
+      console.error('Systeemfout:', error);
+      // Optioneel: toon foutmelding aan gebruiker
+    } finally {
+      btn.innerText = originalBtnText;
+      btn.disabled = false;
+    }
+  }
+
+// SCROLL ANIMATIONS
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
