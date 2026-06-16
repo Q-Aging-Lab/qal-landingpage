@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QAL — Muurkleur Referentie</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #F5F0E8; font-family: 'Courier New', monospace; padding: 40px 24px; }
+h1 { font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #0A0A0A; margin-bottom: 8px; }
+p { font-size: 11px; color: #555; margin-bottom: 24px; letter-spacing: 1px; }
+
+.critical-alert {
+  background: #C0392B;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.swatches { display: flex; flex-direction: column; gap: 24px; }
+
+.swatch-row { display: flex; gap: 16px; align-items: stretch; }
+
+.swatch-block {
+  width: 180px;
+  height: 180px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.swatch-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  flex: 1;
+}
+
+.swatch-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #0A0A0A;
+  letter-spacing: 1px;
+}
+
+.swatch-hex {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.swatch-rgb {
+  font-size: 12px;
+  color: #555;
+}
+
+.swatch-note {
+  font-size: 11px;
+  color: #888;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+.recommended {
+  background: #C9A84C;
+  color: white;
+  font-size: 9px;
+  letter-spacing: 3px;
+  padding: 3px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  display: inline-block;
+  width: fit-content;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+  margin: 8px 0;
+}
+
+.footer {
+  margin-top: 48px;
+  font-size: 10px;
+  color: #888;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<h1>Q Aging Lab — Muurkleur Referentie</h1>
+<p>Toon dit aan het verfbedrijf — kleur mengen op basis van HEX of RGB waarden</p>
+
+<div class="critical-alert">
+  ▲ STRIKTE PRODUCTIE PARAMETER:<br>
+  DE VERF MOET 100% ULTRA MAT / EXTRA MAT GELEVERD WORDEN. ABSOLUUT GÉÉN ZIJDEGLANS OF SEMI-GLOSS. DE MUUR WORDT GEBRUIKT ALS STUDIO ACHTERGROND EN MAG GEEN LICHT REFLECTEREN.
+</div>
+
+<div class="swatches">
+
+  <div class="swatch-row">
+    <div class="swatch-block" style="background: #1A2420;"></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Optie 1 — Donker Grijsgroen</div>
+      <span class="recommended">★ Aanbevolen (Ultra Mat)</span>
+      <div class="divider"></div>
+      <div class="swatch-hex" style="color: #1A2420;">#1A2420</div>
+      <div class="swatch-rgb">RGB: R 26 · G 36 · B 32</div>
+      <div class="swatch-note">Past bij QAL teal branding. Absorbeert licht — muurvlekken verdwijnen. Warmt op met goud accent lamp. Zwart t-shirt komt scherp af. Vereist extra matte afwerking.</div>
+    </div>
+  </div>
+
+  <div class="swatch-row">
+    <div class="swatch-block" style="background: #1E2B28;"></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Optie 2 — Diep Grijsgroen</div>
+      <div class="divider"></div>
+      <div class="swatch-hex" style="color: #1E2B28;">#1E2B28</div>
+      <div class="swatch-rgb">RGB: R 30 · G 43 · B 40</div>
+      <div class="swatch-note">Iets warmer dan optie 1. Zelfde effect — licht absorberend, professioneel, QAL verwant. Vereist extra matte afwerking.</div>
+    </div>
+  </div>
+
+  <div class="swatch-row">
+    <div class="swatch-block" style="background: #2A2520;"></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Optie 3 — Diep Warmgrijs</div>
+      <div class="divider"></div>
+      <div class="swatch-hex" style="color: #2A2520;">#2A2520</div>
+      <div class="swatch-rgb">RGB: R 42 · G 37 · B 32</div>
+      <div class="swatch-note">Neutraler — geen groene tint. Tijdloos, werkt met elke lichtkleur. Minder QAL branded maar zeer professioneel op camera. Vereist extra matte afwerking.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">qaginglab.com · Kleurmenging op basis van HEX of RGB</div>
+
+</body>
+</html>
