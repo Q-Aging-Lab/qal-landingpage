@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>QAL Video 4 — B-Roll Prompts</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+:root {
+  --bg:#0A0A0A;--white:#F5F0E8;--gold:#C9A84C;--teal-l:#3DA89F;
+  --border:rgba(201,168,76,0.2);--surface:rgba(245,240,232,0.03);--muted:rgba(245,240,232,0.4);
+  --red:#C0392B;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;padding:60px 32px 100px;}
+.page{max-width:860px;margin:0 auto;}
+.back{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--teal-l);text-decoration:none;text-transform:uppercase;display:inline-block;margin-bottom:40px;}
+.back:hover{color:var(--gold);}
+.header{border-left:3px solid var(--red);padding-left:24px;margin-bottom:52px;}
+.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--teal-l);text-transform:uppercase;margin-bottom:12px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--white);margin-bottom:8px;}
+.subtitle{font-size:13px;color:var(--muted);line-height:1.7;}
+.section-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.scene-block{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:16px;}
+.scene-header{background:rgba(201,168,76,0.06);padding:12px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.scene-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);}
+.scene-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--red);text-transform:uppercase;}
+.scene-time{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);margin-left:auto;}
+.shots{padding:16px 20px;display:flex;flex-direction:column;gap:12px;}
+.shot{display:flex;gap:12px;align-items:flex-start;}
+.shot-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);min-width:24px;padding-top:2px;}
+.shot-info{flex:1;}
+.shot-title{font-size:13px;color:var(--white);font-weight:500;margin-bottom:3px;}
+.shot-detail{font-size:12px;color:var(--muted);line-height:1.6;}
+.shot-duration{font-family:'DM Mono',monospace;font-size:10px;color:var(--teal-l);margin-top:3px;}
+.props-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:20px 24px;margin-bottom:40px;}
+.props-box .pb-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.props-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.props-box ul li{font-size:13px;color:rgba(245,240,232,0.75);padding-left:20px;position:relative;line-height:1.5;}
+.props-box ul li::before{content:'→';position:absolute;left:0;color:var(--teal-l);font-size:10px;}
+.props-box ul li strong{color:var(--white);font-weight:500;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back" href="../index.html">← Terug naar Vault</a>
+
+  <div class="header">
+    <div class="label">Q Aging Lab — Video 4 — B-Roll Prompts</div>
+    <h1>B-ROLL PROMPTS</h1>
+    <p class="subtitle">The Pharmacy Trap — Your Compounded Prescription May Not Be What You Ordered</p>
+  </div>
+
+  <div class="props-box">
+    <div class="pb-label">// Props op tafel voor opname</div>
+    <ul>
+      <li><strong>Oude tube AZA</strong> — origineel correct recept (indien label nog leesbaar)</li>
+      <li><strong>Nieuwe tube AZA</strong> — verkeerde samenstelling — etiket zichtbaar en leesbaar</li>
+      <li><strong>Notitieboek</strong> — open, aantekeningen zichtbaar</li>
+      <li><strong>CeraVe Hydrating Cleanser</strong> — barrier reset segment</li>
+      <li><strong>CeraVe Moisturizing Cream</strong> — barrier reset segment</li>
+    </ul>
+  </div>
+
+  <div class="section-title">// Shot lijst per scene</div>
+
+  <div class="scene-block">
+    <div class="scene-header">
+      <span class="scene-num">01</span>
+      <span class="scene-label">Hook — Het bewijs</span>
+      <span class="scene-time">0:00 – 0:50</span>
+    </div>
+    <div class="shots">
+      <div class="shot">
+        <div class="shot-num">1</div>
+        <div class="shot-info">
+          <div class="shot-title">Close-up etiket nieuwe tube</div>
+          <div class="shot-detail">AZELAINEZUUR 15% + TRIAMCINOLONE ACETONIDE 0.1% volledig leesbaar in beeld. Statisch shot — geen beweging. Laat kijker zelf lezen.</div>
+          <div class="shot-duration">8–10 seconden</div>
+        </div>
+      </div>
+      <div class="shot">
+        <div class="shot-num">2</div>
+        <div class="shot-info">
+          <div class="shot-title">Hand pakt nieuwe tube op</div>
+          <div class="shot-detail">Medium shot. Tube wordt opgepakt en naar camera gedraaid. Etiket in focus.</div>
+          <div class="shot-duration">4–5 seconden</div>
+        </div>
+      </div>
+      <div class="shot">
+        <div class="shot-num">3</div>
+        <div class="shot-info">
+          <div class="shot-title">GFX overlay — twee regels apart</div>
+          <div class="shot-detail">"Ordered: AZA 20%" bovenaan. "Received: AZA 15% + TA 0.1%" onderaan. Goud op donker. Eén regel tegelijk verschijnen.</div>
+          <div class="shot-duration">6–8 seconden</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-block">
+    <div class="scene-header">
+      <span class="scene-num">02</span>
+      <span class="scene-label">Het Mechanisme</span>
+      <span class="scene-time">0:50 – 2:30</span>
+    </div>
+    <div class="shots">
+      <div class="shot">
+        <div class="shot-num">4</div>
+        <div class="shot-info">
+          <div class="shot-title">GFX — "Class 3 Corticosteroid"</div>
+          <div class="shot-detail">Tekst verschijnt op donkere achtergrond. Rood accent. Onder de tekst: classificatieschaal visueel.</div>
+          <div class="shot-duration">4–5 seconden</div>
+        </div>
+      </div>
+      <div class="shot">
+        <div class="shot-num">5</div>
+        <div class="shot-info">
+          <div class="shot-title">GFX lijst — vier effecten</div>
+          <div class="shot-detail">Elk effect apart zichtbaar bij vermelding: Skin Atrophy → Hyperpigmentation → Telangiectasia → Rebound. Rood accent per item.</div>
+          <div class="shot-duration">2–3 seconden per item</div>
+        </div>
+      </div>
+      <div class="shot">
+        <div class="shot-num">6</div>
+        <div class="shot-info">
+          <div class="shot-title">Optioneel — huidatrofie visualisatie</div>
+          <div class="shot-detail">Runway AI prompt: collageen structuur in dermis die afbreekt onder corticosteroïd suppressie. Donkere achtergrond, goud/teal kleurpallet. Abstract, geen medisch realisme.</div>
+          <div class="shot-duration">5–6 seconden</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-block">
+    <div class="scene-header">
+      <span class="scene-num">03</span>
+      <span class="scene-label">De Ontdekking</span>
+      <span class="scene-time">2:30 – 3:30</span>
+    </div>
+    <div class="shots">
+      <div class="shot">
+        <div class="shot-num">7</div>
+        <div class="shot-info">
+          <div class="shot-title">Beide tubes naast elkaar — statisch shot</div>
+          <div class="shot-detail">Oude tube links, nieuwe tube rechts. Beide etiketten leesbaar. Kijker ziet het verschil zelf. Geen beweging — laat het landen.</div>
+          <div class="shot-duration">8–10 seconden</div>
+        </div>
+      </div>
+      <div class="shot">
+        <div class="shot-num">8</div>
+        <div class="shot-info">
+          <div class="shot-title">Close-up beide etiketten apart</div>
+          <div class="shot-detail">Eerst oud etiket — dan nieuw etiket. Contrast duidelijk zichtbaar.</div>
+          <div class="shot-duration">4–5 seconden elk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-block">
+    <div class="scene-header">
+      <span class="scene-num">04</span>
+      <span class="scene-label">De Tweede Fout</span>
+      <span class="scene-time">3:30 – 4:30</span>
+    </div>
+    <div class="shots">
+      <div class="shot">
+        <div class="shot-num">9</div>
+        <div class="shot-info">
+          <div class="shot-title">GFX — concentratie vergelijking</div>
+          <div class="shot-detail">"Ordered: 20%" links — "Received: 15%" rechts. Pijl of lijn ertussen. "Therapeutic threshold" label bij 20%. "OTC ceiling — below the line" bij 15%.</div>
+          <div class="shot-duration">6–8 seconden</div>
+        </div>
+      </div>
+      <div class="shot">
+        <div class="shot-num">10</div>
+        <div class="shot-info">
+          <div class="shot-title">Close-up etiket — AZA 15% gemarkeerd</div>
+          <div class="shot-detail">Etiket in beeld. Azelainezuur 15% visueel gemarkeerd of ingezoomd.</div>
+          <div class="shot-duration">4–5 seconden</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-block">
+    <div class="scene-header">
+      <span class="scene-num">05</span>
+      <span class="scene-label">The QAL Audit Protocol</span>
+      <span class="scene-time">4:30 – 6:30</span>
+    </div>
+    <div class="shots">
+      <div class="shot">
+        <div class="shot-num">11</div>
+        <div class="shot-info">
+          <div class="shot-title">Notitieboek open — pagina zichtbaar</div>
+          <div class="shot-detail">The QAL Audit Protocol geschreven op pagina. Blader naar de pagina op camera. Drie stappen zichtbaar.</div>
+          <div class="shot-duration">4–5 seconden</div>
+        </div>
+      </div>
+      <div class="shot">
+        <div class="shot-num">12</div>
+        <div class="shot-info">
+          <div class="shot-title">GFX — drie stappen apart</div>
+          <div class="shot-detail">Stap 1: "Verify active + concentration — at the counter". Stap 2: "TA/TAC · HCT · BDP — stop and ask". Stap 3: "Compare original on file — refuse if different". Elk apart verschijnen.</div>
+          <div class="shot-duration">3–4 seconden per stap</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-block">
+    <div class="scene-header">
+      <span class="scene-num">06</span>
+      <span class="scene-label">Recovery</span>
+      <span class="scene-time">6:30 – 7:15</span>
+    </div>
+    <div class="shots">
+      <div class="shot">
+        <div class="shot-num">13</div>
+        <div class="shot-info">
+          <div class="shot-title">Barrier reset producten lay-flat</div>
+          <div class="shot-detail">CeraVe Hydrating Cleanser + CeraVe Moisturizing Cream naast elkaar. Labels leesbaar. GFX overlay: "Barrier Reset Protocol".</div>
+          <div class="shot-duration">6–8 seconden</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-block">
+    <div class="scene-header">
+      <span class="scene-num">07</span>
+      <span class="scene-label">CTA</span>
+      <span class="scene-time">7:15 – 7:45</span>
+    </div>
+    <div class="shots">
+      <div class="shot">
+        <div class="shot-num">14</div>
+        <div class="shot-info">
+          <div class="shot-title">Sluit notitieboek — beide tubes in beeld</div>
+          <div class="shot-detail">Notitieboek sluit op camera. Beide tubes nog zichtbaar op tafel. Strakke blik naar lens. Handtekening afsluiting.</div>
+          <div class="shot-duration">5–6 seconden</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
