@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QAL — Midday Reset Script</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+
+:root {
+  --bg: #0A0A0A;
+  --white: #F5F0E8;
+  --cream: #EDE8DC;
+  --gold: #C9A84C;
+  --gold-l: #E8C97A;
+  --teal: #2A7A74;
+  --teal-l: #3DA89F;
+  --border: rgba(201,168,76,0.2);
+  --surface: rgba(245,240,232,0.03);
+  --muted: rgba(245,240,232,0.4);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  padding: 60px 32px 100px;
+  background-image:
+    radial-gradient(ellipse 50% 40% at 90% 5%, rgba(42,122,116,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 5% 90%, rgba(201,168,76,0.06) 0%, transparent 50%);
+}
+
+.page { max-width: 900px; margin: 0 auto; }
+
+.page-header {
+  border-left: 3px solid var(--gold);
+  padding-left: 24px;
+  margin-bottom: 56px;
+}
+.page-header .label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 4px;
+  color: var(--teal-l); text-transform: uppercase; margin-bottom: 12px;
+}
+.page-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 5vw, 52px); line-height: 1.05; color: var(--white);
+}
+.page-header h1 span { color: var(--gold); }
+.page-header p { margin-top: 12px; font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 600px; }
+
+.section-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 4px; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.setup-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; margin-bottom: 52px;
+}
+.setup-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 6px; padding: 18px;
+}
+.setup-card h4 {
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; color: var(--teal-l);
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.setup-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.setup-card ul li { font-size: 12px; color: var(--muted); padding-left: 14px; position: relative; line-height: 1.5; }
+.setup-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 10px; }
+.setup-card ul li strong { color: var(--white); font-weight: 500; }
+
+.divider { width: 100%; height: 1px; background: var(--border); margin: 44px 0; }
+
+.video-title-bar {
+  background: rgba(201,168,76,0.07);
+  border: 1px solid var(--border); border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+}
+.vt-format { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+.vt-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: var(--white); line-height: 1.1; }
+.vt-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-align: right; }
+
+.script-body { border: 1px solid var(--border); border-radius: 0 0 6px 6px; overflow: hidden; margin-bottom: 32px; }
+
+.scene { border-bottom: 1px solid rgba(201,168,76,0.08); }
+.scene:last-child { border-bottom: none; }
+
+.scene-header {
+  background: rgba(245,240,232,0.02); padding: 10px 24px;
+  border-bottom: 1px solid rgba(201,168,76,0.06);
+  display: flex; gap: 16px; align-items: center;
+}
+.scene-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--muted); }
+.scene-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--teal-l); text-transform: uppercase; }
+.scene-time { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); margin-left: auto; }
+
+.scene-content { display: grid; grid-template-columns: 1fr 1fr; }
+
+.direction {
+  background: rgba(42,122,116,0.04);
+  border-right: 1px solid rgba(201,168,76,0.08); padding: 20px 24px;
+}
+.direction-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 3px; color: var(--teal-l); text-transform: uppercase; margin-bottom: 10px; }
+.direction p { font-size: 12px; color: rgba(245,240,232,0.55); line-height: 1.75; font-style: italic; }
+.direction p strong { color: var(--teal-l); font-style: normal; font-weight: 500; }
+
+.script-text { padding: 20px 24px; }
+.script-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.script-text p { font-size: 14px; color: var(--white); line-height: 1.9; font-weight: 400; }
+.script-text p em { color: var(--gold-l); font-style: normal; font-weight: 500; }
+.script-text p .pause { color: var(--muted); font-size: 11px; font-style: italic; }
+.script-text p .gfx { color: var(--teal-l); font-size: 11px; font-style: italic; }
+
+.broll {
+  background: rgba(201,168,76,0.04);
+  border-top: 1px solid rgba(201,168,76,0.08);
+  padding: 12px 24px; display: flex; gap: 10px; align-items: flex-start;
+}
+.broll-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; white-space: nowrap; padding-top: 2px; flex-shrink: 0; }
+.broll p { font-size: 11px; color: var(--muted); line-height: 1.6; }
+.broll p strong { color: var(--white); font-weight: 500; }
+
+@media(max-width:700px) {
+  body { padding: 40px 16px 80px; }
+  .setup-grid { grid-template-columns: 1fr; }
+  .scene-content { grid-template-columns: 1fr; }
+  .direction { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="page-header">
+  <div class="label">Q Aging Lab — Video 2 — Definitief Script</div>
+  <h1>THE TROPICAL<br><span>MIDDAY RESET</span></h1>
+  <p>Doelgroep: 50+, tropisch klimaat. Toon: direct, no-nonsense. Pacing: snel. Duur: 90 seconden.</p>
+</div>
+
+<!-- SETUP -->
+<div class="section-title">// Productie Setup</div>
+<div class="setup-grid">
+  <div class="setup-card">
+    <h4>Setting & Licht</h4>
+    <ul>
+      <li><strong>Achtergrond:</strong> Donker, schoon — zelfde setup als video 1</li>
+      <li><strong>Ring light:</strong> 60-70% intensiteit</li>
+      <li><strong>Hue lamp:</strong> Goud (#C9A84C) op muur</li>
+      <li><strong>Notitieboek:</strong> Zichtbaar op tafel</li>
+      <li><strong>Houding:</strong> Zittend, zelfverzekerd</li>
+    </ul>
+  </div>
+  <div class="setup-card">
+    <h4>B-Roll Lijst</h4>
+    <ul>
+      <li>Gezicht afspoelen met water — close-up</li>
+      <li>CeraVe Hydrating Cleanser — één pomp</li>
+      <li>Gezicht deppen met papieren tissue</li>
+      <li>CeraVe HA Gel applicatie — close-up</li>
+      <li>CeraVe AM SPF 50 applicatie</li>
+      <li>LRP UVMune 400 Tinted — deppen op wangen</li>
+    </ul>
+  </div>
+  <div class="setup-card">
+    <h4>GFX Labels</h4>
+    <ul>
+      <li>Warm wit tekst op donkere achtergrond</li>
+      <li>Goud (#C9A84C) voor highlights</li>
+      <li>Teal (#3DA89F) voor stapnummers</li>
+      <li>"Washing 3x a day = Bad for your skin"</li>
+      <li>"The QAL Midday Reset"</li>
+      <li>"Step 1/2/3" labels per stap</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SCRIPT -->
+<div class="video-title-bar">
+  <div>
+    <div class="vt-format">Short-form — YouTube / Instagram / TikTok — Week 2</div>
+    <div class="vt-name">The Tropical Midday Reset</div>
+  </div>
+  <div class="vt-meta">Doel: 90 sec<br>Pijler: Protocol · Tropics</div>
+</div>
+
+<div class="script-body">
+
+  <!-- SCENE 1: HOOK -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">01</span>
+      <span class="scene-label">Hook & Het Probleem</span>
+      <span class="scene-time">0:00 – 0:15</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Direct to camera. Strakke blik. Geen glimlach.</strong> GFX overlay: "Washing 3x a day = Bad for your skin." B-roll van zwetend gezicht en foaming face wash cut in na eerste zin.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"Living in the tropics means showering two or three times a day. It is not a luxury — it is just how we handle the heat. But if you wash your face with soap every single time you step into the shower, <em>you are ruining your skin.</em><br><br>
+        By 2 PM, your face is sweating, oily, and sticky. Your first thought is to scrub it all off.<br><br>
+        <em>Don't do that.</em><br><br>
+        Here is a smarter way to reset your face for the afternoon."</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>Zwetend gezicht close-up. Foaming face wash product shot. Beide kort — 3-4 seconden elk.</p>
+    </div>
+  </div>
+
+  <!-- SCENE 2: WHY IT GOES WRONG -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">02</span>
+      <span class="scene-label">Waarom Het Misgaat</span>
+      <span class="scene-time">0:15 – 0:40</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Terug to camera.</strong> GFX: "Keep your morning products locked in." B-roll van droge, gebarsten huidtextuur cut in bij "skin barrier breaks".</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"The products you put on at 7 AM — your Vitamin C and Azelaic Acid — are already deep inside your skin. They are doing their job. <em>They are safe.</em><br><br>
+        But if you wash with a harsh face wash right now, you strip away your skin's natural oils. The moment you step back into the air conditioning, your skin dries out completely.<br><br>
+        <em>Your skin barrier breaks.</em>"</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>Droge, gebarsten oppervlakte of grafische weergave van huid die vocht verliest. 4-5 seconden. Cut in bij "skin dries out completely".</p>
+    </div>
+  </div>
+
+  <!-- SCENE 3: STEP 1 -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">03</span>
+      <span class="scene-label">Stap 1 — Alleen Water</span>
+      <span class="scene-time">0:40 – 0:55</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Pak notitieboek op. GFX: "The QAL Midday Reset" + "Step 1: Just Water".</strong> B-roll van gezicht afspoelen met water. Geen scrubbing beweging — rustig, controleerd.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"This is the QAL Midday Reset. Three steps. No scrubbing. Just results.<br><br>
+        <em>Step one: Just water.</em><br><br>
+        Use tap water. It cools down your skin and leaves your natural oils alone. Splash it on to wash away the sweat. If your face is very oily, use one quick pump of CeraVe Hydrating Cleanser. <em>Do not scrub. One quick pass.</em>"</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>Gezicht afspoelen met water. Één pomp CeraVe Hydrating Cleanser — close-up van de pomp. Zachte applicatie — geen scrubbing.</p>
+    </div>
+  </div>
+
+  <!-- SCENE 4: STEP 2 -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">04</span>
+      <span class="scene-label">Stap 2 — Fast Moisture</span>
+      <span class="scene-time">0:55 – 1:10</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>GFX: "Step 2: Fast Moisture".</strong> B-roll van deppen met tissue — nadrukkelijk geen wrijven. Direct daarna HA Gel applicatie terwijl huid nog licht vochtig is.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"<em>Step two: Fast moisture.</em><br><br>
+        Do not use your damp body towel on your face. In our humidity, that towel is full of bacteria. Use a clean face towel or a paper tissue. <em>Pat gently — leave it a bit damp.</em><br><br>
+        Apply the CeraVe Hyaluronic Acid Gel right away. This gel absorbs faster than a standard serum and pulls water directly into your skin without making it greasy."</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>Tissue deppen op gezicht — niet wrijven. CeraVe HA Gel applicatie op licht vochtige huid. Close-up van patting beweging.</p>
+    </div>
+  </div>
+
+  <!-- SCENE 5: STEP 3 -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">05</span>
+      <span class="scene-label">Stap 3 — The Dry Shield</span>
+      <span class="scene-time">1:10 – 1:30</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>GFX: "Step 3: The Dry Shield" + "Targeted Protection".</strong> B-roll van wachten — klok of timer zichtbaar. Dan CeraVe AM applicatie. Dan LRP UVMune Tinted alleen op wangen deppen.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"<em>Step three: The dry shield.</em><br><br>
+        This is where most people fail. Wait one to two minutes until your face is completely dry. If you put sunscreen on wet skin, <em>it will peel and flake off.</em><br><br>
+        Once dry — one even layer of CeraVe AM SPF 50.<br><br>
+        If you have dark spots, dab a little of the La Roche-Posay UVMune 400 Tinted exactly on those areas. This protects your spots against the afternoon light — and keeps the rest of your face light and matte."</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>Timer of klok — 1-2 minuten wachten. CeraVe AM SPF 50 applicatie — egale laag. LRP UVMune 400 Tinted alleen op wangen/donkere plekken deppen. Eindresultaat: mat, verzorgd gezicht.</p>
+    </div>
+  </div>
+
+  <!-- SCENE 6: OUTRO -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">06</span>
+      <span class="scene-label">Outro — Sluit het notitieboek</span>
+      <span class="scene-time">1:30 – 1:45</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Terug to camera. Zelfverzekerd. GFX: links in beschrijving + subscribe.</strong> Sluit notitieboek bij laatste zin — jouw handtekening afsluiting.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"You are now clean, hydrated, and protected against the afternoon sun — without ruining your morning routine.<br><br>
+        The exact products I use are linked in the description.<br><br>
+        <span class="pause">[sluit notitieboek]</span><br><br>
+        Subscribe for data-driven skin protocols built for the tropics.<br><br>
+        <em>This is Q Aging Lab.</em>"</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+</body>
+</html>
