@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 50+ Tropical Longevity Blueprint — TOC + Module 1</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+:root {
+  --bg:#0A0A0A;--white:#F5F0E8;--cream:#EDE8DC;--gold:#C9A84C;--gold-l:#E8C97A;
+  --teal:#2A7A74;--teal-l:#3DA89F;--red:#C0392B;
+  --border:rgba(201,168,76,0.2);--surface:rgba(245,240,232,0.03);--muted:rgba(245,240,232,0.45);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;padding:60px 32px 100px;
+background-image:radial-gradient(ellipse 50% 40% at 90% 5%,rgba(42,122,116,0.07) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 5% 90%,rgba(201,168,76,0.05) 0%,transparent 50%);}
+.page{max-width:760px;margin:0 auto;}
+
+/* COVER */
+.cover{text-align:center;padding:80px 0 100px;border-bottom:1px solid var(--border);margin-bottom:80px;}
+.cover .pre{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--teal-l);text-transform:uppercase;margin-bottom:24px;}
+.cover h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,72px);line-height:1;color:var(--white);margin-bottom:8px;}
+.cover h1 .gold{color:var(--gold);}
+.cover .tagline{font-family:Georgia,serif;font-style:italic;font-size:14px;color:var(--muted);margin-top:24px;}
+.cover .author{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);margin-top:32px;text-transform:uppercase;}
+
+/* TOC */
+.toc-title{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--white);margin-bottom:40px;letter-spacing:1px;}
+.toc-module{margin-bottom:36px;}
+.toc-module-header{display:flex;align-items:baseline;gap:16px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.toc-module-num{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--gold);}
+.toc-module-name{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:1px;}
+.toc-module-pages{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-left:auto;}
+.toc-items{list-style:none;padding-left:32px;}
+.toc-items li{font-size:13px;color:var(--muted);padding:5px 0;display:flex;gap:10px;line-height:1.5;}
+.toc-items li::before{content:'→';color:var(--teal-l);font-size:11px;flex-shrink:0;}
+
+.divider{width:100%;height:1px;background:var(--border);margin:80px 0;}
+
+/* MODULE CONTENT */
+.module-header{margin-bottom:56px;}
+.module-header .label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--teal-l);text-transform:uppercase;margin-bottom:16px;}
+.module-header h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,56px);line-height:1;color:var(--white);}
+.module-header h2 span{color:var(--gold);}
+
+.chapter{margin-bottom:64px;}
+.chapter h3{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:14px;}
+.chapter h3 .ch-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--teal-l);letter-spacing:2px;}
+.chapter h4{font-size:16px;font-weight:600;color:var(--white);margin:28px 0 12px;}
+.chapter p{font-size:14.5px;line-height:1.9;color:rgba(245,240,232,0.75);margin-bottom:16px;}
+.chapter p strong{color:var(--white);font-weight:500;}
+.chapter p em{color:var(--gold-l);font-style:normal;font-weight:500;}
+
+/* CALLOUT BOXES */
+.mechanism-box{background:rgba(42,122,116,0.07);border:1px solid rgba(42,122,116,0.25);border-left:3px solid var(--teal-l);border-radius:0 6px 6px 0;padding:20px 24px;margin:24px 0;}
+.mechanism-box .mb-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--teal-l);text-transform:uppercase;margin-bottom:10px;}
+.mechanism-box p{font-size:13.5px;line-height:1.8;color:rgba(245,240,232,0.7);margin:0;}
+
+.data-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.25);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:20px 24px;margin:24px 0;}
+.data-box .db-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.data-box p{font-size:13.5px;line-height:1.8;color:rgba(245,240,232,0.7);margin:0;}
+
+.warning-box{background:rgba(192,57,43,0.06);border:1px solid rgba(192,57,43,0.3);border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:20px 24px;margin:24px 0;}
+.warning-box .wb-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:#E74C3C;text-transform:uppercase;margin-bottom:10px;}
+.warning-box p{font-size:13.5px;line-height:1.8;color:rgba(245,240,232,0.7);margin:0;}
+
+/* PROTOCOL TABLE */
+.p-table{width:100%;border-collapse:collapse;margin:24px 0;}
+.p-table th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--teal-l);text-transform:uppercase;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);}
+.p-table td{font-size:13px;color:rgba(245,240,232,0.7);padding:11px 14px;border-bottom:1px solid rgba(201,168,76,0.07);line-height:1.5;vertical-align:top;}
+.p-table td strong{color:var(--white);font-weight:500;}
+.p-table td.never{color:#E74C3C;}
+.p-table td.ok{color:var(--teal-l);}
+
+/* STEP LIST */
+.step-list{list-style:none;counter-reset:step;margin:20px 0;}
+.step-list li{counter-increment:step;padding:14px 0 14px 52px;position:relative;border-bottom:1px solid rgba(201,168,76,0.07);font-size:14px;line-height:1.7;color:rgba(245,240,232,0.75);}
+.step-list li::before{content:counter(step,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:'DM Mono',monospace;font-size:13px;color:var(--gold);font-weight:500;}
+.step-list li strong{color:var(--white);font-weight:500;}
+
+@media(max-width:600px){body{padding:40px 18px 80px;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="pre">Q Aging Lab — Field Manual</div>
+  <h1>THE 50+ TROPICAL<br><span class="gold">LONGEVITY BLUEPRINT</span></h1>
+  <p class="tagline">"Not a guru. Just a guinea pig with a notebook."</p>
+  <div class="author">Ray — The Q behind Q Aging Lab · qaginglab.com</div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc-title">TABLE OF CONTENTS</div>
+
+<div class="toc-module">
+  <div class="toc-module-header">
+    <span class="toc-module-num">MODULE 01</span>
+    <span class="toc-module-name">The Tropical Skin Protocol</span>
+    <span class="toc-module-pages">p. 4–19</span>
+  </div>
+  <ul class="toc-items">
+    <li>Why your climate breaks every Western protocol</li>
+    <li>The three forces: UV 11+, humidity, air conditioning</li>
+    <li>Hyperpigmentation: the mechanism, not the marketing</li>
+    <li>The actives that matter — and the ones that don't</li>
+    <li>The complete AM/PM architecture</li>
+    <li>The conflict matrix: what never goes together</li>
+    <li>The pilling problem — solved</li>
+    <li>The Midday Reset protocol</li>
+    <li>The 8-week conditioning path for beginners</li>
+  </ul>
+</div>
+
+<div class="toc-module">
+  <div class="toc-module-header">
+    <span class="toc-module-num">MODULE 02</span>
+    <span class="toc-module-name">The Body After 50</span>
+    <span class="toc-module-pages">p. 20–29</span>
+  </div>
+  <ul class="toc-items">
+    <li>Sarcopenia: why muscle loss accelerates after 50 — and how to stop it</li>
+    <li>Bodyweight training: the complete no-gym system</li>
+    <li>Heart Rate Recovery: your most honest biological age marker</li>
+    <li>Training in tropical heat: hydration, timing, recovery</li>
+    <li>The 3×/week HIIT structure</li>
+  </ul>
+</div>
+
+<div class="toc-module">
+  <div class="toc-module-header">
+    <span class="toc-module-num">MODULE 03</span>
+    <span class="toc-module-name">Nutrition & The Stack</span>
+    <span class="toc-module-pages">p. 30–39</span>
+  </div>
+  <ul class="toc-items">
+    <li>18:6 Intermittent Fasting: the mechanism, not the dogma</li>
+    <li>Eating in the tropics: what changes, what doesn't</li>
+    <li>The supplement stack: Creatine 10g, Omega-3, Magnesium Glycinate</li>
+    <li>Oral UV protection: the inside-out defense layer</li>
+    <li>Supplement timing within the fasting window</li>
+    <li>What I eliminated — and why</li>
+  </ul>
+</div>
+
+<div class="toc-module">
+  <div class="toc-module-header">
+    <span class="toc-module-num">MODULE 04</span>
+    <span class="toc-module-name">The Protocol in Practice</span>
+    <span class="toc-module-pages">p. 40–52</span>
+  </div>
+  <ul class="toc-items">
+    <li>The complete daily structure: wake to sleep</li>
+    <li>The weekly cycle: Tretinoin nights vs peptide nights</li>
+    <li>The measurement protocol: what to track, how, and when</li>
+    <li>BIA measurement: the standardized morning protocol</li>
+    <li>The 8-week starter path: from zero to full protocol</li>
+    <li>Sourcing guide: where to find everything internationally</li>
+    <li>The notebook: how to document like a tester</li>
+  </ul>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ MODULE 1 ============ -->
+<div class="module-header">
+  <div class="label">Module 01</div>
+  <h2>THE TROPICAL<br><span>SKIN PROTOCOL</span></h2>
+</div>
+
+<!-- CHAPTER 1.1 -->
+<div class="chapter">
+  <h3><span class="ch-num">1.1</span> Why Your Climate Breaks Every Western Protocol</h3>
+
+  <p>Almost everything you have read about skincare was written for a different planet than the one you live on.</p>
+
+  <p>The protocols, the product recommendations, the layering advice — nearly all of it originates from research and marketing departments in Northern Europe and North America. Places where the UV index peaks at 6 or 7 for a few summer weeks. Where humidity is something you adjust with a humidifier. Where "hot" means 28 degrees.</p>
+
+  <p>I live where the UV index is <em>11 or higher on a normal Tuesday.</em> Where humidity sits at 80 percent before breakfast. Where stepping from the street into an air-conditioned room means a 40-percent humidity drop in seconds — multiple times per day, every day, for life.</p>
+
+  <p>These are not minor variables. They change the fundamental physics of how products behave on your skin, how fast actives degrade, how your skin barrier responds, and what actually causes visible aging in your face.</p>
+
+  <p>This module is the protocol I built for <strong>these</strong> conditions — tested on my own 61-year-old skin, documented over years, refined through elimination. Not theory. Field data.</p>
+
+  <div class="data-box">
+    <div class="db-label">// Baseline data — the author</div>
+    <p>Age 61. Tropical residence, daily UV index 11+. Retinoid-conditioned for over 2 years at Tretinoin 0.05%. Zero erythema, zero irritation at full protocol intensity. 100% fragrance-free. Every product in this module is one I use, in the exact sequence described.</p>
+  </div>
+</div>
+
+<!-- CHAPTER 1.2 -->
+<div class="chapter">
+  <h3><span class="ch-num">1.2</span> The Three Forces Working Against Your Skin</h3>
+
+  <h4>Force 1 — UV Radiation at Index 11+</h4>
+  <p>UV index 11 is not "more sun." It is a categorically different exposure environment. At this intensity, two things happen that temperate-climate protocols never account for:</p>
+
+  <p><strong>First:</strong> your melanocytes — the pigment-producing cells in your skin — are under constant activation. The enzyme that drives melanin production runs at maximum signal nearly year-round. This is why hyperpigmentation is the dominant aging concern in the tropics, while wrinkles dominate the conversation in colder climates.</p>
+
+  <p><strong>Second:</strong> the UV filters in your sunscreen degrade faster. Photodegradation — the breakdown of UV filters under the very radiation they absorb — happens on an accelerated timeline at index 11. A sunscreen that survives a Berlin afternoon fails before lunch in Paramaribo, Lagos, or Manila.</p>
+
+  <h4>Force 2 — Humidity</h4>
+  <p>At 80+ percent humidity, product behavior changes. Creams take longer to absorb. Layers that bond cleanly in dry air slide and pill on a micro-layer of surface moisture and sweat. Heavy occlusive moisturizers — the standard recommendation for "mature skin" — become greasy films that trap heat and clog.</p>
+
+  <p>This is why product recommendations cannot be copied from Western reviewers. A formulation that performs beautifully at 40 percent humidity may be unusable at 85.</p>
+
+  <h4>Force 3 — Air Conditioning</h4>
+  <p>This is the force nobody talks about, and in my testing it does more daily barrier damage than the sun.</p>
+
+  <p>Every time you move from outdoor humidity into air-conditioned dryness, the water gradient across your skin reverses. Outside, the air is saturated — your skin loses little water. Inside AC, the air is dry — and water begins migrating out of your skin continuously. This is called <em>transepidermal water loss</em>, or TEWL.</p>
+
+  <p>Now multiply that reversal by every entry and exit, every day. Office, car, supermarket, home. Your skin barrier never gets a stable environment to operate in. It is permanently compensating.</p>
+
+  <div class="mechanism-box">
+    <div class="mb-label">// The mechanism</div>
+    <p>Your skin barrier is a brick-and-mortar structure: skin cells (bricks) held together by lipids (mortar). TEWL pulls water through this structure. When the loss rate exceeds the barrier's regulation capacity — which chronic AC cycling guarantees — the lipid mortar degrades. The result: micro-irritation, increased sensitivity to actives, and ironically, <strong>worsened hyperpigmentation</strong>, because irritated skin produces more pigment as a defense response.</p>
+  </div>
+
+  <p>Every decision in this protocol — every product choice, every layering sequence, every timing rule — is built to operate inside these three forces. Not despite them. Inside them.</p>
+</div>
+
+<!-- CHAPTER 1.3 -->
+<div class="chapter">
+  <h3><span class="ch-num">1.3</span> Hyperpigmentation: The Mechanism, Not the Marketing</h3>
+
+  <p>Walk into any pharmacy in the tropics and you will find an entire wall of "brightening," "whitening," and "dark spot correcting" products. Most of them share one quality: <em>they don't work.</em> Not because the category is fake — but because they attack the symptom, not the production line.</p>
+
+  <p>Here is the actual mechanism, simplified to what you need to know:</p>
+
+  <p>Your skin produces pigment — melanin — through an enzyme called <strong>tyrosinase</strong>. Think of tyrosinase as the machine on a factory floor. UV radiation, heat, and inflammation all push the throttle on that machine. At UV index 11+, the throttle is pinned nearly all year.</p>
+
+  <p>Dark spots are not stains to be bleached. They are <em>active production zones</em> — areas where the factory is running overtime. Fading the visible pigment without slowing the machine means the spot returns within weeks.</p>
+
+  <p>So the engineering question becomes: <strong>what actually slows the machine?</strong></p>
+
+  <p>Two things, in my testing and in the clinical literature:</p>
+
+  <p><strong>Azelaic Acid at 20% concentration</strong> — a direct tyrosinase inhibitor. It chemically suppresses the enzyme. It does not bleach. It does not thin the skin. It shuts down production at the source. Concentration matters: the 10% versions sold over the counter are meaningfully weaker. 20% is the therapeutic threshold, typically available compounded through a pharmacy.</p>
+
+  <p><strong>Tretinoin at 0.05%</strong> — not a pigment treatment directly, but an accelerator of cellular turnover. It pushes pigmented, damaged cells up and out faster, while stimulating collagen production in the deeper layers. Combined with tyrosinase inhibition, it clears existing pigment while AZA prevents new production.</p>
+
+  <div class="warning-box">
+    <div class="wb-label">// What I eliminated</div>
+    <p>Vitamin C serums marketed as "brightening" (most are unstable in tropical heat), niacinamide-only products positioned as pigment treatment (supportive at best, never primary), kojic acid soaps (barrier-damaging), and every product containing fragrance. If a product's primary argument is its marketing language rather than its concentration and mechanism — it goes.</p>
+  </div>
+</div>
+
+<!-- CHAPTER 1.4 -->
+<div class="chapter">
+  <h3><span class="ch-num">1.4</span> The Complete AM/PM Architecture</h3>
+
+  <p>This is the full protocol as I run it today. Every product, every sequence position, every reason. We will cover the conditioning path for beginners in section 1.9 — <strong>do not start at this intensity if you are new to actives.</strong></p>
+
+  <h4>Morning Protocol</h4>
+  <ol class="step-list">
+    <li><strong>CeraVe Hydrating Cleanser.</strong> Sulfate-free, barrier-safe. The goal of a morning cleanse is to remove overnight buildup without stripping — nothing more.</li>
+    <li><strong>Vitamin C — ATIP form (Ascorbyl Tetraisopalmitate 20%).</strong> Oil-soluble and heat-stable. Standard L-ascorbic acid serums oxidize within weeks in tropical heat — you can watch them turn orange. ATIP does not. It provides the antioxidant layer that supports your UV defense from underneath.</li>
+    <li><strong>Azelaic Acid 20% — thin layer.</strong> The tyrosinase inhibitor. Applied after the Vitamin C, before sun protection. Thin means thin: a pea-sized amount for the entire face.</li>
+    <li><strong>CeraVe AM SPF 50 — EU formulation.</strong> The base UV layer. The EU version specifically — the filter chemistry difference is covered in depth in the UV Matrix chapter. Allow the AZA layer to fully absorb first.</li>
+    <li><strong>LRP UVMune 400 Tinted Fluid — targeted.</strong> Applied over the dark spot zones specifically. The tint provides an additional physical light barrier exactly where pigment production is most active, while keeping the overall face light and matte.</li>
+  </ol>
+
+  <h4>Evening Protocol — Tretinoin Nights (4× per week)</h4>
+  <ol class="step-list">
+    <li><strong>CeraVe Hydrating Cleanser</strong> — or double cleanse (oil cleanser first) on heavy-sweat days.</li>
+    <li><strong>Tretinoin 0.05% gel.</strong> Pea-sized amount, full face, avoiding the immediate eye area. Gel format performs better than cream in humidity — faster absorption, no occlusion.</li>
+    <li><strong>CeraVe Night Repairing Cream.</strong> The closing layer. Ceramides to support overnight barrier repair while the Tretinoin works.</li>
+  </ol>
+
+  <h4>Evening Protocol — Peptide Nights (3× per week)</h4>
+  <ol class="step-list">
+    <li><strong>CeraVe Hydrating Cleanser.</strong></li>
+    <li><strong>The Ordinary Multi-Peptide + Copper Peptides 1%.</strong> Collagen-supportive signaling. Only on these nights — never combined with acids or Tretinoin. The reason is in the conflict matrix below.</li>
+    <li><strong>CeraVe Moisturizing Cream.</strong></li>
+  </ol>
+
+  <h4>Situational — As Needed</h4>
+  <p><strong>CeraVe Hyaluronic Acid Gel</strong> — deployed during extreme heat days or as part of the Midday Reset (section 1.8). Not part of the fixed daily architecture. Gel format chosen specifically because it absorbs faster than serum formats in tropical humidity.</p>
+</div>
+
+<!-- CHAPTER 1.5 -->
+<div class="chapter">
+  <h3><span class="ch-num">1.5</span> The Conflict Matrix: What Never Goes Together</h3>
+
+  <p>This is the single most valuable table in this module. Layering actives incorrectly does not just waste product — it can neutralize both ingredients or create irritation that triggers <em>more</em> pigmentation.</p>
+
+  <table class="p-table">
+    <thead>
+      <tr><th>Combination</th><th>Verdict</th><th>Mechanism</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Copper Peptides + Vitamin C</strong></td>
+        <td class="never">NEVER — same session</td>
+        <td>Copper ions and ascorbic-type antioxidants oxidize each other. Both are neutralized. Separate by AM/PM at minimum; I separate by full days.</td>
+      </tr>
+      <tr>
+        <td><strong>Copper Peptides + Acids (AZA, AHA, BHA)</strong></td>
+        <td class="never">NEVER — same session</td>
+        <td>Low pH environments destabilize the peptide-copper complex. This is why peptide nights exist as separate evenings in the architecture.</td>
+      </tr>
+      <tr>
+        <td><strong>Copper Peptides + Tretinoin</strong></td>
+        <td class="never">NEVER — same night</td>
+        <td>Combined irritation potential plus interaction. Alternate nights, never stacked.</td>
+      </tr>
+      <tr>
+        <td><strong>Tretinoin + Benzoyl Peroxide</strong></td>
+        <td class="never">NEVER</td>
+        <td>BP oxidizes tretinoin on contact — your prescription active is chemically destroyed before it works.</td>
+      </tr>
+      <tr>
+        <td><strong>Vitamin C (ATIP) + Azelaic Acid</strong></td>
+        <td class="ok">SAFE — sequenced</td>
+        <td>ATIP is oil-soluble and pH-flexible, unlike L-ascorbic acid. Apply ATIP first, allow absorption, then AZA.</td>
+      </tr>
+      <tr>
+        <td><strong>Azelaic Acid + Tretinoin</strong></td>
+        <td class="ok">SAFE — separated AM/PM</td>
+        <td>The core pairing of this protocol. AZA mornings, Tretinoin nights. Combined same-session only for fully conditioned skin — not covered in this guide.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="mechanism-box">
+    <div class="mb-label">// The general rule</div>
+    <p>When in doubt, separate by time. Actives that conflict chemically can almost always coexist in the same protocol if they never meet on your skin in the same session. This is the entire logic behind the weekly rotation: it is not a schedule preference — it is conflict chemistry management.</p>
+  </div>
+</div>
+
+<!-- CHAPTER 1.6 -->
+<div class="chapter">
+  <h3><span class="ch-num">1.6</span> The Pilling Problem — Solved</h3>
+
+  <p>Pilling: you apply your actives, then your sunscreen, and the product rolls off your face in small white flakes. Most people treat this as a cosmetic annoyance. It is not. <em>It is a protection failure.</em> Those flakes are your UV filter leaving your face.</p>
+
+  <p>In tropical humidity, pilling risk is elevated — surface moisture interferes with layer bonding. After extensive elimination testing, the solution comes down to three variables:</p>
+
+  <ol class="step-list">
+    <li><strong>Base compatibility.</strong> The vehicle your active is suspended in must absorb fully before the next layer. My Azelaic Acid comes in a cream base (compounded by my pharmacy) that absorbs completely — the lipid structure does not clash with the polymer systems in modern sunscreens. If your active sits on the surface as a film, everything on top will pill.</li>
+    <li><strong>Absorption time.</strong> Each layer needs its window. Rushing the sequence is the most common cause of pilling. Minimum 60–90 seconds between layers; longer for the AZA step.</li>
+    <li><strong>Application method.</strong> Pat, do not rub. Rubbing physically rolls partially-absorbed layers into each other. Patting deposits product without shear force.</li>
+  </ol>
+
+  <div class="data-box">
+    <div class="db-label">// Field result</div>
+    <p>With base-compatible formulations, full absorption windows, and patting application: zero pilling across the CeraVe AM SPF 50 + LRP UVMune 400 Tinted stack, daily, in 80%+ humidity. The barrier seals against AC-driven TEWL while maintaining full UV coverage. This combination took months of elimination to find — you get it on one page.</p>
+  </div>
+</div>
+
+<!-- CHAPTER 1.7 -->
+<div class="chapter">
+  <h3><span class="ch-num">1.7</span> The Midday Reset Protocol</h3>
+
+  <p>Tropical life means showering two or three times a day. The standard mistake: washing your face with cleanser every time. By the third wash, you have stripped your barrier and triggered the AC-dryness spiral from section 1.2.</p>
+
+  <p>The Midday Reset is the answer — a three-step afternoon protocol that removes sweat and oil without destroying your morning work:</p>
+
+  <ol class="step-list">
+    <li><strong>Just water.</strong> Tap water. It removes sweat and cools the skin while leaving your morning actives — already absorbed and working — untouched. Very oily skin: one single pump of CeraVe Hydrating Cleanser, one pass, no scrubbing.</li>
+    <li><strong>Fast moisture.</strong> Pat dry with a clean face towel or paper tissue — never your damp body towel, which in tropical humidity is a bacterial reservoir. Leave the skin slightly damp. Apply CeraVe Hyaluronic Acid Gel — it pulls water into the skin and absorbs in seconds without grease.</li>
+    <li><strong>The dry shield.</strong> Wait until fully dry — one to two minutes. Sunscreen on wet skin peels off. Then: one even layer of CeraVe AM SPF 50. Dark spot zones get a targeted dab of LRP UVMune 400 Tinted.</li>
+  </ol>
+
+  <p>Total time: under five minutes. Result: clean, hydrated, and re-protected for the most intense UV hours of the day — without touching the morning protocol underneath.</p>
+</div>
+
+<!-- CHAPTER 1.8 -->
+<div class="chapter">
+  <h3><span class="ch-num">1.8</span> The 8-Week Conditioning Path</h3>
+
+  <p>The full architecture in section 1.4 took me over two years to build up to. Deploying 20% Azelaic Acid and Tretinoin 0.05% simultaneously on unconditioned skin will produce irritation, peeling, and — in our climate — <em>rebound hyperpigmentation worse than what you started with.</em></p>
+
+  <p>This is the realistic on-ramp:</p>
+
+  <table class="p-table">
+    <thead>
+      <tr><th>Phase</th><th>Weeks</th><th>Protocol</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Foundation</strong></td>
+        <td>1–2</td>
+        <td>Cleanser + moisturizer + SPF only. Master the sun protection habit first. No actives. Your barrier stabilizes.</td>
+      </tr>
+      <tr>
+        <td><strong>First active</strong></td>
+        <td>3–4</td>
+        <td>Add Azelaic Acid — start at 10% if available, 2× per week, building to nightly. Watch for stinging beyond 10 minutes (normal) vs. persistent redness (back off).</td>
+      </tr>
+      <tr>
+        <td><strong>Retinoid entry</strong></td>
+        <td>5–6</td>
+        <td>Introduce a low-strength retinoid (adapalene 0.1% or tretinoin 0.025%), 2× per week, on non-AZA nights. Moisturizer-buffer if needed: moisturizer first, retinoid on top.</td>
+      </tr>
+      <tr>
+        <td><strong>Integration</strong></td>
+        <td>7–8</td>
+        <td>AZA moves to mornings (under SPF), retinoid holds evenings 2–3× per week. You are now running the structural skeleton of the full protocol at training wheels intensity.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>From week 8 onward, intensity increases are made <strong>one variable at a time</strong> — never two changes in the same week. Concentration upgrades (AZA to 20%, tretinoin to 0.05%) happen over months, not weeks. The author's two-year timeline was not patience. It was protocol.</p>
+
+  <div class="warning-box">
+    <div class="wb-label">// Non-negotiable</div>
+    <p>Daily SPF is the precondition for everything in this module. Retinoids and acids increase photosensitivity. Running actives without rigorous sun protection at UV index 11+ will accelerate the exact damage you are trying to reverse. If you will not commit to daily SPF, do not start the actives. That is the honest version.</p>
+  </div>
+</div>
+
+<!-- END OF MODULE -->
+<div class="divider"></div>
+<div style="text-align:center; padding-bottom:40px;">
+  <p style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:3px; color:rgba(245,240,232,0.3); text-transform:uppercase;">End of Module 01 — Continue to Module 02: The Body After 50</p>
+  <p style="font-family:Georgia,serif; font-style:italic; font-size:12px; color:rgba(245,240,232,0.35); margin-top:16px;">"Not a guru. Just a guinea pig with a notebook."</p>
+</div>
+
+</div>
+</body>
+</html>
