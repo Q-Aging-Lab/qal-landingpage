@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QAL — Final Script Complete</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+
+:root {
+  --bg: #0A0A0A;
+  --white: #F5F0E8;
+  --cream: #EDE8DC;
+  --gold: #C9A84C;
+  --gold-l: #E8C97A;
+  --teal: #2A7A74;
+  --teal-l: #3DA89F;
+  --border: rgba(201,168,76,0.2);
+  --surface: rgba(245,240,232,0.03);
+  --muted: rgba(245,240,232,0.4);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  padding: 60px 32px 100px;
+  background-image:
+    radial-gradient(ellipse 50% 40% at 90% 5%, rgba(42,122,116,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 5% 90%, rgba(201,168,76,0.06) 0%, transparent 50%);
+}
+
+.page { max-width: 900px; margin: 0 auto; }
+
+.page-header {
+  border-left: 3px solid var(--gold);
+  padding-left: 24px;
+  margin-bottom: 56px;
+}
+.page-header .label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 4px;
+  color: var(--teal-l); text-transform: uppercase; margin-bottom: 12px;
+}
+.page-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 5vw, 52px); line-height: 1.05; color: var(--white);
+}
+.page-header h1 span { color: var(--gold); }
+.page-header p { margin-top: 12px; font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 600px; }
+
+.section-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 4px; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.divider { width: 100%; height: 1px; background: var(--border); margin: 44px 0; }
+
+.video-title-bar {
+  background: rgba(201,168,76,0.07);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  padding: 16px 24px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+}
+.vt-format { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+.vt-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: var(--white); line-height: 1.1; }
+.vt-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-align: right; }
+
+.script-body { border: 1px solid var(--border); border-radius: 0 0 6px 6px; overflow: hidden; margin-bottom: 32px; }
+
+.scene { border-bottom: 1px solid rgba(201,168,76,0.08); }
+.scene:last-child { border-bottom: none; }
+
+.scene-header {
+  background: rgba(245,240,232,0.02);
+  padding: 10px 24px; border-bottom: 1px solid rgba(201,168,76,0.06);
+  display: flex; gap: 16px; align-items: center;
+}
+.scene-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--muted); }
+.scene-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--teal-l); text-transform: uppercase; }
+.scene-time { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); margin-left: auto; }
+
+.scene-content { display: grid; grid-template-columns: 1fr 1fr; }
+
+.direction {
+  background: rgba(42,122,116,0.04);
+  border-right: 1px solid rgba(201,168,76,0.08);
+  padding: 20px 24px;
+}
+.direction-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 3px; color: var(--teal-l); text-transform: uppercase; margin-bottom: 10px; }
+.direction p { font-size: 12px; color: rgba(245,240,232,0.55); line-height: 1.75; font-style: italic; }
+.direction p strong { color: var(--teal-l); font-style: normal; font-weight: 500; }
+
+.script-text { padding: 20px 24px; }
+.script-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.script-text p { font-size: 14px; color: var(--white); line-height: 1.9; font-weight: 400; }
+.script-text p em { color: var(--gold-l); font-style: normal; font-weight: 500; }
+.script-text p .pause { color: var(--muted); font-size: 11px; font-style: italic; }
+
+.broll {
+  background: rgba(201,168,76,0.04);
+  border-top: 1px solid rgba(201,168,76,0.08);
+  padding: 12px 24px; display: flex; gap: 10px; align-items: flex-start;
+}
+.broll-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; white-space: nowrap; padding-top: 2px; flex-shrink: 0; }
+.broll p { font-size: 11px; color: var(--muted); line-height: 1.6; }
+.broll p strong { color: var(--white); font-weight: 500; }
+
+.ai-prompt {
+  background: rgba(42,122,116,0.06);
+  border: 1px solid rgba(42,122,116,0.25);
+  border-left: 3px solid var(--teal-l);
+  padding: 16px 20px;
+}
+.ai-prompt-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 3px; color: var(--teal-l); text-transform: uppercase; margin-bottom: 10px; }
+.ai-prompt p { font-size: 12px; color: rgba(245,240,232,0.65); line-height: 1.75; font-style: italic; }
+.ai-prompt p strong { color: var(--teal-l); font-style: normal; }
+
+.setup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 52px; }
+.setup-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 18px; }
+.setup-card h4 { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--teal-l); text-transform: uppercase; margin-bottom: 10px; }
+.setup-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.setup-card ul li { font-size: 12px; color: var(--muted); padding-left: 14px; position: relative; line-height: 1.5; }
+.setup-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 10px; }
+.setup-card ul li strong { color: var(--white); font-weight: 500; }
+
+@media(max-width:700px) {
+  body { padding: 40px 16px 80px; }
+  .setup-grid { grid-template-columns: 1fr; }
+  .scene-content { grid-template-columns: 1fr; }
+  .direction { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="page-header">
+  <div class="label">Q Aging Lab — Definitief Script — Productie Ready</div>
+  <h1>61 YEARS OLD. UV INDEX 11.<br><span>MY EXACT SKINCARE ARCHITECTURE.</span></h1>
+  <p>Volledig script met regieinstructies en b-roll notities. Persoonlijk, direct, geen laboratoriumtaal.</p>
+</div>
+
+<!-- SETUP -->
+<div class="section-title">// Productie Setup</div>
+<div class="setup-grid">
+  <div class="setup-card">
+    <h4>Camera & Licht</h4>
+    <ul>
+      <li><strong>Camera:</strong> Samsung Flip 7 — achtercamera, horizontal</li>
+      <li><strong>Mount:</strong> In ring light — camera en licht één unit</li>
+      <li><strong>Ring light:</strong> 60-70% intensiteit — niet maximaal</li>
+      <li><strong>Accent:</strong> Philips Hue Goud (#C9A84C) schuin op off-white muur</li>
+      <li><strong>Achtergrond:</strong> Off-white muur, schoon, geen rommel</li>
+    </ul>
+  </div>
+  <div class="setup-card">
+    <h4>Audio & Props</h4>
+    <ul>
+      <li><strong>Mic:</strong> Draadloos op revers — AC uit tijdens opname</li>
+      <li><strong>Test:</strong> 30 sec testopname voor je begint</li>
+      <li><strong>Autocue:</strong> teleprompter.works/online op laptop links van ring light</li>
+      <li><strong>Prop 1:</strong> Notitieboek + pen op tafel</li>
+      <li><strong>Prop 2:</strong> Alle producten klaar voor b-roll</li>
+    </ul>
+  </div>
+  <div class="setup-card">
+    <h4>B-Roll — Film apart</h4>
+    <ul>
+      <li>UV-index app: 11+ zichtbaar op scherm</li>
+      <li>Lay-flat AM producten op donkere ondergrond</li>
+      <li>Lay-flat PM producten op donkere ondergrond</li>
+      <li>AZA 20% potje — close-up</li>
+      <li>Smartwatch — wijzerplaat close-up</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SCRIPT -->
+<div class="video-title-bar">
+  <div>
+    <div class="vt-format">Long-form — YouTube — Week 1</div>
+    <div class="vt-name">61 Years Old. UV Index 11. My Exact Skincare Architecture.</div>
+  </div>
+  <div class="vt-meta">Doel: 8–10 min<br>Pijler: Autoriteit + Protocol</div>
+</div>
+
+<div class="script-body">
+
+  <!-- SCENE 1 -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">01</span>
+      <span class="scene-label">Hook — Direct beginnen</span>
+      <span class="scene-time">0:00 – 0:45</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Medium shot. Blik strak in de lens. Geen glimlach.</strong> Geen muziek, geen intro. Direct beginnen zodra je opneemt. Notitieboek zichtbaar op tafel. Houding: rechtop, zelfverzekerd.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"Most skincare advice you find online was made for people in Europe or North America. Moderate climate. Four seasons. A UV index that peaks at maybe six in summer.<br><br>
+        <em>I don't live there.</em><br><br>
+        I am 61 years old, and I live in the tropics. Every single day I deal with a UV index of 11 or higher, extreme humidity outside, and dry air conditioning inside.<br><br>
+        <span class="pause">[pauze]</span><br><br>
+        If you follow standard Western skincare advice here, you will damage your skin — fast."</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>Geen b-roll hier. Hook is 100% jij, direct to camera. De kracht zit in de directheid.</p>
+    </div>
+  </div>
+
+  <!-- SCENE 2 -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">02</span>
+      <span class="scene-label">Positionering — Wie ben je</span>
+      <span class="scene-time">0:45 – 1:45</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Kijk naar beneden naar het notitieboek. Tik met je pen op de pagina. Kijk weer op naar de lens.</strong> Dit is het visuele merksymbool — doe dit bewust. Rustig tempo. Dit is het vertrouwenssegment.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"I am not a dermatologist. I am not here to sell you anything.<br><br>
+        I am a data analyst, a software tester, and <em>my own test subject.</em><br><br>
+        <span class="pause">[tik op notitieboek]</span><br><br>
+        What I am going to show you today is the exact protocol I use — every product, every step, in the right order — to keep my skin healthy and control dark spots under these conditions.<br><br>
+        <em>Everything is fragrance-free. No exceptions.</em>"</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENE 3 -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">03</span>
+      <span class="scene-label">Het Probleem — Donkere vlekken uitleggen</span>
+      <span class="scene-time">1:45 – 3:30</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Focus op de lens. Houding zakelijk.</strong> B-roll van UV-index app cut in bij "UV index of 11". Daarna terug to camera. Spreek in de cadans van iemand die een probleem uitlegt — duidelijk, niet te snel.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"The biggest problem with aging skin in a tropical climate is dark spots.<br><br>
+        The sun and heat constantly push your skin to produce more pigment. More melanin. This is why people in the tropics age differently around the face than people in cooler climates.<br><br>
+        <span class="pause">[b-roll cut: UV app]</span><br><br>
+        You cannot fix this with a ten-product routine full of fancy serums. <em>You need something that actually works at the source.</em><br><br>
+        My evening active is Tretinoin 0.05% gel — only at night. It speeds up your skin's renewal process. Old, damaged skin cells are replaced faster. Over time, this is one of the most proven tools against skin aging that exists.<br><br>
+        But Tretinoin alone does not stop the dark spots from forming in the first place.<br><br>
+        That is why my morning routine includes Azelaic Acid at twenty percent concentration.<br><br>
+        <span class="pause">[b-roll cut: AZA potje]</span><br><br>
+        Think of your skin as a factory that produces dark pigment. Azelaic Acid goes in and <em>shuts down the production line.</em> It does not just fade the spots that are already there. It stops new ones from being made."</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>UV-index app op telefoonscherm: 11+ zichtbaar. 8-10 sec. AZA 20% potje close-up. 8-10 sec. Beide tijdens voiceover — camera keert terug to A-roll na elke cutaway.</p>
+    </div>
+  </div>
+
+  <!-- AI PROMPT 1 -->
+  <div class="ai-prompt">
+    <div class="ai-prompt-label">// AI B-Roll Prompt 1 — Runway Gen-3 Alpha</div>
+    <p>Hyper-realistic 3D medical animation. Microscopic macro view of a translucent active compound penetrating a skin surface. Dark pigment clusters underneath actively dissolving and fading. <strong>Color grading:</strong> Pitch black background, glowing teal data points hex #2A7A74 and #3DA89F, warm gold highlights hex #C9A84C. <strong>Lighting:</strong> Cinematic rim light from below, volumetric glow. <strong>Motion:</strong> Slow, fluid — steady suppression of dark clusters.</p>
+  </div>
+
+  <!-- SCENE 4 -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">04</span>
+      <span class="scene-label">Engineering Probleem — Pilling oplossen</span>
+      <span class="scene-time">3:30 – 5:30</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Handen rustend op bureau. Rustige, gecontroleerde toon.</strong> Blader één pagina om in notitieboek bij "I had to figure this out myself". Wijs de pagina aan. B-roll van CeraVe AM + LRP UVMune naast elkaar cut in tijdens de oplossing.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"Now here is something nobody talks about — and <em>I had to figure this out myself.</em><br><br>
+        <span class="pause">[blader pagina om in notitieboek]</span><br><br>
+        When you layer strong actives in the morning and then apply sunscreen on top, the products can roll off your skin in little white flakes. You lose your UV protection without even knowing it.<br><br>
+        I call this the pilling problem. And in the tropics, with the heat and the humidity, it is worse.<br><br>
+        The solution I found: the Azelaic Acid I use comes in a specific cream base — the kind my local pharmacy compounds. This base absorbs fully into the skin before I apply anything on top.<br><br>
+        Once that is absorbed, I apply CeraVe AM SPF 50 first, then La Roche-Posay UVMune 400 Tinted on top.<br><br>
+        These two layers bond properly. No rolling. No flaking. <em>Full UV protection</em> — which in a UV index 11 environment is not optional."</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>CeraVe AM SPF 50 + LRP UVMune 400 Tinted naast elkaar op donkere ondergrond. 10 sec. Cut in tijdens de oplossing.</p>
+    </div>
+  </div>
+
+  <!-- AI PROMPT 2 -->
+  <div class="ai-prompt">
+    <div class="ai-prompt-label">// AI B-Roll Prompt 2 — Runway Gen-3 Alpha</div>
+    <p>Abstract clinical 3D visualization of two liquid layers bonding smoothly over a textured micro-surface without clumping or breaking apart. <strong>Color grading:</strong> Pitch black background, glowing teal data streams hex #2A7A74 and #3DA89F, warm gold highlights hex #C9A84C on bonding fluids. <strong>Lighting:</strong> High contrast, clinical precision, edge lighting. <strong>Motion:</strong> Smooth, frictionless — stabilizing into a solid protective shield.</p>
+  </div>
+
+  <!-- SCENE 5 -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">05</span>
+      <span class="scene-label">Volledige Architectuur — AM en PM exact</span>
+      <span class="scene-time">5:30 – 7:30</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Terug naar camera. Leun iets naar voren.</strong> Spreek iets sneller — alsof je een checklist doorloopt. Lay-flat b-roll cut in tijdens AM opsomming. Terug naar A-roll voor PM en de conditioneringsopmerking. Smartwatch zichtbaar bij "two years".</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"Here is my full routine, morning and evening.<br><br>
+        <em>Morning:</em> CeraVe Hydrating Cleanser. Then Vitamin C — I use an oil-soluble form that stays stable in the heat. Then Azelaic Acid 20% — thin layer. Then CeraVe AM SPF 50. Then La Roche-Posay UVMune 400 Tinted on top.<br><br>
+        <span class="pause">[b-roll cut: lay-flat AM producten]</span><br><br>
+        <em>Evening — Tretinoin nights, four nights a week:</em> Cleanser. Tretinoin 0.05% gel. CeraVe Night Repairing Cream to finish.<br><br>
+        <em>Evening — the other three nights:</em> Cleanser. Copper Peptides — only on these nights, never mixed with the Tretinoin or acid nights. They cancel each other out. CeraVe Moisturizing Cream.<br><br>
+        <span class="pause">[pauze]</span><br><br>
+        One important thing: you cannot start this protocol overnight. I spent more than two years building up my skin's tolerance to Tretinoin before I could run it at this level. If you are new to this, <em>you start slow.</em><br><br>
+        Stop spending money on ten different serums that do nothing. Pick the actives that work, understand what they do, and stay consistent."</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>Lay-flat AM producten links, PM producten rechts — donkere ondergrond, goed licht. Elk product kort in beeld bij vermelding. 30-40 sec totaal. Smartwatch close-up bij "two years".</p>
+    </div>
+  </div>
+
+  <!-- SCENE 6 -->
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">06</span>
+      <span class="scene-label">Call to Action — Sluit het notitieboek</span>
+      <span class="scene-time">7:30 – 8:30</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Sluit het notitieboek langzaam. Strakke blik recht in de lens.</strong> Geen glimlach. Geen "smash that subscribe button" energie. Kort, direct, zelfverzekerd. De afsluiting van het notitieboek is jouw handtekening — doe dit bewust bij elke video.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"All the products I use are linked in the description below.<br><br>
+        If you want to build this kind of protocol for yourself — join the waitlist at qaginglab.com. You will get early access to the Q Aging Lab app and be first in line for <em>The 50+ Tropical Longevity Blueprint.</em><br><br>
+        <span class="pause">[sluit notitieboek — strakke blik naar camera]</span><br><br>
+        Not a guru. Just a guinea pig with a notebook.<br><br>
+        <em>See you in the next data review.</em>"</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<!-- CHECKLIST -->
+<div class="section-title">// Productie Checklist</div>
+<div class="setup-grid">
+  <div class="setup-card">
+    <h4>Voor opname</h4>
+    <ul>
+      <li>Script hardop doorlezen — minimaal 2×</li>
+      <li>Camera horizontal, achtercamera aan</li>
+      <li>Ring light 60-70%, Hue Goud aan</li>
+      <li>Microfoon test — 30 sec opname</li>
+      <li>Props klaar: notitieboek, pen, producten</li>
+    </ul>
+  </div>
+  <div class="setup-card">
+    <h4>Tijdens opname</h4>
+    <ul>
+      <li>A-roll: alle 6 scènes, min. 2 takes elk</li>
+      <li>B-roll apart na A-roll filmen</li>
+      <li>Lay-flat: AM links, PM rechts</li>
+      <li>Notitieboek: open, bladeren, sluiten — 3 losse shots</li>
+      <li>Audio check na elke scène</li>
+    </ul>
+  </div>
+  <div class="setup-card">
+    <h4>Na opname</h4>
+    <ul>
+      <li>AI b-roll genereren in Runway Gen-3 Alpha</li>
+      <li>Hex codes #2A7A74 en #C9A84C forceren in prompt</li>
+      <li>Affiliate links via Amazon SiteStripe genereren</li>
+      <li>Thumbnail: donker, "UV INDEX 11+" groot</li>
+      <li>3 Shorts knippen — vertical crop 9:16</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
