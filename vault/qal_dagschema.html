@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>QAL — Supplement Dagschema</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+:root {
+  --bg:#0A0A0A;--white:#F5F0E8;--gold:#C9A84C;--gold-l:#E8C97A;
+  --teal:#2A7A74;--teal-l:#3DA89F;
+  --border:rgba(201,168,76,0.2);--surface:rgba(245,240,232,0.03);--muted:rgba(245,240,232,0.4);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;padding:60px 32px 100px;}
+.page{max-width:860px;margin:0 auto;}
+.back{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--teal-l);text-decoration:none;text-transform:uppercase;display:inline-block;margin-bottom:40px;}
+.back:hover{color:var(--gold);}
+.header{border-left:3px solid var(--gold);padding-left:24px;margin-bottom:52px;}
+.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--teal-l);text-transform:uppercase;margin-bottom:12px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--white);margin-bottom:8px;}
+.subtitle{font-size:13px;color:var(--muted);line-height:1.7;}
+.section-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.block{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:16px;}
+.block-header{background:rgba(201,168,76,0.06);padding:14px 24px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--border);}
+.time{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);min-width:80px;}
+.block-title{font-size:13px;color:var(--white);font-weight:500;}
+.block-body{padding:20px 24px;}
+.item{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(201,168,76,0.06);}
+.item:last-child{border-bottom:none;}
+.item-name{font-size:13px;color:var(--white);font-weight:400;}
+.item-detail{font-size:12px;color:var(--muted);text-align:right;font-family:'DM Mono',monospace;}
+.rule-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:20px 24px;margin:32px 0;}
+.rule-box .rule-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+.rule-box ol{list-style:none;counter-reset:rules;display:flex;flex-direction:column;gap:10px;}
+.rule-box ol li{counter-increment:rules;font-size:13px;color:rgba(245,240,232,0.75);padding-left:28px;position:relative;line-height:1.6;}
+.rule-box ol li::before{content:counter(rules);position:absolute;left:0;font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);font-weight:700;}
+.rule-box ol li strong{color:var(--white);font-weight:500;}
+.divider{width:100%;height:1px;background:var(--border);margin:40px 0;}
+.stack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px;}
+.stack-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:18px;}
+.stack-card h4{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--teal-l);text-transform:uppercase;margin-bottom:12px;}
+.stack-card ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.stack-card ul li{font-size:12px;color:var(--muted);padding-left:14px;position:relative;line-height:1.5;}
+.stack-card ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:10px;}
+.stack-card ul li strong{color:var(--white);font-weight:500;}
+@media(max-width:600px){.stack-grid{grid-template-columns:1fr;}.block-header{flex-direction:column;align-items:flex-start;gap:4px;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back" href="index.html">← Terug naar Vault</a>
+
+  <div class="header">
+    <div class="label">Q Aging Lab — Protocol</div>
+    <h1>SUPPLEMENT DAGSCHEMA</h1>
+    <p class="subtitle">Ray · 61 · Paramaribo · 18:6 Intermittent Fasting · Eetvenster 13:00–19:00</p>
+  </div>
+
+  <div class="section-title">// Dagschema</div>
+
+  <div class="block">
+    <div class="block-header">
+      <div class="time">12:55</div>
+      <div class="block-title">Pre-maaltijd voorbereiding</div>
+    </div>
+    <div class="block-body">
+      <div class="item">
+        <div class="item-name">Appelazijn</div>
+        <div class="item-detail">1 eetlepel in 300ml water · via rietje</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-header">
+      <div class="time">13:00</div>
+      <div class="block-title">Maaltijd 1 — vetrijk · min. 400 kcal</div>
+    </div>
+    <div class="block-body">
+      <div class="item">
+        <div class="item-name">Multivitamine</div>
+        <div class="item-detail">New PCH LLC · vervangen op termijn</div>
+      </div>
+      <div class="item">
+        <div class="item-name">Vitamine D3</div>
+        <div class="item-detail">3000 IU · bij maaltijd</div>
+      </div>
+      <div class="item">
+        <div class="item-name">Vitamine K2 MK-7</div>
+        <div class="item-detail">100 mcg · bij maaltijd</div>
+      </div>
+      <div class="item">
+        <div class="item-name">B12 Methylcobalamine</div>
+        <div class="item-detail">1000 mcg · sublinguaal</div>
+      </div>
+      <div class="item">
+        <div class="item-name">Omega-3</div>
+        <div class="item-detail">2g · bij vetrijke maaltijd</div>
+      </div>
+      <div class="item">
+        <div class="item-name">CoQ10 Ubiquinol</div>
+        <div class="item-detail">100 mg · bij maaltijd</div>
+      </div>
+      <div class="item">
+        <div class="item-name">Creatine</div>
+        <div class="item-detail">5g · apart in neutraal water · direct opdrinken</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-header">
+      <div class="time">18:55</div>
+      <div class="block-title">Pre-maaltijd voorbereiding</div>
+    </div>
+    <div class="block-body">
+      <div class="item">
+        <div class="item-name">Appelazijn</div>
+        <div class="item-detail">1 eetlepel in 300ml water · via rietje</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-header">
+      <div class="time">19:00</div>
+      <div class="block-title">Maaltijd 2</div>
+    </div>
+    <div class="block-body">
+      <div class="item">
+        <div class="item-name">Vitamine C</div>
+        <div class="item-detail">1000 mg · bij maaltijd</div>
+      </div>
+      <div class="item">
+        <div class="item-name">Probiotica</div>
+        <div class="item-detail">25–50 miljard CFU · bij maaltijd</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-header">
+      <div class="time">21:00</div>
+      <div class="block-title">Pre-slaap · alleen water</div>
+    </div>
+    <div class="block-body">
+      <div class="item">
+        <div class="item-name">Magnesium Glycinaat</div>
+        <div class="item-detail">360 mg · 3 capsules Pure Encapsulations · alleen water</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-label">// Vier Regels Die Nooit Veranderen</div>
+    <ol>
+      <li><strong>Creatine altijd in neutraal water</strong> — direct opdrinken — nooit mengen met appelazijn</li>
+      <li><strong>Appelazijn altijd via rietje</strong> — tandemail bescherming</li>
+      <li><strong>Magnesium 1 uur voor slaap</strong> — alleen water — niet bij maaltijd</li>
+      <li><strong>Grapefruit vermijden</strong> — CYP3A4 remming verhoogt medicijnblootstelling 24–72 uur</li>
+    </ol>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">// Aan Te Schaffen</div>
+  <div class="stack-grid">
+    <div class="stack-card">
+      <h4>Urgent</h4>
+      <ul>
+        <li><strong>D3 3000 IU</strong> — Thorne druppels of Pure Encapsulations 1000 IU ×3</li>
+        <li><strong>K2 MK-7</strong> — Pure Encapsulations 180 mcg om de dag of Thorne K2</li>
+        <li><strong>B12 Methyl</strong> — Jarrow Formulas sublinguaal of Thorne Methylcobalamine</li>
+      </ul>
+    </div>
+    <div class="stack-card">
+      <h4>Belangrijk</h4>
+      <ul>
+        <li><strong>CoQ10 Ubiquinol</strong> — Qunol Mega of Jarrow QH-Absorb</li>
+        <li><strong>Probiotica</strong> — Seed DS-01 of Garden of Life 50 & Wiser</li>
+      </ul>
+    </div>
+    <div class="stack-card">
+      <h4>Op Termijn</h4>
+      <ul>
+        <li><strong>Multivitamine vervangen</strong> — Pure Encapsulations ONE of Thorne Basic Nutrients 2/Day</li>
+      </ul>
+    </div>
+    <div class="stack-card">
+      <h4>Bloedwaardes Opvragen</h4>
+      <ul>
+        <li><strong>Vitamine D</strong> — streef 40–60 ng/ml</li>
+        <li><strong>Botdichtheid</strong> — DEXA scan</li>
+        <li><strong>Nierfunctie eGFR</strong> — baseline creatine lange termijn</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
