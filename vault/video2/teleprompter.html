@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>QAL Video 2 — Teleprompter</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0A0A0A;
+  color: #F5F0E8;
+  font-family: 'Courier New', monospace;
+  padding: 40px 32px;
+}
+.container { max-width: 700px; margin: 0 auto; }
+.back { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 3px; color: #3DA89F; text-decoration: none; text-transform: uppercase; display: inline-block; margin-bottom: 40px; }
+.back:hover { color: #C9A84C; }
+.copy-btn {
+  background: #C9A84C; color: #0A0A0A; border: none;
+  font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; padding: 12px 24px;
+  border-radius: 4px; cursor: pointer; margin-bottom: 32px; display: block;
+}
+.copy-btn:hover { background: #E8C97A; }
+.copy-btn.copied { background: #2A7A74; color: #F5F0E8; }
+#text-content { font-size: 15px; line-height: 2; color: #F5F0E8; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="../index.html">← Terug naar Vault</a>
+  <button class="copy-btn" onclick="copyText()" id="copyBtn">⎘ Copy All — Paste into Teleprompter</button>
+  <div id="text-content">
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCENE 1 — HOOK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Living in the tropics means showering two or three times a day.
+
+That is not a luxury. That is just how we handle the heat.
+
+But if you wash your face with soap every single time —
+you are stripping your skin barrier. Every single time.
+
+By 2 PM your face is sweating, oily, sticky.
+Your instinct is to scrub it all off.
+
+Don't do that.
+
+Here is a smarter way to reset your face for the afternoon.
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCENE 2 — WHY IT GOES WRONG
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The Vitamin C and Azelaic Acid you applied at 7 AM —
+they are already inside your skin. They are working. Leave them.
+
+If you wash with a harsh face wash right now,
+you strip away your skin's natural oils.
+
+The moment you step back into the air conditioning —
+your skin dries out completely.
+
+⚠ YOUR SKIN BARRIER BREAKS.
+   (Dry. Cracked. Sensitized. The opposite of what you want.)
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCENE 3 — STEP 1: JUST WATER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+→ SHOW THE NOTEBOOK
+   (The QAL Midday Reset. Three steps.)
+
+→ Step one: Just water.
+   Tap water. Cools the skin. Removes sweat. Leaves natural oils alone.
+
+→ Very oily face?
+   One pump — CeraVe Hydrating Cleanser.
+   Not foaming. Not scrubbing. One quick pass. That is it.
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCENE 4 — STEP 2: FAST MOISTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+→ Step two: Fast moisture.
+
+Do not use your body towel on your face.
+In our humidity — that towel is full of bacteria.
+
+Use a paper tissue or a clean face towel.
+Pat gently. Leave it slightly damp. That is intentional.
+
+→ CeraVe Hyaluronic Acid Gel — apply immediately.
+   Absorbs fast. Pulls water into skin. Not greasy.
+   Built for this climate.
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCENE 5 — STEP 3: THE DRY SHIELD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+→ Step three: The dry shield.
+
+⚠ WAIT — 1 to 2 minutes. Face completely dry.
+   Sunscreen on wet skin = peeling and flaking.
+   UV protection gone. Don't skip this.
+
+→ CeraVe AM SPF 50 — one even layer.
+   Full afternoon protection locked in.
+
+→ Dark spots?
+   LRP UVMune 400 Tinted — dab exactly on those areas only.
+   Rest of face stays light and matte.
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCENE 6 — CLOSE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+You are now clean, hydrated, and protected against the afternoon sun —
+without ruining your morning routine.
+
+Products linked in the description.
+
+→ CLOSE THE NOTEBOOK.
+
+Subscribe for data-driven skin protocols built for the tropics.
+
+This is Q Aging Lab.
+  </div>
+</div>
+
+<script>
+function copyText() {
+  const text = document.getElementById('text-content').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Copied — Paste into Teleprompter';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '⎘ Copy All — Paste into Teleprompter';
+      btn.classList.remove('copied');
+    }, 3000);
+  });
+}
+</script>
+</body>
+</html>
