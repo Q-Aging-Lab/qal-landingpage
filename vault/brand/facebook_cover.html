@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=820">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 820px;
+  height: 312px;
+  background: #0A0A0A;
+  overflow: hidden;
+  font-family: 'DM Mono', 'Courier New', monospace;
+}
+
+.cover {
+  width: 820px;
+  height: 312px;
+  background: #0A0A0A;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid rgba(201,168,76,0.2);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+
+/* Background glows */
+.cover::before {
+  content: '';
+  position: absolute;
+  left: -60px; top: -60px;
+  width: 320px; height: 320px;
+  background: radial-gradient(ellipse, rgba(42,122,116,0.2) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  right: -40px; bottom: -40px;
+  width: 280px; height: 280px;
+  background: radial-gradient(ellipse, rgba(201,168,76,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* Corner brackets */
+.bracket { position: absolute; width: 20px; height: 20px; }
+.bracket.tl { top: 12px; left: 12px; border-top: 1.5px solid #3DA89F; border-left: 1.5px solid #3DA89F; }
+.bracket.tr { top: 12px; right: 12px; border-top: 1.5px solid #3DA89F; border-right: 1.5px solid #3DA89F; }
+.bracket.bl { bottom: 12px; left: 12px; border-bottom: 1.5px solid #3DA89F; border-left: 1.5px solid #3DA89F; }
+.bracket.br { bottom: 12px; right: 12px; border-bottom: 1.5px solid #3DA89F; border-right: 1.5px solid #3DA89F; }
+
+/* COLUMN 1 — Brand */
+.col-brand {
+  width: 240px;
+  flex-shrink: 0;
+  padding: 28px 24px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid rgba(201,168,76,0.12);
+  position: relative;
+  z-index: 1;
+}
+
+.q-mark {
+  font-family: Georgia, serif;
+  font-size: 80px;
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 3px #E8C97A;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(201,168,76,0.4);
+  margin-bottom: 4px;
+}
+
+.brand-name {
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: #F5F0E8;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
+
+.divider-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(201,168,76,0.3);
+  margin-bottom: 10px;
+}
+
+.tagline {
+  font-family: Georgia, serif;
+  font-size: 10px;
+  font-style: italic;
+  color: #EDE8DC;
+  opacity: 0.6;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.url {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #3DA89F;
+  opacity: 0.85;
+}
+
+/* COLUMN 2 — Data */
+.col-data {
+  width: 220px;
+  flex-shrink: 0;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(201,168,76,0.12);
+  position: relative;
+  z-index: 1;
+}
+
+.data-item { display: flex; flex-direction: column; gap: 2px; }
+
+.data-label {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #3DA89F;
+  opacity: 0.75;
+  text-transform: uppercase;
+}
+
+.data-value {
+  font-family: 'Bebas Neue', Georgia, serif;
+  font-size: 38px;
+  color: #F5F0E8;
+  line-height: 1;
+}
+
+.data-value.gold { color: #C9A84C; }
+
+.data-hrr {
+  font-family: 'Bebas Neue', Georgia, serif;
+  font-size: 22px;
+  color: #F5F0E8;
+  line-height: 1;
+}
+
+.data-hrr .arrow { color: #3DA89F; }
+.data-hrr .sub { font-size: 11px; color: #3DA89F; font-family: 'DM Mono', monospace; font-style: normal; }
+
+.data-sep {
+  width: 100%;
+  height: 1px;
+  background: rgba(201,168,76,0.15);
+}
+
+/* COLUMN 3 — Protocol */
+.col-protocol {
+  flex: 1;
+  padding: 24px 20px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.protocol-label {
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: #C9A84C;
+  opacity: 0.75;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.protocol-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.protocol-item {
+  font-size: 10px;
+  color: #F5F0E8;
+  opacity: 0.6;
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  line-height: 1.3;
+}
+
+.protocol-item .arrow { color: #3DA89F; opacity: 1; flex-shrink: 0; }
+
+.fragrance-free {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #2A7A74;
+  opacity: 0.7;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* Bottom tagline */
+.bottom-bar {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 7px;
+  letter-spacing: 4px;
+  color: #F5F0E8;
+  opacity: 0.15;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="bracket tl"></div>
+  <div class="bracket tr"></div>
+  <div class="bracket bl"></div>
+  <div class="bracket br"></div>
+
+  <!-- BRAND -->
+  <div class="col-brand">
+    <div class="q-mark">Q</div>
+    <div class="brand-name">AGING LAB</div>
+    <div class="divider-line"></div>
+    <div class="tagline">"Not a guru. Just a guinea pig with a notebook."</div>
+    <div class="url">qaginglab.com</div>
+  </div>
+
+  <!-- DATA -->
+  <div class="col-data">
+    <div class="data-item">
+      <div class="data-label">Age</div>
+      <div class="data-value">61</div>
+    </div>
+    <div class="data-sep"></div>
+    <div class="data-item">
+      <div class="data-label">Daily UV Index</div>
+      <div class="data-value gold">11+</div>
+    </div>
+    <div class="data-sep"></div>
+    <div class="data-item">
+      <div class="data-label">Heart Rate Recovery</div>
+      <div class="data-hrr">156 <span class="arrow">→</span> 119 bpm <span class="sub">&lt;2min</span></div>
+    </div>
+  </div>
+
+  <!-- PROTOCOL -->
+  <div class="col-protocol">
+    <div class="protocol-label">// Protocol</div>
+    <div class="protocol-list">
+      <div class="protocol-item"><span class="arrow">→</span> Tretinoin 0.05% — PM nights</div>
+      <div class="protocol-item"><span class="arrow">→</span> Azelaic Acid 20% FNA</div>
+      <div class="protocol-item"><span class="arrow">→</span> Vit C ATIP 20% — AM</div>
+      <div class="protocol-item"><span class="arrow">→</span> LRP UVMune 400 Tinted</div>
+      <div class="protocol-item"><span class="arrow">→</span> Copper Peptides — peptide nights</div>
+      <div class="protocol-item"><span class="arrow">→</span> Creatine 10g</div>
+      <div class="protocol-item"><span class="arrow">→</span> Omega-3 · Magnesium Glycinate</div>
+      <div class="protocol-item"><span class="arrow">→</span> 18:6 Intermittent Fasting</div>
+      <div class="protocol-item"><span class="arrow">→</span> Bodyweight HIIT 3×/week</div>
+    </div>
+    <div class="fragrance-free">100% Fragrance-Free</div>
+  </div>
+
+  <div class="bottom-bar">Engineering First · Data Driven · Built for the Tropics</div>
+</div>
+</body>
+</html>
