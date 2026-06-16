@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,52 +8,139 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
 :root {
-  --bg:#0A0A0A;--white:#F5F0E8;--gold:#C9A84C;
+  --bg:#0A0A0A;--white:#F5F0E8;--gold:#C9A84C;--gold-l:#E8C97A;
   --teal:#2A7A74;--teal-l:#3DA89F;
   --border:rgba(201,168,76,0.2);--surface:rgba(245,240,232,0.03);--muted:rgba(245,240,232,0.4);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;padding:60px 32px;}
-.page{max-width:800px;margin:0 auto;}
-.header{border-left:3px solid var(--gold);padding-left:24px;margin-bottom:52px;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;padding:60px 32px 100px;
+background-image:radial-gradient(ellipse 50% 40% at 90% 5%,rgba(42,122,116,0.08) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 5% 90%,rgba(201,168,76,0.06) 0%,transparent 50%);}
+.page{max-width:960px;margin:0 auto;}
+.header{border-left:3px solid var(--gold);padding-left:24px;margin-bottom:56px;}
 .label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--teal-l);text-transform:uppercase;margin-bottom:12px;}
-h1{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--white);}
-.section-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--white);}
+.subtitle{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.7;}
+.section{margin-bottom:48px;}
+.section-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
 .section-title::after{content:'';flex:1;height:1px;background:var(--border);}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px;}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:24px;text-decoration:none;display:block;transition:border-color 0.2s;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:20px;text-decoration:none;display:block;transition:border-color 0.2s;}
 .card:hover{border-color:var(--gold);}
-.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--teal-l);text-transform:uppercase;margin-bottom:10px;}
-.card-title{font-size:15px;color:var(--white);font-weight:500;margin-bottom:6px;}
-.card-desc{font-size:12px;color:var(--muted);line-height:1.6;}
-@media(max-width:600px){.grid{grid-template-columns:1fr;}}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--teal-l);text-transform:uppercase;margin-bottom:8px;}
+.card-title{font-size:14px;color:var(--white);font-weight:500;margin-bottom:4px;}
+.card-desc{font-size:11px;color:var(--muted);line-height:1.6;}
+.video-block{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:12px;}
+.video-header{background:rgba(201,168,76,0.06);padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.video-num{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--gold);min-width:32px;}
+.video-title{font-size:13px;color:var(--white);font-weight:500;}
+.video-links{padding:12px 20px;display:flex;flex-wrap:wrap;gap:8px;}
+.video-link{font-family:'DM Mono',monospace;font-size:10px;color:var(--teal-l);text-decoration:none;padding:6px 12px;border:1px solid rgba(61,168,159,0.3);border-radius:4px;transition:all 0.2s;}
+.video-link:hover{border-color:var(--teal-l);color:var(--white);}
+.divider{width:100%;height:1px;background:var(--border);margin:40px 0;}
+@media(max-width:640px){.grid{grid-template-columns:1fr;}.grid-2{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <div class="page">
+
   <div class="header">
     <div class="label">Q Aging Lab — Private Vault</div>
     <h1>VAULT</h1>
+    <p class="subtitle">Alle QAL documenten — georganiseerd per categorie</p>
   </div>
 
-  <div class="section-title">// Documenten</div>
-  <div class="grid">
-    <a class="card" href="qal_dagschema.html">
-      <div class="card-label">Protocol</div>
-      <div class="card-title">Supplement Dagschema</div>
-      <div class="card-desc">Volledig supplement protocol met timing, dosering en wetenschappelijke onderbouwing.</div>
-    </a>
-    <a class="card" href="qal_video1_script.html">
-      <div class="card-label">Content</div>
-      <div class="card-title">Video 1 — Pharmacy Trap</div>
-      <div class="card-desc">Volledig script en productie setup voor de eerste QAL YouTube video.</div>
-    </a>
-    <a class="card" href="qal_brand_kit.html">
-      <div class="card-label">Branding</div>
-      <div class="card-title">Brand Kit</div>
-      <div class="card-desc">Kleurpallet, typografie, logo gebruik en brand voice referentie.</div>
-    </a>
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-title">// Strategie</div>
+    <div class="grid-2">
+      <a class="card" href="strategy/content_calendar.html">
+        <div class="card-label">Planning</div>
+        <div class="card-title">Content Calendar</div>
+        <div class="card-desc">Juni/Juli 2026 — video planning, upload schema, market intel.</div>
+      </a>
+      <a class="card" href="strategy/blueprint_module1.html">
+        <div class="card-label">Blueprint</div>
+        <div class="card-title">Blueprint Module 1</div>
+        <div class="card-desc">50+ Tropical Longevity Blueprint — eerste module.</div>
+      </a>
+    </div>
   </div>
+
+  <!-- BRAND -->
+  <div class="section">
+    <div class="section-title">// Brand</div>
+    <div class="grid">
+      <a class="card" href="brand/brand_kit.html">
+        <div class="card-label">Identiteit</div>
+        <div class="card-title">Brand Kit</div>
+        <div class="card-desc">Kleurpallet, typografie, brand voice, content pijlers.</div>
+      </a>
+      <a class="card" href="brand/facebook_cover.html">
+        <div class="card-label">Social</div>
+        <div class="card-title">Facebook Cover</div>
+        <div class="card-desc">820×312 Facebook cover — QAL branding.</div>
+      </a>
+      <a class="card" href="brand/wall_color.html">
+        <div class="card-label">Studio</div>
+        <div class="card-title">Muurkleur Referentie</div>
+        <div class="card-desc">HEX/RGB kleurwaarden voor verfbedrijf — studio achtergrond.</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- PROTOCOL -->
+  <div class="section">
+    <div class="section-title">// Protocol</div>
+    <div class="grid-2">
+      <a class="card" href="protocol/dagschema.html">
+        <div class="card-label">Supplementen</div>
+        <div class="card-title">Supplement Dagschema</div>
+        <div class="card-desc">Volledig protocol met timing, dosering en onderbouwing.</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="section">
+    <div class="section-title">// Video Content</div>
+
+    <div class="video-block">
+      <div class="video-header">
+        <div class="video-num">01</div>
+        <div class="video-title">The Pharmacy Trap — Compounded Prescription Audit</div>
+      </div>
+      <div class="video-links">
+        <a class="video-link" href="video1/script.html">Script</a>
+        <a class="video-link" href="video1/talking_points.html">Talking Points</a>
+        <a class="video-link" href="video1/teleprompter.html">Teleprompter</a>
+        <a class="video-link" href="video1/broll_prompts.html">B-Roll Prompts</a>
+      </div>
+    </div>
+
+    <div class="video-block">
+      <div class="video-header">
+        <div class="video-num">02</div>
+        <div class="video-title">Midday Reset — Tropical Skin Recovery Protocol</div>
+      </div>
+      <div class="video-links">
+        <a class="video-link" href="video2/script.html">Script</a>
+        <a class="video-link" href="video2/broll_prompts.html">B-Roll Prompts</a>
+      </div>
+    </div>
+
+    <div class="video-block">
+      <div class="video-header">
+        <div class="video-num">03</div>
+        <div class="video-title">UV Matrix — What UV Index 11 Actually Does to Your Skin</div>
+      </div>
+      <div class="video-links">
+        <a class="video-link" href="video3/script.html">Script</a>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 </body>
 </html>
