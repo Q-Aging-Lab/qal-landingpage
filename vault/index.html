@@ -1,1 +1,60 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>QAL Vault</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+:root {
+  --bg:#0A0A0A;--white:#F5F0E8;--gold:#C9A84C;
+  --teal:#2A7A74;--teal-l:#3DA89F;
+  --border:rgba(201,168,76,0.2);--surface:rgba(245,240,232,0.03);--muted:rgba(245,240,232,0.4);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;padding:60px 32px;}
+.page{max-width:800px;margin:0 auto;}
+.header{border-left:3px solid var(--gold);padding-left:24px;margin-bottom:52px;}
+.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--teal-l);text-transform:uppercase;margin-bottom:12px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--white);}
+.section-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:24px;text-decoration:none;display:block;transition:border-color 0.2s;}
+.card:hover{border-color:var(--gold);}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--teal-l);text-transform:uppercase;margin-bottom:10px;}
+.card-title{font-size:15px;color:var(--white);font-weight:500;margin-bottom:6px;}
+.card-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+@media(max-width:600px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="label">Q Aging Lab — Private Vault</div>
+    <h1>VAULT</h1>
+  </div>
+
+  <div class="section-title">// Documenten</div>
+  <div class="grid">
+    <a class="card" href="qal_dagschema.html">
+      <div class="card-label">Protocol</div>
+      <div class="card-title">Supplement Dagschema</div>
+      <div class="card-desc">Volledig supplement protocol met timing, dosering en wetenschappelijke onderbouwing.</div>
+    </a>
+    <a class="card" href="qal_video1_script.html">
+      <div class="card-label">Content</div>
+      <div class="card-title">Video 1 — Pharmacy Trap</div>
+      <div class="card-desc">Volledig script en productie setup voor de eerste QAL YouTube video.</div>
+    </a>
+    <a class="card" href="qal_brand_kit.html">
+      <div class="card-label">Branding</div>
+      <div class="card-title">Brand Kit</div>
+      <div class="card-desc">Kleurpallet, typografie, logo gebruik en brand voice referentie.</div>
+    </a>
+  </div>
+</div>
+</body>
+</html>
