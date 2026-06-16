@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>QAL — Video 1 Script — Pharmacy Trap</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+:root {
+  --bg:#0A0A0A;--white:#F5F0E8;--gold:#C9A84C;--gold-l:#E8C97A;
+  --teal:#2A7A74;--teal-l:#3DA89F;--red:#C0392B;
+  --border:rgba(201,168,76,0.2);--surface:rgba(245,240,232,0.03);--muted:rgba(245,240,232,0.4);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;padding:60px 32px 100px;}
+.page{max-width:900px;margin:0 auto;}
+.back{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--teal-l);text-decoration:none;text-transform:uppercase;display:inline-block;margin-bottom:40px;}
+.back:hover{color:var(--gold);}
+.header{border-left:3px solid var(--red);padding-left:24px;margin-bottom:52px;}
+.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--teal-l);text-transform:uppercase;margin-bottom:12px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,5vw,48px);line-height:1.05;color:var(--white);}
+h1 span{color:#E74C3C;}
+.subtitle{margin-top:10px;font-size:13px;color:var(--muted);line-height:1.7;max-width:600px;}
+.section-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.evidence-box{background:rgba(192,57,43,0.06);border:1px solid rgba(192,57,43,0.25);border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:20px 24px;margin-bottom:40px;}
+.evidence-box .eb-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:#E74C3C;text-transform:uppercase;margin-bottom:10px;}
+.evidence-box p{font-size:13px;color:rgba(245,240,232,0.7);line-height:1.8;}
+.video-title-bar{background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.3);border-bottom:none;border-radius:6px 6px 0 0;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.vt-format{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:#E74C3C;text-transform:uppercase;margin-bottom:4px;}
+.vt-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--white);}
+.vt-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-align:right;}
+.script-body{border:1px solid rgba(192,57,43,0.3);border-radius:0 0 6px 6px;overflow:hidden;margin-bottom:32px;}
+.scene{border-bottom:1px solid rgba(201,168,76,0.08);}
+.scene:last-child{border-bottom:none;}
+.scene-header{background:rgba(245,240,232,0.02);padding:10px 24px;border-bottom:1px solid rgba(201,168,76,0.06);display:flex;gap:16px;align-items:center;}
+.scene-num{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);}
+.scene-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:#E74C3C;text-transform:uppercase;}
+.scene-time{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);margin-left:auto;}
+.scene-content{display:grid;grid-template-columns:1fr 1fr;}
+.direction{background:rgba(42,122,116,0.04);border-right:1px solid rgba(201,168,76,0.08);padding:20px 24px;}
+.direction-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--teal-l);text-transform:uppercase;margin-bottom:10px;}
+.direction p{font-size:12px;color:rgba(245,240,232,0.55);line-height:1.75;font-style:italic;}
+.direction p strong{color:var(--teal-l);font-style:normal;font-weight:500;}
+.script-text{padding:20px 24px;}
+.script-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.script-text p{font-size:14px;color:var(--white);line-height:1.9;font-weight:400;}
+.script-text p em{color:var(--gold-l);font-style:normal;font-weight:500;}
+.script-text p .pause{color:var(--muted);font-size:11px;font-style:italic;}
+.script-text p .red{color:#E74C3C;font-weight:500;}
+.broll{background:rgba(201,168,76,0.04);border-top:1px solid rgba(201,168,76,0.08);padding:12px 24px;display:flex;gap:10px;align-items:flex-start;}
+.broll-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;white-space:nowrap;padding-top:2px;flex-shrink:0;}
+.broll p{font-size:11px;color:var(--muted);line-height:1.6;}
+.audit-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.3);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:20px 24px;margin:24px 0;}
+.audit-box .ab-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.audit-box ol{list-style:none;counter-reset:audit;display:flex;flex-direction:column;gap:10px;}
+.audit-box ol li{counter-increment:audit;font-size:13px;color:rgba(245,240,232,0.75);padding-left:32px;position:relative;line-height:1.6;}
+.audit-box ol li::before{content:counter(audit);position:absolute;left:0;font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);font-weight:700;}
+.audit-box ol li strong{color:var(--white);font-weight:500;}
+.divider{width:100%;height:1px;background:var(--border);margin:40px 0;}
+@media(max-width:700px){
+  body{padding:40px 16px 80px;}
+  .scene-content{grid-template-columns:1fr;}
+  .direction{border-right:none;border-bottom:1px solid rgba(201,168,76,0.08);}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back" href="index.html">← Terug naar Vault</a>
+
+  <div class="header">
+    <div class="label">Q Aging Lab — Video 1 — Pharmacy Trap</div>
+    <h1>YOUR COMPOUNDED PRESCRIPTION<br><span>MAY NOT BE WHAT YOU ORDERED.</span></h1>
+    <p class="subtitle">Gebaseerd op een gedocumenteerde systeemfout. Mijn apotheek voegde Triamcinolone Acetonide 1% toe aan mijn AZA recept zonder toestemming.</p>
+  </div>
+
+  <div class="evidence-box">
+    <div class="eb-label">// Bewijs</div>
+    <p><strong>Gevonden op het etiket:</strong> AZELAINEZUUR 15% + TRIAMCINOLONE ACETONIDE 0.1% CR.<br><br>
+    <strong>Besteld:</strong> Azelaic Acid 20% — geen corticosteroïd.<br><br>
+    <strong>Geleverd:</strong> AZA gedegradeerd naar 15% + klasse 3 corticosteroïd zonder toestemming.<br><br>
+    <strong>Triamcinolone Acetonide:</strong> Klasse 3 topisch corticosteroïd. Niet bedoeld voor dagelijks gebruik op het gezicht.</p>
+  </div>
+
+  <div class="video-title-bar">
+    <div>
+      <div class="vt-format">Long-form — YouTube — The Pharmacy Trap</div>
+      <div class="vt-name">Your Compounded Prescription May Not Be What You Ordered.</div>
+    </div>
+    <div class="vt-meta">Doel: 6–8 min<br>Pijler: Data · Autoriteit · Bewijs</div>
+  </div>
+
+  <div class="script-body">
+
+    <div class="scene">
+      <div class="scene-header">
+        <span class="scene-num">01</span>
+        <span class="scene-label">Hook — Het bewijs direct tonen</span>
+        <span class="scene-time">0:00 – 0:50</span>
+      </div>
+      <div class="scene-content">
+        <div class="direction">
+          <div class="direction-label">Regie</div>
+          <p><strong>Beide tubes op tafel. Pak de nieuwe tube op. Label naar de camera.</strong> GFX overlay: "Ordered: AZA 20%" vs "Received: AZA 15% + TA 0.1%". Geen glimlach.</p>
+        </div>
+        <div class="script-text">
+          <div class="script-label">Script</div>
+          <p>"I almost missed this.<br><br>
+          I was out of my old tube. I picked up the new one from my pharmacy. The label had changed.<br><br>
+          <span class="pause">[houdt tube naar camera]</span><br><br>
+          I ordered Azelaic Acid at twenty percent concentration. What I received was Azelaic Acid at <em>fifteen percent</em> — and something I did not order at all: <span class="red">Triamcinolone Acetonide 0.1%.</span><br><br>
+          A class three corticosteroid. On my face. Every day. Without my knowledge.<br><br>
+          <span class="pause">[pauze]</span><br><br>
+          This video is about what that is, what it does to your skin, and the exact protocol I now use to verify every compounded prescription before I leave the counter."</p>
+        </div>
+      </div>
+      <div class="broll">
+        <span class="broll-label">B-Roll</span>
+        <p>Close-up van etiket — AZELAINEZUUR 15% + TRIAMCINOLONE ACETONIDE 0.1% leesbaar. GFX overlay legt beide regels apart uit.</p>
+      </div>
+    </div>
+
+    <div class="scene">
+      <div class="scene-header">
+        <span class="scene-num">02</span>
+        <span class="scene-label">Het Mechanisme — Wat Triamcinolone Acetonide doet</span>
+        <span class="scene-time">0:50 – 2:30</span>
+      </div>
+      <div class="scene-content">
+        <div class="direction">
+          <div class="direction-label">Regie</div>
+          <p><strong>Leg tube neer. Notitieboek open. Zakelijke toon.</strong> GFX: "Class 3 Corticosteroid." Rustig, gecontroleerd.</p>
+        </div>
+        <div class="script-text">
+          <div class="script-label">Script</div>
+          <p>"Triamcinolone Acetonide is a corticosteroid. It suppresses inflammation. In the right clinical context — eczema, psoriasis — it has legitimate uses.<br><br>
+          <em>The face is not that context.</em><br><br>
+          Topical corticosteroids on facial skin, used daily over weeks and months, produce predictable documented effects:<br><br>
+          <span class="red">Skin atrophy.</span> The dermis physically thins. Collagen production is suppressed.<br><br>
+          <span class="red">Steroid-induced hyperpigmentation.</span> In darker skin tones, a documented driver of the exact problem Azelaic Acid is solving.<br><br>
+          <span class="red">Telangiectasia.</span> Permanently visible small blood vessels from a thinned dermis.<br><br>
+          <span class="red">Rebound dependency.</span> Stop the corticosteroid after extended use, and the skin flares.<br><br>
+          <span class="pause">[pauze — blik direct naar camera]</span><br><br>
+          None of these effects are hypothetical. They are in the clinical literature. And they were being delivered to my face every single morning."</p>
+        </div>
+      </div>
+      <div class="broll">
+        <span class="broll-label">B-Roll</span>
+        <p>GFX lijst: vier effecten — skin atrophy, hyperpigmentation, telangiectasia, rebound — elk apart zichtbaar bij vermelding.</p>
+      </div>
+    </div>
+
+    <div class="scene">
+      <div class="scene-header">
+        <span class="scene-num">03</span>
+        <span class="scene-label">De Ontdekking</span>
+        <span class="scene-time">2:30 – 3:30</span>
+      </div>
+      <div class="scene-content">
+        <div class="direction">
+          <div class="direction-label">Regie</div>
+          <p><strong>Pak beide tubes op — oude naast nieuwe.</strong> Iets langzamer tempo. Guinea pig moment — eerlijk, direct, geen drama.</p>
+        </div>
+        <div class="script-text">
+          <div class="script-label">Script</div>
+          <p>"I only caught this because I was preparing to film this product for a video.<br><br>
+          Same pharmacy. Same prescription on file. Different formulation.<br><br>
+          No notification. No explanation. No ask for approval.<br><br>
+          I do not know how long this formulation had been running. As a data analyst: <em>I cannot reconstruct the contaminated data set.</em><br><br>
+          And I want to be honest about the context. I live in Suriname. The WHO and PAHO have documented that pharmaceutical oversight across the Caribbean is structurally under-resourced.<br><br>
+          The system that would catch this kind of error before it reaches your face <em>does not reliably exist here.</em><br><br>
+          Which means <em>the audit has to come from you.</em>"</p>
+        </div>
+      </div>
+      <div class="broll">
+        <span class="broll-label">B-Roll</span>
+        <p>Beide tubes naast elkaar op tafel — close-up van beide etiketten. Stilstaand shot. 8-10 seconden.</p>
+      </div>
+    </div>
+
+    <div class="scene">
+      <div class="scene-header">
+        <span class="scene-num">04</span>
+        <span class="scene-label">De Tweede Fout — AZA Concentratie gedegradeerd</span>
+        <span class="scene-time">3:30 – 4:30</span>
+      </div>
+      <div class="scene-content">
+        <div class="direction">
+          <div class="direction-label">Regie</div>
+          <p><strong>GFX: "Ordered: 20%" → "Received: 15%".</strong> Zakelijk, niet emotioneel.</p>
+        </div>
+        <div class="script-text">
+          <div class="script-label">Script</div>
+          <p>"There was a second problem on the same label.<br><br>
+          The Azelaic Acid concentration was changed from twenty percent to <em>fifteen percent.</em><br><br>
+          Twenty percent is the documented therapeutic threshold for tyrosinase inhibition. Fifteen percent is the over-the-counter ceiling. Below the line.<br><br>
+          <span class="pause">[pauze]</span><br><br>
+          So in one reformulation — without my knowledge — my active was downgraded below therapeutic threshold, and a class three corticosteroid was added that works in direct opposition to my anti-aging protocol.<br><br>
+          <em>Two system failures on one label.</em>"</p>
+        </div>
+      </div>
+      <div class="broll">
+        <span class="broll-label">B-Roll</span>
+        <p>GFX: "20% = therapeutic threshold" vs "15% = OTC level — below the line."</p>
+      </div>
+    </div>
+
+    <div class="scene">
+      <div class="scene-header">
+        <span class="scene-num">05</span>
+        <span class="scene-label">De Oplossing — The QAL Audit Protocol</span>
+        <span class="scene-time">4:30 – 6:30</span>
+      </div>
+      <div class="scene-content">
+        <div class="direction">
+          <div class="direction-label">Regie</div>
+          <p><strong>Notitieboek open. GFX: "The QAL Audit Protocol".</strong> Duidelijk, stap voor stap.</p>
+        </div>
+        <div class="script-text">
+          <div class="script-label">Script</div>
+          <p>"This is the protocol I now run every time I pick up a compounded prescription. Three checks. Sixty seconds. Non-negotiable.<br><br>
+          <em>Step one: Verify the active and the concentration.</em> Read the label before you leave the counter. Not at home. At the counter.<br><br>
+          <em>Step two: Check for abbreviations you did not prescribe.</em> TA or TAC — Triamcinolone Acetonide. HCT — Hydrocortisone. BDP — Betamethasone Dipropionate. Any unrecognized abbreviation — stop and ask.<br><br>
+          <em>Step three: Compare against your original prescription on file.</em> Ask the pharmacist to read every ingredient. Every concentration. Any deviation — refuse the batch.<br><br>
+          <span class="pause">[pauze]</span><br><br>
+          You are not being difficult. You are auditing hardware that goes on your face every day. That is your right."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="scene">
+      <div class="scene-header">
+        <span class="scene-num">06</span>
+        <span class="scene-label">Recovery — Als het al te laat is</span>
+        <span class="scene-time">6:30 – 7:15</span>
+      </div>
+      <div class="scene-content">
+        <div class="direction">
+          <div class="direction-label">Regie</div>
+          <p><strong>Iets rustiger tempo.</strong> Zakelijk maar direct.</p>
+        </div>
+        <div class="script-text">
+          <div class="script-label">Script</div>
+          <p>"If you have been using a formulation with an undisclosed corticosteroid — here is what I would do.<br><br>
+          First: stop the compounded product immediately. Switch to a verified formulation.<br><br>
+          Second: simplify. Strip back to cleanser, barrier moisturizer, and SPF only. Let the skin stabilize.<br><br>
+          Third: give it time. The atrophy from low concentration short exposure is not permanent. Tretinoin rebuilds — but it takes months.<br><br>
+          <em>Document the reset. It is data.</em>"</p>
+        </div>
+      </div>
+      <div class="broll">
+        <span class="broll-label">B-Roll</span>
+        <p>CeraVe Hydrating Cleanser + CeraVe Moisturizing Cream lay-flat. GFX: "Barrier Reset Protocol."</p>
+      </div>
+    </div>
+
+    <div class="scene">
+      <div class="scene-header">
+        <span class="scene-num">07</span>
+        <span class="scene-label">CTA</span>
+        <span class="scene-time">7:15 – 7:45</span>
+      </div>
+      <div class="scene-content">
+        <div class="direction">
+          <div class="direction-label">Regie</div>
+          <p><strong>Sluit notitieboek. Beide tubes zichtbaar. Strakke blik naar lens.</strong></p>
+        </div>
+        <div class="script-text">
+          <div class="script-label">Script</div>
+          <p>"The QAL Audit Protocol is in the description. Three steps. Sixty seconds. Run it every time.<br><br>
+          Join the waitlist at qaginglab.com.<br><br>
+          <span class="pause">[sluit notitieboek]</span><br><br>
+          Not a guru. Just a guinea pig with a notebook — and apparently, a reason to read every label.<br><br>
+          <em>See you in the next data review.</em>"</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="audit-box">
+    <div class="ab-label">// The QAL Audit Protocol — Referentie</div>
+    <ol>
+      <li><strong>Verify active + concentration</strong> — label checken aan de balie, niet thuis.</li>
+      <li><strong>Scan for unknown abbreviations</strong> — TA/TAC, HCT, BDP. Onbekende afkorting = stop en vraag.</li>
+      <li><strong>Compare against original prescription on file</strong> — verbale bevestiging van elk ingredient. Afwijking = weiger de batch.</li>
+    </ol>
+  </div>
+
+</div>
+</body>
+</html>
