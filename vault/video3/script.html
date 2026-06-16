@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QAL — Video 3 — UV Matrix Script</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+:root {
+  --bg:#0A0A0A;--white:#F5F0E8;--cream:#EDE8DC;--gold:#C9A84C;--gold-l:#E8C97A;
+  --teal:#2A7A74;--teal-l:#3DA89F;--red:#C0392B;
+  --border:rgba(201,168,76,0.2);--surface:rgba(245,240,232,0.03);--muted:rgba(245,240,232,0.4);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;padding:60px 32px 100px;
+background-image:radial-gradient(ellipse 50% 40% at 90% 5%,rgba(42,122,116,0.08) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 5% 90%,rgba(201,168,76,0.06) 0%,transparent 50%);}
+.page{max-width:900px;margin:0 auto;}
+.page-header{border-left:3px solid var(--gold);padding-left:24px;margin-bottom:56px;}
+.page-header .label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--teal-l);text-transform:uppercase;margin-bottom:12px;}
+.page-header h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,5vw,52px);line-height:1.05;color:var(--white);}
+.page-header h1 span{color:var(--gold);}
+.page-header p{margin-top:12px;font-size:13px;color:var(--muted);line-height:1.7;max-width:600px;}
+.section-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.setup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:52px;}
+.setup-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:18px;}
+.setup-card h4{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--teal-l);text-transform:uppercase;margin-bottom:10px;}
+.setup-card ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.setup-card ul li{font-size:12px;color:var(--muted);padding-left:14px;position:relative;line-height:1.5;}
+.setup-card ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:10px;}
+.setup-card ul li strong{color:var(--white);font-weight:500;}
+.divider{width:100%;height:1px;background:var(--border);margin:44px 0;}
+.data-table{width:100%;border-collapse:collapse;margin-bottom:48px;}
+.data-table th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--teal-l);text-transform:uppercase;padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);}
+.data-table td{font-size:12px;color:rgba(245,240,232,0.7);padding:12px 16px;border-bottom:1px solid rgba(201,168,76,0.06);vertical-align:top;line-height:1.5;}
+.data-table td strong{color:var(--white);font-weight:500;}
+.data-table td.good{color:var(--teal-l);}
+.data-table td.bad{color:var(--red);}
+.video-title-bar{background:rgba(201,168,76,0.07);border:1px solid var(--border);border-bottom:none;border-radius:6px 6px 0 0;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.vt-format{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
+.vt-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--white);line-height:1.1;}
+.vt-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-align:right;}
+.script-body{border:1px solid var(--border);border-radius:0 0 6px 6px;overflow:hidden;margin-bottom:32px;}
+.scene{border-bottom:1px solid rgba(201,168,76,0.08);}
+.scene:last-child{border-bottom:none;}
+.scene-header{background:rgba(245,240,232,0.02);padding:10px 24px;border-bottom:1px solid rgba(201,168,76,0.06);display:flex;gap:16px;align-items:center;}
+.scene-num{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);}
+.scene-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--teal-l);text-transform:uppercase;}
+.scene-time{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);margin-left:auto;}
+.scene-content{display:grid;grid-template-columns:1fr 1fr;}
+.direction{background:rgba(42,122,116,0.04);border-right:1px solid rgba(201,168,76,0.08);padding:20px 24px;}
+.direction-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--teal-l);text-transform:uppercase;margin-bottom:10px;}
+.direction p{font-size:12px;color:rgba(245,240,232,0.55);line-height:1.75;font-style:italic;}
+.direction p strong{color:var(--teal-l);font-style:normal;font-weight:500;}
+.script-text{padding:20px 24px;}
+.script-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.script-text p{font-size:14px;color:var(--white);line-height:1.9;font-weight:400;}
+.script-text p em{color:var(--gold-l);font-style:normal;font-weight:500;}
+.script-text p .pause{color:var(--muted);font-size:11px;font-style:italic;}
+.broll{background:rgba(201,168,76,0.04);border-top:1px solid rgba(201,168,76,0.08);padding:12px 24px;display:flex;gap:10px;align-items:flex-start;}
+.broll-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;white-space:nowrap;padding-top:2px;flex-shrink:0;}
+.broll p{font-size:11px;color:var(--muted);line-height:1.6;}
+.broll p strong{color:var(--white);font-weight:500;}
+.ai-prompt{background:rgba(42,122,116,0.06);border:1px solid rgba(42,122,116,0.25);border-left:3px solid var(--teal-l);padding:16px 20px;}
+.ai-prompt-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--teal-l);text-transform:uppercase;margin-bottom:10px;}
+.ai-prompt p{font-size:12px;color:rgba(245,240,232,0.65);line-height:1.75;font-style:italic;}
+.ai-prompt p strong{color:var(--teal-l);font-style:normal;}
+@media(max-width:700px){
+  body{padding:40px 16px 80px;}
+  .setup-grid{grid-template-columns:1fr;}
+  .scene-content{grid-template-columns:1fr;}
+  .direction{border-right:none;border-bottom:1px solid rgba(201,168,76,0.08);}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="page-header">
+  <div class="label">Q Aging Lab — Video 3 — Definitief Script</div>
+  <h1>WHY YOUR SUNSCREEN<br><span>IS FAILING YOU.</span></h1>
+  <p>FDA vs EU UV filters — het mechanisme achter waarom de CeraVe AM SPF 50 EU versie superieur is voor tropische omstandigheden. 5-8 minuten. Wetenschappelijk onderbouwd.</p>
+</div>
+
+<div class="section-title">// Productie Setup</div>
+<div class="setup-grid">
+  <div class="setup-card">
+    <h4>Setting & Props</h4>
+    <ul>
+      <li><strong>Zelfde setup</strong> als video 1 en 2</li>
+      <li><strong>Prop 1:</strong> CeraVe AM SPF 50 EU op tafel</li>
+      <li><strong>Prop 2:</strong> Notitieboek open</li>
+      <li><strong>Optioneel:</strong> US versie naast EU versie</li>
+      <li><strong>GFX zwaar:</strong> Filterlijsten als tekst overlays</li>
+    </ul>
+  </div>
+  <div class="setup-card">
+    <h4>B-Roll Lijst</h4>
+    <ul>
+      <li>CeraVe AM EU — ingrediëntenlijst close-up</li>
+      <li>UV index app — 11+ op scherm</li>
+      <li>Beide versies naast elkaar (indien beschikbaar)</li>
+      <li>Runway AI: avobenzone degradatie</li>
+      <li>Runway AI: fotostabiele filter absorptie</li>
+      <li>Runway AI: UVA penetratie in huid</li>
+    </ul>
+  </div>
+  <div class="setup-card">
+    <h4>GFX Labels</h4>
+    <ul>
+      <li>"FDA: 16 filters — since 1999"</li>
+      <li>"EU: 34 filters"</li>
+      <li>"Avobenzone = NOT photostable"</li>
+      <li>"Tinosorb S = Photostable + UVA + UVB"</li>
+      <li>"Ethylhexyl Triazone = Not in US"</li>
+      <li>"EU ✓ vs US ✗"</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-title">// UV Filter Referentietabel</div>
+<table class="data-table">
+  <thead>
+    <tr><th>UV Filter</th><th>FDA (US)</th><th>EU</th><th>Fotostabiliteit</th><th>Coverage</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Avobenzone</strong></td>
+      <td class="good">✓ max 3%</td>
+      <td class="good">✓ max 5%</td>
+      <td class="bad">INSTABIEL — breekt af onder UV</td>
+      <td>UVA only</td>
+    </tr>
+    <tr>
+      <td><strong>Tinosorb S (BEMT)</strong></td>
+      <td class="bad">✗ in review</td>
+      <td class="good">✓ max 10%</td>
+      <td class="good">Fotostabiel</td>
+      <td>UVA + UVB</td>
+    </tr>
+    <tr>
+      <td><strong>Ethylhexyl Triazone</strong></td>
+      <td class="bad">✗ niet goedgekeurd</td>
+      <td class="good">✓ max 5%</td>
+      <td class="good">Fotostabiel</td>
+      <td>UVB — meest effectief</td>
+    </tr>
+    <tr>
+      <td><strong>Tinosorb M</strong></td>
+      <td class="bad">✗ niet goedgekeurd</td>
+      <td class="good">✓ max 10%</td>
+      <td class="good">Fotostabiel</td>
+      <td>UVA + UVB</td>
+    </tr>
+    <tr>
+      <td><strong>Octocrylene</strong></td>
+      <td class="good">✓</td>
+      <td class="good">✓</td>
+      <td>Matig — stabiliseert avobenzone</td>
+      <td>UVB + lichte UVA</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<div class="video-title-bar">
+  <div>
+    <div class="vt-format">Long-form — YouTube — Week 3</div>
+    <div class="vt-name">Why Your Sunscreen Is Failing You.</div>
+  </div>
+  <div class="vt-meta">Doel: 5–8 min<br>Pijler: Data · Protocol · Tropics</div>
+</div>
+
+<div class="script-body">
+
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">01</span>
+      <span class="scene-label">Hook</span>
+      <span class="scene-time">0:00 – 0:45</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Direct to camera. CeraVe AM EU fles zichtbaar op tafel.</strong> GFX na eerste zin: "FDA: Last updated 1999." Geen intro, direct beginnen.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"You are wearing SPF 50. You reapply it. You think you are protected.<br><br>
+        <em>You are not.</em><br><br>
+        The UV filter in your American sunscreen was approved in 1999. Since then, the FDA has not added a single new filter to the approved list. Not one. In 25 years.<br><br>
+        <span class="pause">[pauze]</span><br><br>
+        The EU has approved 34 UV filters. The US has 16. And the difference between those numbers is the difference between a sunscreen that works — and one that breaks down on your face before lunchtime."</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>UV index app: 11+. GFX: "FDA: 16 filters (1999)" links — "EU: 34 filters" rechts. Visueel contrast.</p>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">02</span>
+      <span class="scene-label">Context — Waarom de FDA achteroploopt</span>
+      <span class="scene-time">0:45 – 2:00</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Notitieboek open. Zakelijke toon.</strong> GFX: "US = OTC drug" vs "EU = cosmetic." Dit is het mechanisme achter het probleem.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"Here is why this happens. In the United States, sunscreens are classified as <em>over-the-counter drugs.</em> Every new UV filter goes through the same approval process as a medication. Years of review. High barriers.<br><br>
+        In the EU, sunscreens are classified as <em>cosmetics.</em> New filters get to market faster — without sacrificing safety, because the EU still runs rigorous evaluations. They just move more efficiently.<br><br>
+        The result: EU formulators have access to a completely different toolkit. More photostable filters. Better UVA coverage. Filters that do not break down under intense UV radiation.<br><br>
+        <span class="pause">[pauze]</span><br><br>
+        For someone living at UV index 11 or higher — <em>that toolkit matters.</em>"</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>GFX tijdlijn: 1999 → 2026 zonder nieuwe FDA filters. Visueel leeg versus EU tijdlijn vol met nieuwe goedkeuringen.</p>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">03</span>
+      <span class="scene-label">Het Avobenzone Probleem — Fotodegradatie</span>
+      <span class="scene-time">2:00 – 3:30</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Intensiteit verhogen. Strakke blik.</strong> GFX: "Avobenzone = NOT photostable." AI b-roll van moleculen die degraderen cut in bij "breaks down." Tik op notitieboek bij de data.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"The primary UVA filter in most American sunscreens is avobenzone. Globally approved, widely used — and one critical problem:<br><br>
+        <em>It is not photostable.</em><br><br>
+        Avobenzone breaks down when exposed to UV light. The very thing it is supposed to absorb — it degrades under it. Significant breakdown within one to two hours of sun exposure.<br><br>
+        <span class="pause">[b-roll cut: moleculen degraderen]</span><br><br>
+        US formulators try to stabilize it with octocrylene. But at UV index 11, in tropical heat, over a full day — you are working against physics.<br><br>
+        The EU formulation I use does not rely on avobenzone as the primary filter. It uses <em>Tinosorb S</em> — photostable, covers both UVA and UVB, and is the most effective UV absorber at maximum concentration permitted in the EU.<br><br>
+        Tinosorb S has been under FDA review for nearly two decades. <em>Still not approved in the US.</em>"</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>Runway AI — avobenzone degradatie animatie. Zie AI prompt hieronder.</p>
+    </div>
+  </div>
+
+  <div class="ai-prompt">
+    <div class="ai-prompt-label">// AI B-Roll Prompt 1 — Avobenzone Degradatie</div>
+    <p>Abstract 3D molecular animation of a UV filter molecule under intense ultraviolet radiation. The molecule initially absorbs UV rays, glowing gold #C9A84C. Under sustained radiation, molecular bonds begin breaking apart — the structure fragments and loses its protective shape. Protection visibly fails.<br><br>
+    <strong>Color grading:</strong> Black #0A0A0A background. Active molecule: gold #C9A84C and #E8C97A. UV radiation: cold blue-white beams from above. Broken molecule: fading to grey. Teal #3DA89F data tracking lines showing degradation curve.<br><br>
+    <strong>Motion:</strong> First 2 seconds molecule absorbs and glows. Last 2 seconds bonds break and structure collapses. Total 4 seconds.<br><br>
+    <strong>Mood:</strong> Failure. The protection stops working.</p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">04</span>
+      <span class="scene-label">De EU Filters — CeraVe AM EU versie</span>
+      <span class="scene-time">3:30 – 5:00</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Pak de CeraVe AM EU fles op. Label naar camera.</strong> GFX: ingrediëntenlijst met highlights op Tinosorb S en Ethylhexyl Triazone. AI b-roll van fotostabiele filter absorptie cut in.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"This is why I use the EU version of CeraVe AM SPF 50.<br><br>
+        <span class="pause">[pakt fles op, label naar camera]</span><br><br>
+        The EU formulation contains <em>Tinosorb S</em> — photostable, broad spectrum UVA and UVB. It also contains <em>Ethylhexyl Triazone</em> — one of the most effective UVB filters available, not approved in the US. Avobenzone is present at 5 percent — versus the 3 percent US cap — and properly stabilized by the Tinosorb S.<br><br>
+        The US version uses avobenzone, homosalate, and octocrylene. Different filter matrix. Less stability under sustained radiation.<br><br>
+        <span class="pause">[pauze]</span><br><br>
+        Same brand name. <em>Different product.</em> If you are ordering the US version online because it is cheaper — you are paying for less protection than the label says."</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>CeraVe AM EU ingrediëntenlijst close-up — Tinosorb S en Ethylhexyl Triazone gemarkeerd. Beide flessen naast elkaar indien beschikbaar.</p>
+    </div>
+  </div>
+
+  <div class="ai-prompt">
+    <div class="ai-prompt-label">// AI B-Roll Prompt 2 — Fotostabiele Filter Absorptie</div>
+    <p>Abstract 3D molecular animation of a photostable UV filter — Tinosorb S. The molecule absorbs intense UV radiation continuously without breaking down. UV rays hit the structure and are absorbed and converted to harmless heat energy. The molecule remains intact and continues protecting after sustained radiation.<br><br>
+    <strong>Color grading:</strong> Black #0A0A0A background. Stable molecule: glowing teal #2A7A74 and #3DA89F with gold #C9A84C highlights. UV radiation: cold blue-white beams from above. Converted heat: subtle warm amber glow radiating outward. No structural damage.<br><br>
+    <strong>Motion:</strong> Continuous UV absorption for 4 seconds. Molecule stable throughout. Heat conversion visible. Total 4 seconds.<br><br>
+    <strong>Mood:</strong> Stability. Reliability. Engineering that works.</p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">05</span>
+      <span class="scene-label">UVA en Huidveroudering — Waarom UVA-PF telt</span>
+      <span class="scene-time">5:00 – 6:30</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Leun iets naar voren. Dit is het meest relevante punt voor de doelgroep.</strong> GFX: UVA vs UVB penetratiediepte visualisatie. AI b-roll van UVA penetratie in huid cut in.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"There is one more thing the US sunscreen label does not tell you.<br><br>
+        The US uses a binary label: <em>Broad Spectrum.</em> Either you have it or you don't. No scale.<br><br>
+        The EU uses a UVA-PF system — an actual number that tells you how much UVA protection you are getting. The LRP UVMune 400 I use alongside CeraVe AM has a UVA-PF of 41. That is a specific, measurable number.<br><br>
+        Why does this matter for aging?<br><br>
+        UVB causes sunburn. <em>UVA causes aging.</em> UVA penetrates deeper into the dermis — it breaks down collagen, drives hyperpigmentation, and accelerates photoaging. And UVA is present all day, through clouds, through windows, at UV index 11.<br><br>
+        <span class="pause">[pauze]</span><br><br>
+        A sunscreen that protects you from UVB but fails on UVA is protecting you from pain — not from aging. And aging is the problem I am trying to solve."</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>Runway AI — UVA stralen penetreren dieper in huid dan UVB. Zie AI prompt hieronder. GFX: UVB = epidermis, UVA = dermis diagram.</p>
+    </div>
+  </div>
+
+  <div class="ai-prompt">
+    <div class="ai-prompt-label">// AI B-Roll Prompt 3 — UVA Penetratie in Huid</div>
+    <p>Clinical 3D cross-section visualization of human skin layers. Short UVB rays (blue-white) are absorbed at the surface epidermis layer. Longer UVA rays (deeper blue) penetrate through the epidermis and reach the dermis layer below, where they interact with collagen fibers and cause visible structural damage.<br><br>
+    <strong>Color grading:</strong> Dark background. Skin cross-section: warm natural skin tones layered. Epidermis layer: lighter. Dermis layer: darker, deeper. UVB rays: blue-white, stopped at surface. UVA rays: deeper blue, penetrating fully. Collagen damage: gold #C9A84C fibers breaking at points of UVA impact. Teal #3DA89F labels for skin layer annotations.<br><br>
+    <strong>Motion:</strong> Rays arrive from above. UVB stops at surface. UVA passes through and damages collagen in dermis. 4 seconds.<br><br>
+    <strong>Mood:</strong> The invisible damage. Scientific urgency.</p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">06</span>
+      <span class="scene-label">Praktische Conclusie — Wat te gebruiken</span>
+      <span class="scene-time">6:30 – 7:30</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Pak beide producten op — CeraVe AM EU en LRP UVMune 400 Tinted.</strong> Label van beide naar camera. Dit is het concrete advies. Rustig maar direct afsluiten.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"Here is the practical conclusion.<br><br>
+        If you are in the tropics, if you are dealing with hyperpigmentation, if you are serious about protecting your skin against photoaging — <em>you need EU-formulated sunscreen.</em><br><br>
+        <span class="pause">[pakt beide producten op]</span><br><br>
+        My daily UV stack: CeraVe AM SPF 50 EU — Tinosorb S, Ethylhexyl Triazone, photostable filter matrix. Then LRP UVMune 400 Tinted on top — specifically on areas with hyperpigmentation. High UVA-PF. Targeted.<br><br>
+        Both are fragrance-free. Both are available internationally. Links are in the description.<br><br>
+        The filter matrix in your sunscreen is not a marketing decision. <em>It is a chemistry decision.</em> And in a UV index 11 environment, chemistry is the only thing that matters."</p>
+      </div>
+    </div>
+    <div class="broll">
+      <span class="broll-label">B-Roll</span>
+      <p>CeraVe AM EU + LRP UVMune 400 Tinted naast elkaar op donkere ondergrond. Lay-flat shot. Labels leesbaar. 8-10 seconden.</p>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <span class="scene-num">07</span>
+      <span class="scene-label">CTA — Sluit het notitieboek</span>
+      <span class="scene-time">7:30 – 8:00</span>
+    </div>
+    <div class="scene-content">
+      <div class="direction">
+        <div class="direction-label">Regie</div>
+        <p><strong>Sluit het notitieboek. Strakke blik naar lens.</strong> Jouw handtekening afsluiting — kort, direct, zelfverzekerd.</p>
+      </div>
+      <div class="script-text">
+        <div class="script-label">Script</div>
+        <p>"All product links and the full filter comparison are in the description below.<br><br>
+        If you want early access to the Q Aging Lab app and The 50+ Tropical Longevity Blueprint — join the waitlist at qaginglab.com.<br><br>
+        <span class="pause">[sluit notitieboek]</span><br><br>
+        Not a guru. Just a guinea pig with a notebook.<br><br>
+        <em>See you in the next data review.</em>"</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+</body>
+</html>
