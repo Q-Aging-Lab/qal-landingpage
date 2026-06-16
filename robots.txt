@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /vault
+
+Sitemap: https://qaginglab.com/sitemap.xml
