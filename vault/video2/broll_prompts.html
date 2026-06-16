@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QAL — B-Roll AI Prompts</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+
+:root {
+  --bg: #0A0A0A;
+  --white: #F5F0E8;
+  --gold: #C9A84C;
+  --gold-l: #E8C97A;
+  --teal: #2A7A74;
+  --teal-l: #3DA89F;
+  --red: #C0392B;
+  --border: rgba(201,168,76,0.2);
+  --surface: rgba(245,240,232,0.03);
+  --muted: rgba(245,240,232,0.4);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  padding: 60px 32px 100px;
+  background-image:
+    radial-gradient(ellipse 50% 40% at 90% 5%, rgba(42,122,116,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 5% 90%, rgba(201,168,76,0.06) 0%, transparent 50%);
+}
+
+.page { max-width: 900px; margin: 0 auto; }
+
+.page-header {
+  border-left: 3px solid var(--gold);
+  padding-left: 24px; margin-bottom: 56px;
+}
+.page-header .label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 4px;
+  color: var(--teal-l); text-transform: uppercase; margin-bottom: 12px;
+}
+.page-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 5vw, 52px); line-height: 1.05; color: var(--white);
+}
+.page-header h1 span { color: var(--gold); }
+.page-header p { margin-top: 12px; font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 600px; }
+
+.section-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 4px; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.divider { width: 100%; height: 1px; background: var(--border); margin: 48px 0; }
+
+.video-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px; letter-spacing: 2px;
+  color: var(--white); margin-bottom: 32px;
+}
+.video-label span { color: var(--gold); }
+
+/* PROMPT CARD */
+.prompt-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.prompt-header {
+  background: rgba(42,122,116,0.08);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 20px;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+
+.prompt-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--teal-l); text-transform: uppercase;
+}
+
+.prompt-scene {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px; letter-spacing: 1px; color: var(--white);
+}
+
+.prompt-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  padding: 3px 10px; border-radius: 3px;
+  white-space: nowrap;
+}
+.prompt-type.real { background: rgba(201,168,76,0.15); color: var(--gold); }
+.prompt-type.ai { background: rgba(42,122,116,0.15); color: var(--teal-l); }
+
+.prompt-body { padding: 20px; }
+
+.prompt-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px; letter-spacing: 3px; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 10px;
+}
+
+.prompt-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; color: rgba(245,240,232,0.8);
+  line-height: 1.8; background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 4px; padding: 16px;
+  white-space: pre-wrap;
+}
+
+.prompt-note {
+  margin-top: 12px; font-size: 12px;
+  color: var(--muted); line-height: 1.6;
+  font-style: italic;
+}
+.prompt-note strong { color: var(--teal-l); font-style: normal; }
+
+.real-shot {
+  background: rgba(201,168,76,0.04);
+  border-top: 1px solid rgba(201,168,76,0.08);
+  padding: 12px 20px;
+  font-size: 12px; color: var(--muted); line-height: 1.6;
+}
+.real-shot strong { color: var(--gold); font-weight: 500; }
+
+/* SETTINGS BOX */
+.settings-box {
+  background: rgba(42,122,116,0.06);
+  border: 1px solid rgba(42,122,116,0.2);
+  border-radius: 8px; padding: 24px; margin-bottom: 48px;
+}
+.settings-box h4 {
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; color: var(--teal-l);
+  text-transform: uppercase; margin-bottom: 16px;
+}
+.settings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.setting { display: flex; flex-direction: column; gap: 4px; }
+.setting .key { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
+.setting .val { font-size: 13px; color: var(--white); font-weight: 500; }
+
+@media(max-width:700px) {
+  body { padding: 40px 16px 80px; }
+  .settings-grid { grid-template-columns: 1fr; }
+  .prompt-header { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="page-header">
+  <div class="label">Q Aging Lab — B-Roll Pakket</div>
+  <h1>AI B-ROLL PROMPTS<br><span>VIDEO 1 & VIDEO 2</span></h1>
+  <p>Alle Runway Gen-3 Alpha prompts voor beide video's. Klaar om te plakken. QAL hex codes geforceerd in elke AI prompt. Real-camera shots staan apart gemarkeerd.</p>
+</div>
+
+<!-- RUNWAY SETTINGS -->
+<div class="section-title">// Runway Gen-3 Alpha — Instellingen</div>
+<div class="settings-box">
+  <h4>Gebruik deze instellingen voor elke AI prompt</h4>
+  <div class="settings-grid">
+    <div class="setting"><div class="key">Platform</div><div class="val">Runway Gen-3 Alpha</div></div>
+    <div class="setting"><div class="key">Duur</div><div class="val">4 seconden per clip</div></div>
+    <div class="setting"><div class="key">Aspect ratio</div><div class="val">16:9 (landscape) voor long-form</div></div>
+    <div class="setting"><div class="key">Kwaliteit</div><div class="val">720p of hoger</div></div>
+    <div class="setting"><div class="key">Primaire kleur</div><div class="val">Teal #2A7A74 / #3DA89F</div></div>
+    <div class="setting"><div class="key">Accent kleur</div><div class="val">Goud #C9A84C / #E8C97A</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== VIDEO 1 ==================== -->
+<div class="video-label">VIDEO 1 — <span>Skincare Architecture</span></div>
+
+<!-- V1 B-ROLL 1 -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V1 · B-Roll 01</div>
+      <div class="prompt-scene">UV Index App</div>
+    </div>
+    <span class="prompt-type real">Real Camera</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Shot instructie</div>
+    <div class="prompt-text">Film je telefoonscherm met de UV-index app open.
+Getal moet duidelijk leesbaar zijn: 11 of hoger.
+Close-up shot — scherm vult het frame.
+Stabiel, geen beweging. 5-8 seconden.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Cut in tijdens "a UV index of 11 or higher" — Scène 1 hook.</div>
+  </div>
+</div>
+
+<!-- V1 B-ROLL 2 -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V1 · B-Roll 02</div>
+      <div class="prompt-scene">Azelaic Acid 20% FNA</div>
+    </div>
+    <span class="prompt-type real">Real Camera</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Shot instructie</div>
+    <div class="prompt-text">Film het AZA 20% FNA potje op donkere ondergrond.
+Close-up — label zichtbaar.
+Langzaam inzoomen of stilstaand shot. 5-8 seconden.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Cut in tijdens "Azelaic Acid 20% FNA" — Scène 3.</div>
+  </div>
+</div>
+
+<!-- V1 B-ROLL 3 — AI -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V1 · B-Roll 03</div>
+      <div class="prompt-scene">Tyrosinase Inhibitie — Melanine onderdrukking</div>
+    </div>
+    <span class="prompt-type ai">Runway AI</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Runway Prompt — kopieer exact</div>
+    <div class="prompt-text">Hyper-realistic 3D medical animation. Extreme macro close-up of a translucent active compound slowly penetrating a layered human skin surface. Beneath the surface, dark melanin pigment clusters are visibly dissolving and fading away in slow motion. The compound creates a glowing suppression wave that moves outward through the tissue.
+
+Visual style: Clinical electron microscope aesthetic, scientific data visualization, sterile and precise.
+Color grading: Pitch black background #0A0A0A. Glowing teal highlights #2A7A74 and #3DA89F on cellular structures. Warm gold molecular particles #C9A84C and #E8C97A. No other colors.
+Lighting: Cinematic rim light from below. Sharp volumetric glow on the active compound. High contrast, deep shadows.
+Motion: Slow, fluid, deliberate. 4-second loop. No camera movement — fixed macro perspective.
+Mood: Clinical authority. Data-driven. No warmth or softness.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Cut in tijdens "shuts down the production line" — Scène 3. Voiceover loopt door over het AI beeld.</div>
+  </div>
+</div>
+
+<!-- V1 B-ROLL 4 — AI -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V1 · B-Roll 04</div>
+      <div class="prompt-scene">Polymer Layering — Pilling preventie</div>
+    </div>
+    <span class="prompt-type ai">Runway AI</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Runway Prompt — kopieer exact</div>
+    <div class="prompt-text">Abstract clinical 3D physics simulation. Two separate highly viscous liquid layers approaching a micro-textured skin surface from above. The first layer absorbs completely and smoothly into the surface. The second layer then bonds seamlessly on top without any friction, clumping, or separation. The final result is a uniform, solid protective shield that covers the surface completely.
+
+Visual style: Futuristic medical physics render, macro topography, ultra-clean and sterile. No bubbles, no imperfections.
+Color grading: Deep pitch black background #0A0A0A. First liquid layer: glowing teal #2A7A74. Second liquid layer: warm gold #C9A84C. Final shield: combined teal-gold gradient with strong edge glow. No other colors.
+Lighting: Extreme high contrast. Clinical edge lighting. Stark deep shadows. Strong specular highlights on liquid surfaces.
+Motion: Smooth, controlled, frictionless. First layer absorbs in 2 seconds. Second layer bonds in 2 seconds. Total 4 seconds.
+Mood: Engineering precision. Zero tolerance for failure. Systematic protection.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Cut in tijdens "No rolling. No flaking. Full UV protection" — Scène 4.</div>
+  </div>
+</div>
+
+<!-- V1 B-ROLL 5 -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V1 · B-Roll 05</div>
+      <div class="prompt-scene">Lay-flat — AM Protocol producten</div>
+    </div>
+    <span class="prompt-type real">Real Camera</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Shot instructie</div>
+    <div class="prompt-text">Lay-flat shot van alle AM producten op donkere ondergrond.
+Volgorde links naar rechts:
+1. CeraVe Hydrating Cleanser
+2. Vit C ATIP 20%
+3. Azelaic Acid 20% FNA
+4. CeraVe AM SPF 50
+5. LRP UVMune 400 Tinted
+
+Camera van boven — top-down shot.
+Goede belichting — elk product scherp leesbaar.
+Stilstaand, 8-10 seconden totaal.
+Optioneel: langzaam inzoomen op elk product apart.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Cut in tijdens de AM opsomming — Scène 5. Elk product kort in beeld bij vermelding.</div>
+  </div>
+</div>
+
+<!-- V1 B-ROLL 6 -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V1 · B-Roll 06</div>
+      <div class="prompt-scene">Lay-flat — PM Protocol producten</div>
+    </div>
+    <span class="prompt-type real">Real Camera</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Shot instructie</div>
+    <div class="prompt-text">Lay-flat shot van PM producten — apart van AM.
+Tretinoin nights (links):
+1. Tretinoin 0.05% gel
+2. CeraVe Night Repairing Cream
+
+Peptide nights (rechts):
+3. TO Multi-Peptide + Copper Peptides 1%
+4. CeraVe Moisturizing Cream
+
+Camera van boven — top-down.
+Donkere ondergrond. 8-10 seconden.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Cut in tijdens de PM opsomming — Scène 5.</div>
+  </div>
+</div>
+
+<!-- V1 B-ROLL 7 -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V1 · B-Roll 07</div>
+      <div class="prompt-scene">Smartwatch — HRR data</div>
+    </div>
+    <span class="prompt-type real">Real Camera</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Shot instructie</div>
+    <div class="prompt-text">Close-up van smartwatch wijzerplaat.
+HRR data of hartslagmeting zichtbaar op scherm.
+Pols in beeld — watch vult het frame.
+Stilstaand of lichte polsbeweging. 5-8 seconden.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Cut in tijdens "two years" — Scène 5, conditioneringsopmerking.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== VIDEO 2 ==================== -->
+<div class="video-label">VIDEO 2 — <span>Midday Reset</span></div>
+
+<!-- V2 B-ROLL 1 -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V2 · B-Roll 01</div>
+      <div class="prompt-scene">Zwetend gezicht — Het probleem</div>
+    </div>
+    <span class="prompt-type ai">Runway AI</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Runway Prompt — kopieer exact</div>
+    <div class="prompt-text">Extreme close-up macro shot of sweat droplets forming and running down dark male skin on a forehead and cheek. The skin glistens under harsh tropical sunlight. The overall impression is heat, humidity, and discomfort.
+
+Visual style: Documentary realism, high contrast skin texture, tropical atmosphere.
+Color grading: Warm amber and deep shadow tones. Skin tones rich and natural. Background out of focus, dark.
+Lighting: Harsh directional sunlight from above-right. Strong specular highlights on sweat droplets.
+Motion: Slow motion — sweat droplets forming and rolling slowly downward. 4 seconds.
+Mood: The problem. Visceral. Real. No glamour.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Cut in na "how we handle the heat" — Scène 1 hook.</div>
+  </div>
+</div>
+
+<!-- V2 B-ROLL 2 -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V2 · B-Roll 02</div>
+      <div class="prompt-scene">Foaming Face Wash — Verkeerde aanpak</div>
+    </div>
+    <span class="prompt-type real">Real Camera</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Shot instructie</div>
+    <div class="prompt-text">Film een generieke foaming face wash of zeepproduct.
+Product duidelijk in beeld — label leesbaar of bewust weggehouden.
+Je kunt schuim op hand tonen als visueel effect.
+5 seconden.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Cut in na zweet b-roll — Scène 1. Symboliseert de verkeerde aanpak.</div>
+  </div>
+</div>
+
+<!-- V2 B-ROLL 3 — AI -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V2 · B-Roll 03</div>
+      <div class="prompt-scene">Huidbarrière breekt — TEWL visualisatie</div>
+    </div>
+    <span class="prompt-type ai">Runway AI</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Runway Prompt — kopieer exact</div>
+    <div class="prompt-text">Abstract 3D medical visualization of a skin barrier breaking down. The surface begins as a smooth, intact protective layer. Then microscopic cracks appear and spread across the surface. Water molecules visibly escape upward through the cracks as glowing vapor particles, representing transepidermal water loss.
+
+Visual style: Clinical data visualization, scientific illustration, sterile and analytical.
+Color grading: Pitch black background #0A0A0A. Intact skin layer: warm gold #C9A84C. Cracks: deep dark gaps with red edge glow #C0392B. Escaping water particles: teal #3DA89F rising upward. No other colors.
+Lighting: Cold overhead clinical light. Strong shadows in cracks. Glowing particles.
+Motion: Slow deterioration — cracks spread gradually over 4 seconds. Water particles rise continuously.
+Mood: Damage. Loss. The consequence of the wrong decision.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Cut in tijdens "Your skin barrier breaks" — Scène 2.</div>
+  </div>
+</div>
+
+<!-- V2 B-ROLL 4 -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V2 · B-Roll 04</div>
+      <div class="prompt-scene">Water op huid — Stap 1</div>
+    </div>
+    <span class="prompt-type ai">Runway AI + Real Camera</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Optie A — Runway Prompt</div>
+    <div class="prompt-text">Extreme close-up macro shot of cool water flowing and splashing gently over dark skin surface. Water droplets scatter and run off cleanly, washing away residue. The skin surface remains intact and healthy underneath.
+
+Visual style: Documentary realism. Clean, refreshing, clinical. No person visible — skin texture only.
+Color grading: Background dark and out of focus. Skin tones warm and natural. Water: clear with cold blue highlights. Subtle teal rim light #3DA89F on water edges. Gold warmth #C9A84C on skin highlights.
+Lighting: Soft directional light from above. Water catches specular highlights. Deep shadows on skin texture.
+Motion: Water flows continuously for 4 seconds. Slow motion — droplets visible individually. Calm, controlled movement.
+Mood: Cleansing. Reset. Control.</div>
+    <div class="prompt-note"><strong>Optie B — Real Camera:</strong> Film CeraVe Hydrating Cleanser op tafel — één pomp eruit drukken op je hand. Product label leesbaar. Close-up. 5 seconden. Vergelijk beide opties in de edit en kies de sterkste.</div>
+  </div>
+</div>
+
+<!-- V2 B-ROLL 5 -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V2 · B-Roll 05</div>
+      <div class="prompt-scene">Tissue deppen + HA Gel — Stap 2</div>
+    </div>
+    <span class="prompt-type ai">Runway AI + Real Camera</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Optie A — Runway Prompt (hydratatie absorptie)</div>
+    <div class="prompt-text">Abstract 3D medical visualization of hyaluronic acid molecules penetrating a skin surface layer. Transparent gel-like substance spreads evenly across a textured skin surface and is absorbed completely within seconds. The skin visibly plumps and becomes hydrated as the molecules bind to water within the tissue.
+
+Visual style: Scientific molecular animation. Clinical precision. Elegant and clean.
+Color grading: Background #0A0A0A pitch black. Gel substance: transparent with teal glow #3DA89F. Hydration molecules: soft gold particles #C9A84C. Skin surface: warm natural dark tones. No other colors.
+Lighting: Internal molecular glow from the gel. Subtle rim light on skin surface edge.
+Motion: Gel spreads over 2 seconds. Absorption and plumping effect over 2 seconds. Total 4 seconds.
+Mood: Precision hydration. Scientific. Effective.</div>
+    <div class="prompt-note"><strong>Optie B — Real Camera:</strong> Shot 1: Tissue deppen op je onderarm of handrug — pattende beweging, geen wrijven. Close-up. 4 sec. Shot 2: CeraVe HA Gel tube in hand — druk eruit op vingertop, gel zichtbaar. Close-up. 4 sec. Film beide en vergelijk met de AI animatie in de edit.</div>
+  </div>
+</div>
+
+<!-- V2 B-ROLL 6 -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V2 · B-Roll 06</div>
+      <div class="prompt-scene">Wachten + SPF applicatie — Stap 3</div>
+    </div>
+    <span class="prompt-type real">Real Camera</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Shot instructie</div>
+    <div class="prompt-text">Shot 1: Timer op telefoon — 1 of 2 minuten ingesteld.
+Zichtbaar op scherm. 3 seconden.
+
+Shot 2: CeraVe AM SPF 50 applicatie.
+Egale laag op droog gezicht. Close-up. 4 seconden.
+
+Shot 3: LRP UVMune 400 Tinted — deppen op wangen.
+Alleen op specifieke plekken — niet het hele gezicht.
+Close-up van precieze applicatie. 4 seconden.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Cut in tijdens Stap 3 — Scène 5. Volgorde: timer → SPF → Tinted.</div>
+  </div>
+</div>
+
+<!-- V2 B-ROLL 7 — AI -->
+<div class="prompt-card">
+  <div class="prompt-header">
+    <div>
+      <div class="prompt-num">V2 · B-Roll 07</div>
+      <div class="prompt-scene">Beschermende laag vormt zich — Het resultaat</div>
+    </div>
+    <span class="prompt-type ai">Runway AI</span>
+  </div>
+  <div class="prompt-body">
+    <div class="prompt-label">Runway Prompt — kopieer exact</div>
+    <div class="prompt-text">Abstract 3D visualization of a perfect protective UV shield forming over a skin surface. Two liquid layers apply smoothly and bond together into a single invisible barrier. The final shield glows subtly with a warm gold edge, indicating complete protection. UV light rays from above are visibly deflected and absorbed by the shield.
+
+Visual style: Clinical protection visualization. Clean, precise, engineered.
+Color grading: Background #0A0A0A pitch black. Skin surface: natural dark warm tones. Shield layer: glowing gold #C9A84C with teal edge highlights #3DA89F. UV rays: harsh white-blue light absorbed at the shield surface. No other colors.
+Lighting: UV light source from above — harsh and directional. Shield creates visible protection shadow below.
+Motion: Shield forms smoothly over 2 seconds. UV rays deflect continuously for remaining 2 seconds. Total 4 seconds.
+Mood: Resolution. Problem solved. Engineering works.</div>
+    <div class="prompt-note"><strong>In de edit:</strong> Optioneel gebruik aan het einde van Stap 3 — visuele bevestiging van de oplossing.</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
