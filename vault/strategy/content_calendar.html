@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QAL — Content Calendar Juni/Juli 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+
+:root {
+  --bg: #0A0A0A;
+  --white: #F5F0E8;
+  --cream: #EDE8DC;
+  --gold: #C9A84C;
+  --gold-l: #E8C97A;
+  --teal: #2A7A74;
+  --teal-l: #3DA89F;
+  --red: #C0392B;
+  --border: rgba(201,168,76,0.2);
+  --surface: rgba(245,240,232,0.03);
+  --muted: rgba(245,240,232,0.4);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  padding: 60px 32px 100px;
+  background-image:
+    radial-gradient(ellipse 50% 40% at 90% 5%, rgba(42,122,116,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 5% 90%, rgba(201,168,76,0.07) 0%, transparent 50%);
+}
+
+.page { max-width: 1100px; margin: 0 auto; }
+
+/* HEADER */
+.page-header {
+  border-left: 3px solid var(--gold);
+  padding-left: 24px;
+  margin-bottom: 64px;
+  animation: rise 0.7s ease both;
+}
+.page-header .label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--teal-l);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.page-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 1;
+  color: var(--white);
+}
+.page-header h1 span { color: var(--gold); }
+.page-header p {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* MARKET INTEL */
+.intel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 64px;
+  animation: rise 0.7s ease 0.1s both;
+}
+.intel-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+}
+.intel-card .ic-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--teal-l);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.intel-card .ic-stat {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.intel-card .ic-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.intel-card .ic-desc strong { color: var(--white); font-weight: 500; }
+
+/* SECTION TITLE */
+.section-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 200px;
+}
+
+/* STRATEGIC PILLARS */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 64px;
+  animation: rise 0.7s ease 0.2s both;
+}
+.pillar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+  border-top: 2px solid var(--gold);
+}
+.pillar.teal { border-top-color: var(--teal-l); }
+.pillar.red { border-top-color: var(--red); }
+.pillar.cream { border-top-color: var(--cream); }
+.pillar h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+.pillar p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* CALENDAR */
+.month-block {
+  margin-bottom: 60px;
+  animation: rise 0.7s ease 0.3s both;
+}
+.month-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.month-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--white);
+}
+.month-name span { color: var(--gold); }
+.month-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.week-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.week-card:hover { border-color: rgba(201,168,76,0.45); }
+
+.week-header {
+  background: rgba(201,168,76,0.07);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.week-header.teal-bg { background: rgba(42,122,116,0.08); }
+
+.week-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+.week-num.teal { color: var(--teal-l); }
+
+.week-dates {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+}
+.week-theme {
+  padding: 16px 20px 8px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.content-items { padding: 0 20px 20px; }
+
+.content-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: flex-start;
+}
+.ci-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 3px 7px;
+  border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.ci-type.long { background: rgba(201,168,76,0.15); color: var(--gold); }
+.ci-type.short { background: rgba(61,168,159,0.15); color: var(--teal-l); }
+.ci-type.post { background: rgba(245,240,232,0.08); color: var(--cream); }
+.ci-type.prep { background: rgba(192,57,43,0.15); color: #E74C3C; }
+
+.ci-text {
+  font-size: 13px;
+  color: rgba(245,240,232,0.75);
+  line-height: 1.5;
+}
+.ci-text strong { color: var(--white); font-weight: 500; }
+
+/* DIVIDER */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 48px 0;
+}
+
+/* STRATEGY TABLE */
+.strategy-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 64px;
+  animation: rise 0.7s ease 0.4s both;
+}
+.strategy-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--teal-l);
+  text-transform: uppercase;
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.strategy-table td {
+  font-size: 13px;
+  color: rgba(245,240,232,0.7);
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.strategy-table td strong { color: var(--white); font-weight: 500; }
+.strategy-table tr:hover td { background: rgba(245,240,232,0.02); }
+
+/* MONETIZATION */
+.mono-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 64px;
+  animation: rise 0.7s ease 0.5s both;
+}
+.mono-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px;
+}
+.mono-card .phase {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.mono-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.mono-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.mono-card ul li {
+  font-size: 12px;
+  color: var(--muted);
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+.mono-card ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--teal-l);
+  font-size: 10px;
+}
+
+/* BOTTOM NOTE */
+.bottom-note {
+  background: rgba(42,122,116,0.06);
+  border: 1px solid rgba(42,122,116,0.2);
+  border-radius: 6px;
+  padding: 24px 28px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  animation: rise 0.7s ease 0.6s both;
+}
+.bottom-note .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--teal-l);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.bottom-note p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.bottom-note p strong { color: var(--teal-l); }
+
+@keyframes rise {
+  from { opacity:0; transform: translateY(20px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+@media(max-width:768px) {
+  body { padding: 40px 20px 80px; }
+  .intel-grid { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: repeat(2,1fr); }
+  .weeks-grid { grid-template-columns: 1fr; }
+  .mono-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="label">Q Aging Lab — Strategische Blauwdruk</div>
+  <h1>CONTENT KALENDER<br><span>JUNI / JULI 2026</span></h1>
+  <p>Gebaseerd op actueel marktonderzoek en trendanalyse. Engineering First aanpak. Geen opvulcontent — alleen video's die autoriteit bouwen en een publiek converteren.</p>
+</div>
+
+<!-- MARKET INTEL -->
+<div class="section-title">// Markt Intelligence 2026</div>
+<div class="intel-grid">
+  <div class="intel-card">
+    <div class="ic-label">Niche groei</div>
+    <div class="ic-stat">19×</div>
+    <div class="ic-desc"><strong>Senior Health & Longevity</strong> is de snelst groeiende low-competition niche op YouTube in 2026. Slechts 10K kanalen actief. RPM $6.17 — ver boven gemiddeld.</div>
+  </div>
+  <div class="intel-card">
+    <div class="ic-label">Industrie consensus</div>
+    <div class="ic-stat">2026</div>
+    <div class="ic-desc"><strong>Het jaar van skin longevity.</strong> Alle grote derm-experts bevestigen: consumenten willen bewezen mechanismen, geen marketing. Exact jouw positionering.</div>
+  </div>
+  <div class="intel-card">
+    <div class="ic-label">Algoritme signaal</div>
+    <div class="ic-stat">70/30</div>
+    <div class="ic-desc"><strong>Long-form 70% / Shorts 30%.</strong> YouTube algoritme 2026 beloont langere content (15-20 min) en viewer satisfaction — niet alleen kijktijd. Shorts voor bereik, long-form voor autoriteit.</div>
+  </div>
+  <div class="intel-card">
+    <div class="ic-label">Taal strategie</div>
+    <div class="ic-stat">4×</div>
+    <div class="ic-desc"><strong>Meertalige kanalen</strong> zien kijktijd verviervoudigen. Auto-dubbing in ES/PT/NL opent Latijns-Amerika en Caribisch gebied zonder extra productietijd.</div>
+  </div>
+  <div class="intel-card">
+    <div class="ic-label">Trend killer</div>
+    <div class="ic-stat">OUT</div>
+    <div class="ic-desc"><strong>"Fake longevity" verliest.</strong> Merken die marketing-taal hernoemen naar longevity zonder mechanisme worden afgestraft. Jouw "guinea pig met notebook" wint precies hier.</div>
+  </div>
+  <div class="intel-card">
+    <div class="ic-label">Commerce trend</div>
+    <div class="ic-stat">↑</div>
+    <div class="ic-desc"><strong>Shoppable content</strong> domineert in 2026. Affiliate links in video's presteren het best wanneer de creator de producten zelf gebruikt. Amazon Associates ID qaginglab-20 is perfect gepositioneerd.</div>
+  </div>
+</div>
+
+<!-- STRATEGIC PILLARS -->
+<div class="section-title">// De 4 Content Pijlers</div>
+<div class="pillars">
+  <div class="pillar">
+    <h3>Protocol</h3>
+    <p>Jouw AM/PM routine, supplementen, fasting. Mechanisme uitleggen, niet verkopen. Dit bouwt vakkennis.</p>
+  </div>
+  <div class="pillar teal">
+    <h3>Data</h3>
+    <p>HRR metingen, BIA uitslagen, huidconditie. Jij bent het experiment. Cijfers zijn je geloofwaardigheid.</p>
+  </div>
+  <div class="pillar red">
+    <h3>Conflict</h3>
+    <p>Ingrediënten die niet samen mogen. Fouten die je zelf hebt gemaakt. Dit genereert de meeste views.</p>
+  </div>
+  <div class="pillar cream">
+    <h3>Tropics</h3>
+    <p>UV11+, hitte, luchtvochtigheid. Wat werkt in de tropen vs. wat Western protocols zeggen. Jouw unique angle.</p>
+  </div>
+</div>
+
+<!-- JUNI KALENDER -->
+<div class="month-block">
+  <div class="month-header">
+    <div class="month-name">JUNI <span>2026</span></div>
+    <div class="month-meta">LANCEERMAAND — FUNDAMENT BOUWEN</div>
+  </div>
+
+  <div class="weeks-grid">
+
+    <div class="week-card">
+      <div class="week-header">
+        <span class="week-num">WEEK 1</span>
+        <span class="week-dates">9 – 15 Juni</span>
+      </div>
+      <div class="week-theme">De introductie — wie is Ray en wat is QAL?</div>
+      <div class="content-items">
+        <div class="content-item">
+          <span class="ci-type long">LONG</span>
+          <span class="ci-text"><strong>"I'm 61, I live in the tropics, and I test everything on myself."</strong> — Kanaal intro video. Jouw verhaal, jouw protocol, waarom QAL bestaat. 12-15 min.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type short">SHORT</span>
+          <span class="ci-text"><strong>"My resting heart rate at 61."</strong> — HRR data op scherm. 45 seconden. Hook: "Most 61-year-olds can't do this."</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type post">POST</span>
+          <span class="ci-text">Landingspagina live — wachtlijst open. Aankondigen via alle platforms.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type prep">PREP</span>
+          <span class="ci-text">Script week 2 video schrijven. Thumbnails maken voor week 1 en 2.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-header">
+        <span class="week-num">WEEK 2</span>
+        <span class="week-dates">16 – 22 Juni</span>
+      </div>
+      <div class="week-theme">Ingrediëntenconflicten die niemand je vertelt</div>
+      <div class="content-items">
+        <div class="content-item">
+          <span class="ci-type long">LONG</span>
+          <span class="ci-text"><strong>"Copper Peptides vs Vitamin C — why I had to separate them."</strong> — Mechanisme uitleggen. Oxidatie, pH, timing. Jouw eigen fout als opening. 10-12 min.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type short">SHORT</span>
+          <span class="ci-text"><strong>"Never mix these two."</strong> — Visuele demo. Tretinoin + Benzoylperoxide. 30 sec. Conflict = hoogste engagement.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type short">SHORT</span>
+          <span class="ci-text"><strong>"My AM routine in 60 seconds."</strong> — Echte ochtend, geen filter, tropische hitte zichtbaar.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type post">POST</span>
+          <span class="ci-text">Affiliate link: The Ordinary ATIP + CeraVe AM in video description. Amazon ID qaginglab-20.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-header">
+        <span class="week-num">WEEK 3</span>
+        <span class="week-dates">23 – 29 Juni</span>
+      </div>
+      <div class="week-theme">Tretinoin in de tropen — wat niemand je zegt</div>
+      <div class="content-items">
+        <div class="content-item">
+          <span class="ci-type long">LONG</span>
+          <span class="ci-text"><strong>"2 years on Tretinoin in a tropical climate — honest results."</strong> — Jouw huid voor/na protocol. Sandwich method uitgelegd. UV interactie. 15 min.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type short">SHORT</span>
+          <span class="ci-text"><strong>"Why Western retinol advice fails in the tropics."</strong> — TEWL, UV11+, AC wisselwerking. 45 sec.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type post">POST</span>
+          <span class="ci-text">Affiliate: Tretinoin alternatieven voor beginners + LRP UVMune 400 link.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type prep">PREP</span>
+          <span class="ci-text">Blueprint outline starten — structuur van de 50+ Tropical Longevity Blueprint opzetten.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-header">
+        <span class="week-num">WEEK 4</span>
+        <span class="week-dates">30 Juni</span>
+      </div>
+      <div class="week-theme">Maand review + data dump</div>
+      <div class="content-items">
+        <div class="content-item">
+          <span class="ci-type long">LONG</span>
+          <span class="ci-text"><strong>"Month 1 data — what the numbers show."</strong> — HRR, huidconditie, supplement effecten. Eerlijk en onbewerkt. Dit is het guinea pig notebook concept live. 10 min.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type short">SHORT</span>
+          <span class="ci-text"><strong>"30 days of Azelaic Acid 20% — my skin now."</strong> — Close-up. Data. Geen filter.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type post">POST</span>
+          <span class="ci-text">Wachtlijst update sturen naar subscribers. Transparantie over voortgang QAL app.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- JULI KALENDER -->
+<div class="month-block">
+  <div class="month-header">
+    <div class="month-name">JULI <span>2026</span></div>
+    <div class="month-meta">VERDIEPINGSMAAND — AUTORITEIT VESTIGEN</div>
+  </div>
+
+  <div class="weeks-grid">
+
+    <div class="week-card">
+      <div class="week-header teal-bg">
+        <span class="week-num teal">WEEK 5</span>
+        <span class="week-dates">1 – 5 Juli</span>
+      </div>
+      <div class="week-theme">Creatine op 61 — wat de wetenschap zegt</div>
+      <div class="content-items">
+        <div class="content-item">
+          <span class="ci-type long">LONG</span>
+          <span class="ci-text"><strong>"Why I take 10g of Creatine daily at 61."</strong> — Spier, cognitie, cellulaire hydratatie. Studies geciteerd. Dosering onderbouwd. 12 min.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type short">SHORT</span>
+          <span class="ci-text"><strong>"Creatine isn't just for gym bros."</strong> — Cognitieve achteruitgang data. 45 sec. Hook voor 50+ doelgroep.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type post">POST</span>
+          <span class="ci-text">Affiliate: Thorne Creatine link. Uitleggen waarom NSF-gecertificeerd belangrijk is.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-header teal-bg">
+        <span class="week-num teal">WEEK 6</span>
+        <span class="week-dates">6 – 12 Juli</span>
+      </div>
+      <div class="week-theme">SPF in de tropen — de enige metric die telt</div>
+      <div class="content-items">
+        <div class="content-item">
+          <span class="ci-type long">LONG</span>
+          <span class="ci-text"><strong>"UV Index 11+ daily — this is what I actually use and why."</strong> — LRP UVMune 400 vs generieke SPF50. UVA-PF uitgelegd. Pilling preventie in hitte. 12-15 min.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type short">SHORT</span>
+          <span class="ci-text"><strong>"SPF 50 is not enough in the tropics."</strong> — UV index vergelijking Europa vs. tropen. 30 sec.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type short">SHORT</span>
+          <span class="ci-text"><strong>"Tinted vs untinted SPF — why I use both."</strong> — Praktische demo. 45 sec.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type post">POST</span>
+          <span class="ci-text">Affiliate: LRP UVMune 400 + CeraVe AM SPF50 EU links.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-header teal-bg">
+        <span class="week-num teal">WEEK 7</span>
+        <span class="week-dates">13 – 19 Juli</span>
+      </div>
+      <div class="week-theme">18:6 fasting op 61 — wat mijn data laat zien</div>
+      <div class="content-items">
+        <div class="content-item">
+          <span class="ci-type long">LONG</span>
+          <span class="ci-text"><strong>"I've been doing 18:6 fasting for [X] months. Here's the data."</strong> — Energie, HRR, body comp. Supplement timing binnen het fasting window uitgelegd. 12 min.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type short">SHORT</span>
+          <span class="ci-text"><strong>"When I take my supplements during a fast."</strong> — Visuele timeline. Praktisch, direct toepasbaar. 45 sec.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type prep">PREP</span>
+          <span class="ci-text">Blueprint eerste hoofdstuk schrijven. Doelstelling: 30% af eind Juli.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-header teal-bg">
+        <span class="week-num teal">WEEK 8</span>
+        <span class="week-dates">20 – 31 Juli</span>
+      </div>
+      <div class="week-theme">60 dagen QAL — eerlijke evaluatie</div>
+      <div class="content-items">
+        <div class="content-item">
+          <span class="ci-type long">LONG</span>
+          <span class="ci-text"><strong>"60 days of Q Aging Lab — what worked, what didn't, what's next."</strong> — Kanaalgroei, protocol updates, subscriber feedback. Transparantie als autoriteitsbuilder. 15 min.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type short">SHORT</span>
+          <span class="ci-text"><strong>"The one thing I changed in my routine after 60 days."</strong> — Specifiek, data-gedreven. 45 sec.</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type post">POST</span>
+          <span class="ci-text">Blueprint pre-launch aankondiging aan wachtlijst. "Coming in August."</span>
+        </div>
+        <div class="content-item">
+          <span class="ci-type prep">PREP</span>
+          <span class="ci-text">Augustus kalender plannen. App MVP testen in Lovable opstarten.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- POSTING STRATEGY -->
+<div class="section-title">// Publicatie & Productie Strategie</div>
+<table class="strategy-table">
+  <thead>
+    <tr>
+      <th>Format</th>
+      <th>Frequentie</th>
+      <th>Doel</th>
+      <th>Tijdsinvestering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Long-form video</strong> (10-15 min)</td>
+      <td>1× per week</td>
+      <td>Autoriteit, SEO, monetisatie basis</td>
+      <td>~4 uur per video incl. script</td>
+    </tr>
+    <tr>
+      <td><strong>YouTube Shorts</strong> (30-60 sec)</td>
+      <td>2-3× per week</td>
+      <td>Bereik, subscriber acquisitie, viraal potentieel</td>
+      <td>~45 min per Short (knip van long-form)</td>
+    </tr>
+    <tr>
+      <td><strong>Wachtlijst email</strong></td>
+      <td>1× per maand</td>
+      <td>Community opbouwen, vertrouwen, Blueprint pre-sales</td>
+      <td>~1 uur per mail</td>
+    </tr>
+    <tr>
+      <td><strong>Affiliate links</strong></td>
+      <td>Elke video</td>
+      <td>Eerste inkomstenstroom. Alleen producten die je zelf gebruikt.</td>
+      <td>15 min per video voor beschrijving</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- MONETIZATION ROADMAP -->
+<div class="section-title">// Inkomsten Roadmap</div>
+<div class="mono-grid">
+  <div class="mono-card">
+    <div class="phase">Juni — Juli 2026</div>
+    <h3>Stroom 1</h3>
+    <ul>
+      <li>Amazon Associates links elke video</li>
+      <li>ID: qaginglab-20</li>
+      <li>Focus: producten uit eigen protocol</li>
+      <li>Verwacht: $50-200/maand bij 500+ views</li>
+    </ul>
+  </div>
+  <div class="mono-card">
+    <div class="phase">Augustus 2026</div>
+    <h3>Stroom 2</h3>
+    <ul>
+      <li>Blueprint lancering: $47-97</li>
+      <li>Verkoop aan wachtlijst eerst</li>
+      <li>Doel: 20 verkopen = $940-$1940</li>
+      <li>Bewijs van markt voor app</li>
+    </ul>
+  </div>
+  <div class="mono-card">
+    <div class="phase">Q4 2026</div>
+    <h3>Stroom 3</h3>
+    <ul>
+      <li>QAL App early access — betaald</li>
+      <li>YouTube monetisatie (1K subs doel)</li>
+      <li>Gesponsorde content (fragrance-free merken)</li>
+      <li>Affiliate uitbreiden naar iHerb</li>
+    </ul>
+  </div>
+</div>
+
+<!-- BOTTOM NOTE -->
+<div class="bottom-note">
+  <div class="dot"></div>
+  <p><strong>Strategische kernregel:</strong> Elk stuk content moet één van drie dingen doen — autoriteit bouwen, vertrouwen vestigen, of direct naar een product linken dat je zelf gebruikt. Content die geen van drie doet, publiceert niet. Kwaliteit boven kwantiteit. Je bent het experiment, niet de entertainer.</p>
+</div>
+
+</div>
+</body>
+</html>
