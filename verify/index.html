@@ -61,7 +61,8 @@ async function verify() {
       showSuccess();
     } else {
       const err = await response.text();
-      showError('Something went wrong. Please contact info@qaginglab.com.');
+      console.log('Supabase error:', response.status, err);
+      showError('Error ' + response.status + ': ' + err);
     }
   } catch (err) {
     showError('Connection error. Please check your internet and try again.');
