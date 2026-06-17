@@ -4,6 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
+<script>
+(function(){
+  var pwd = sessionStorage.getItem('qal_vault');
+  if(!pwd){
+    pwd = prompt('Q Aging Lab — Vault\nEnter access code:');
+    if(pwd !== 'JW7SjofD'){
+      document.body.innerHTML = '';
+      window.location.href = '/';
+      return;
+    }
+    sessionStorage.setItem('qal_vault', pwd);
+  } else {
+    if(pwd !== 'JW7SjofD'){
+      sessionStorage.removeItem('qal_vault');
+      window.location.href = '/';
+    }
+  }
+})();
+</script>  
 <title>QAL Vault</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
