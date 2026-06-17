@@ -23,6 +23,20 @@
   }
 })();
 </script>  
+<script>
+(function(){
+  var correct = 'JW7SjofD';
+  var stored = sessionStorage.getItem('qal_vault');
+  if(stored === correct) return;
+  sessionStorage.removeItem('qal_vault');
+  var pwd = prompt('Q Aging Lab — Vault\nEnter access code:');
+  if(pwd !== null && pwd.trim() === correct){
+    sessionStorage.setItem('qal_vault', correct);
+  } else {
+    window.location.replace('https://qaginglab.com');
+  }
+})();
+</script>
 <title>QAL Vault</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
