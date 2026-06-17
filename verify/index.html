@@ -33,28 +33,35 @@ p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:32px;}
 </div>
 
 <script>
-const WEBHOOK = 'https://hook.us2.make.com/d5ghqlsioojmnc4232x6bu8ttjcf9lo2';
+const SUPABASE_URL = 'https://xyikfhdgxcrzkkpkhyfp.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5aWtmaGRneGNyemtrcGtoeWZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk5OTI4NzcsImV4cCI6MjA2NTU2ODg3N30.ek8YQSGPJzu4DRFiXZMDNbZ3TsmFVe9XB0vTJsGulnA';
 
 async function verify() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
 
   if (!id) {
-    showError('No confirmation ID found in this link. Please use the link from your email.');
+    showError('No confirmation ID found. Please use the link from your email.');
     return;
   }
 
   try {
-    const response = await fetch(WEBHOOK, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: id })
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist?id=eq.${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ is_verified: true })
     });
 
     if (response.ok) {
       showSuccess();
     } else {
-      showError('Something went wrong. Please try again or contact info@qaginglab.com.');
+      const err = await response.text();
+      showError('Something went wrong. Please contact info@qaginglab.com.');
     }
   } catch (err) {
     showError('Connection error. Please check your internet and try again.');
@@ -71,6 +78,7 @@ function showSuccess() {
   const btn = document.createElement('a');
   btn.href = 'https://qaginglab.com';
   btn.className = 'btn';
+  btn.style.marginTop = '24px';
   btn.textContent = 'Back to QAL →';
   document.querySelector('.card').appendChild(btn);
 }
