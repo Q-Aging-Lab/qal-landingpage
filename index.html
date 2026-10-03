@@ -223,13 +223,17 @@ body {
 .success-msg, .error-msg {
   display: none;
   font-family: 'DM Mono', ui-monospace, monospace;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.5px;
   line-height: 1.6;
-  padding: 12px 0 0;
+  max-width: 500px;
+  width: 100%;
+  text-align: left;
+  padding: 16px 18px;
+  border-left: 3px solid;
 }
-.success-msg { color: var(--teal-light); }
-.error-msg   { color: #E8776B; }
+.success-msg { color: var(--white); border-color: var(--teal-light); background: rgba(61,168,159,0.14); }
+.error-msg   { color: var(--white); border-color: var(--red); background: rgba(192,57,43,0.16); margin-top: 12px; }
 
 /* HRR PANEL */
 .hrr {
@@ -1099,6 +1103,17 @@ function setLang(lang) {
   const SUPABASE_ANON_KEY = 'sb_publishable_ZSnQzdNuAnt4OvLdWT0ysw_-eN0F7Sa'; // publieke sleutel, hoort in de browser
   // ============================================================
 
+  // Bevestiging komt op de plek van het formulier, zodat ze altijd in beeld staat
+  // (ook op een telefoon met het toetsenbord open).
+  function showSuccess(form, successEl) {
+    const note = form.nextElementSibling;
+    form.style.display = 'none';
+    if (note && note.classList.contains('form-note')) note.style.display = 'none';
+    successEl.style.display = 'block';
+    if (document.activeElement) document.activeElement.blur();
+    successEl.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+
   async function handleSubmit(e, id) {
     e.preventDefault();
 
@@ -1143,21 +1158,20 @@ function setLang(lang) {
         const err = await response.json().catch(() => ({}));
         // Duplicate email — toon succes toch (geen info lekken)
         if (err.code === '23505') {
-          successEl.style.display = 'block';
-          emailInput.value = '';
+          showSuccess(e.target, successEl);
           return;
         }
         throw new Error('Transmissie gefaald: ' + response.status);
       }
 
       // 4. Succes
-      successEl.style.display = 'block';
-      emailInput.value = '';
+      showSuccess(e.target, successEl);
 
     } catch (error) {
       // 5. Fout zichtbaar maken voor de bezoeker (was voorheen stil)
       console.error('Systeemfout:', error);
       errorEl.style.display = 'block';
+      errorEl.scrollIntoView({ block: 'center', behavior: 'smooth' });
     } finally {
       btn.innerText = i18n[currentLang].cta_btn;
       btn.disabled = false;
