@@ -137,7 +137,7 @@ body {
 .hero-grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 56px;
   align-items: end;
 }
@@ -243,6 +243,8 @@ body {
   padding: 24px 24px 20px;
 }
 
+.about-grid .hrr { margin-top: 36px; }
+
 .hrr-head {
   display: flex;
   justify-content: space-between;
@@ -317,6 +319,7 @@ body {
 /* SECTIONS */
 .block { padding-top: 96px; padding-bottom: 96px; }
 .block + .block { border-top: 1px solid var(--border); }
+.hero + .block { padding-top: 40px; }
 
 .section-label {
   font-family: 'DM Mono', ui-monospace, monospace;
@@ -615,61 +618,10 @@ footer {
         <p class="error-msg" id="error-hero" role="alert" data-i18n="error_msg">That did not go through. Try again in a moment, or email info@qaginglab.com.</p>
       </div>
 
-      <figure class="hrr">
-        <div class="hrr-head">
-          <div class="hrr-title" data-i18n="hrr_title">Heart rate recovery</div>
-          <div class="hrr-delta">−37<small data-i18n="hrr_unit">bpm in 2 min</small></div>
-        </div>
-        <svg viewBox="0 0 360 208" role="img" aria-labelledby="hrr-cap">
-          <line class="hrr-grid" x1="40" y1="20"  x2="340" y2="20"/>
-          <line class="hrr-grid" x1="40" y1="73"  x2="340" y2="73"/>
-          <line class="hrr-grid" x1="40" y1="127" x2="340" y2="127"/>
-          <line class="hrr-grid" x1="40" y1="180" x2="340" y2="180"/>
-          <text class="hrr-axis" x="32" y="24"  text-anchor="end">160</text>
-          <text class="hrr-axis" x="32" y="77"  text-anchor="end">140</text>
-          <text class="hrr-axis" x="32" y="131" text-anchor="end">120</text>
-          <text class="hrr-axis" x="32" y="184" text-anchor="end">100</text>
-          <text class="hrr-axis" x="40"  y="200">0:00</text>
-          <text class="hrr-axis" x="190" y="200" text-anchor="middle">1:00</text>
-          <text class="hrr-axis" x="340" y="200" text-anchor="end">2:00</text>
-          <path class="hrr-line" d="M40,31 C120,96 230,124 340,129"/>
-          <circle class="hrr-dot" cx="40"  cy="31"  r="6"/>
-          <circle class="hrr-dot" cx="340" cy="129" r="6"/>
-          <text class="hrr-val" x="54"  y="42">156</text>
-          <text class="hrr-val" x="330" y="116" text-anchor="end">119</text>
-        </svg>
-        <figcaption class="hrr-caption" id="hrr-cap" data-i18n="hrr_caption">From 156 to 119 bpm in the two minutes after the last interval. Age 61. Two measured points; the line between them is drawn, not recorded.</figcaption>
-      </figure>
     </div>
 
-    <div class="stats">
-      <div class="stat"><div class="stat-num">61</div><div class="stat-label" data-i18n="stat_age">Years old</div></div>
-      <div class="stat"><div class="stat-num">4×</div><div class="stat-label" data-i18n="stat_train">Training days a week</div></div>
-      <div class="stat"><div class="stat-num">18:6</div><div class="stat-label" data-i18n="stat_fast">Fasting, every day</div></div>
-      <div class="stat"><div class="stat-num">0</div><div class="stat-label" data-i18n="stat_equip">Equipment needed</div></div>
-    </div>
   </div>
 </header>
-
-<!-- ABOUT -->
-<section class="block">
-  <div class="wrap">
-    <div class="section-label" data-i18n="about_label">// The experiment</div>
-    <div class="about-grid">
-      <h2><span data-i18n="about_h2_line1">I AM</span><span data-i18n="about_h2_line2">THE DATA.</span></h2>
-      <div class="about-text">
-        <p data-i18n="about_p1">I'm Ray, the Q behind Q Aging Lab. 61 years old, 23 years of gymnastics behind me, and still training in the tropics: <strong>year-round heat, high humidity, no air conditioning in the gym.</strong> Most training advice is not written for these conditions, or for this age.</p>
-        <p data-i18n="about_p2">So I test it on myself. Bodyweight strength, intervals, fasting and supplements, with an <strong>Engineering First</strong> approach: change one variable, measure, write it down. No influencer noise. Only mechanisms, data, and what holds up on a 61-year-old body.</p>
-        <p data-i18n="about_p3">Q Aging Lab is where I document everything. Not as a guru. As a <strong>guinea pig with a notebook.</strong></p>
-        <div class="data-strip">
-          <div class="data-point"><div class="val">23</div><div class="key" data-i18n="data_gym">Years of gymnastics</div></div>
-          <div class="data-point"><div class="val">~50</div><div class="key" data-i18n="data_rhr">Resting heart rate, bpm</div></div>
-          <div class="data-point"><div class="val">5 G</div><div class="key" data-i18n="data_creatine">Creatine a day</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- WHAT IS QAL -->
 <section class="block">
@@ -705,6 +657,59 @@ footer {
         <h3 data-i18n="pillar3_h">The Blueprint</h3>
         <p data-i18n="pillar3_p">The 50+ Tropical Longevity Blueprint: the full protocol in one guide. Bodyweight training, 18:6 fasting and supplementation, with the reasoning behind every choice. Built for heat, humidity and a body past 50.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-label" data-i18n="about_label">// The experiment</div>
+    <div class="about-grid">
+      <div>
+        <h2><span data-i18n="about_h2_line1">I AM</span><span data-i18n="about_h2_line2">THE DATA.</span></h2>
+        <figure class="hrr">
+          <div class="hrr-head">
+            <div class="hrr-title" data-i18n="hrr_title">Heart rate recovery</div>
+            <div class="hrr-delta">−37<small data-i18n="hrr_unit">bpm in 2 min</small></div>
+          </div>
+          <svg viewBox="0 0 360 208" role="img" aria-labelledby="hrr-cap">
+            <line class="hrr-grid" x1="40" y1="20"  x2="340" y2="20"/>
+            <line class="hrr-grid" x1="40" y1="73"  x2="340" y2="73"/>
+            <line class="hrr-grid" x1="40" y1="127" x2="340" y2="127"/>
+            <line class="hrr-grid" x1="40" y1="180" x2="340" y2="180"/>
+            <text class="hrr-axis" x="32" y="24"  text-anchor="end">160</text>
+            <text class="hrr-axis" x="32" y="77"  text-anchor="end">140</text>
+            <text class="hrr-axis" x="32" y="131" text-anchor="end">120</text>
+            <text class="hrr-axis" x="32" y="184" text-anchor="end">100</text>
+            <text class="hrr-axis" x="40"  y="200">0:00</text>
+            <text class="hrr-axis" x="190" y="200" text-anchor="middle">1:00</text>
+            <text class="hrr-axis" x="340" y="200" text-anchor="end">2:00</text>
+            <path class="hrr-line" d="M40,31 C120,96 230,124 340,129"/>
+            <circle class="hrr-dot" cx="40"  cy="31"  r="6"/>
+            <circle class="hrr-dot" cx="340" cy="129" r="6"/>
+            <text class="hrr-val" x="54"  y="42">156</text>
+            <text class="hrr-val" x="330" y="116" text-anchor="end">119</text>
+          </svg>
+          <figcaption class="hrr-caption" id="hrr-cap" data-i18n="hrr_caption">From 156 to 119 bpm in the two minutes after the last interval. Age 61. Two measured points; the line between them is drawn, not recorded.</figcaption>
+        </figure>
+      </div>
+      <div class="about-text">
+        <p data-i18n="about_p1">I'm Ray, the Q behind Q Aging Lab. 61 years old, 23 years of gymnastics behind me, and still training in the tropics: <strong>year-round heat, high humidity, no air conditioning in the gym.</strong> Most training advice is not written for these conditions, or for this age.</p>
+        <p data-i18n="about_p2">So I test it on myself. Bodyweight strength, intervals, fasting and supplements, with an <strong>Engineering First</strong> approach: change one variable, measure, write it down. No influencer noise. Only mechanisms, data, and what holds up on a 61-year-old body.</p>
+        <p data-i18n="about_p3">Q Aging Lab is where I document everything. Not as a guru. As a <strong>guinea pig with a notebook.</strong></p>
+        <div class="data-strip">
+          <div class="data-point"><div class="val">23</div><div class="key" data-i18n="data_gym">Years of gymnastics</div></div>
+          <div class="data-point"><div class="val">~50</div><div class="key" data-i18n="data_rhr">Resting heart rate, bpm</div></div>
+          <div class="data-point"><div class="val">5 G</div><div class="key" data-i18n="data_creatine">Creatine a day</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">61</div><div class="stat-label" data-i18n="stat_age">Years old</div></div>
+      <div class="stat"><div class="stat-num">4×</div><div class="stat-label" data-i18n="stat_train">Training days a week</div></div>
+      <div class="stat"><div class="stat-num">18:6</div><div class="stat-label" data-i18n="stat_fast">Fasting, every day</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-label" data-i18n="stat_equip">Equipment needed</div></div>
     </div>
   </div>
 </section>
@@ -1072,9 +1077,11 @@ const i18n = {
 
 let currentLang = 'en';
 
-function setLang(lang) {
+function setLang(lang, remember = true) {
   currentLang = lang;
   document.documentElement.lang = lang;
+  // Een handmatige keuze onthouden voor het volgende bezoek
+  if (remember) { try { localStorage.setItem('qal_lang', lang); } catch (e) {} }
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1084,6 +1091,25 @@ function setLang(lang) {
     }
   });
 }
+
+// STARTTAAL: eerdere keuze van de bezoeker, anders de taal van de browser, anders Engels.
+// De actieve taal wordt bij inschrijving opgeslagen als 'locale'.
+(function initLang() {
+  const supported = ['en', 'nl', 'es', 'pt'];
+  let lang = null;
+  try { lang = localStorage.getItem('qal_lang'); } catch (e) {}
+  if (!supported.includes(lang)) {
+    const prefs = (navigator.languages && navigator.languages.length)
+      ? navigator.languages
+      : [navigator.language || 'en'];
+    lang = 'en';
+    for (const p of prefs) {
+      const code = String(p).slice(0, 2).toLowerCase();
+      if (supported.includes(code)) { lang = code; break; }
+    }
+  }
+  if (lang !== 'en') setLang(lang, false);
+})();
 
 // SESSION TAPE: 4 warm-up + 30 main (6:6:8:5:5) + 4 cool-down
 (function buildTape() {
